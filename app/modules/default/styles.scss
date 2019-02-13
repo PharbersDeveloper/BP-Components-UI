@@ -13,52 +13,25 @@
 }
 
 .table-2 {
-
-	tr:first-child {
-		font-size: 24px;
+	.circle {
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
 	}
 
-	tr:nth-child(2) {
-		div.color-a {
-			width: 83px;
-			height: 83px;
-			border-radius: 50%;
-			background-color: #555555;
-		}
-
-		font-size: 24px;
+	div.color-a {
+		background-color: #555555;
 	}
 
-	tr:nth-child(3) {
-		div.color-b {
-			width: 83px;
-			height: 83px;
-			border-radius: 50%;
-			background-color: #999999;
-		}
-
-		font-size: 24px;
+	div.color-b {
+		background-color: #999999;
 	}
 
-	tr:nth-child(4) {
-		div.color-c {
-			width: 83px;
-			height: 83px;
-			border-radius: 50%;
-			background-color: #D3D3D3;
-		}
-
-		font-size: 24px;
+	div.color-c {
+		background-color: #D3D3D3;
 	}
 
-	tr:last-child {
-		div.color-d {
-			width: 83px;
-			height: 83px;
-			border-radius: 50%;
-			background-color: #FF7D7E;
-		}
-
-		font-size: 24px;
+	div.color-d {
+		background-color: #FF7D7E;
 	}
 }
