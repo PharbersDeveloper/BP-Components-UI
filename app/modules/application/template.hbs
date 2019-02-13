@@ -1,0 +1,21 @@
+<h2 local-class="title">Welcome to BP-Components-UI</h2>
+<section local-class="container">
+	<aside>
+		<nav>
+			<ol>
+				{{#link-to "default" tagName='li' activeClass="nav-active" }}
+					default
+				{{/link-to}}
+				{{#link-to "layout" tagName='li' activeClass="nav-active" }}
+					layout
+				{{/link-to}}
+				{{#link-to "radio-checkbox" tagName='li' activeClass="nav-active" }}
+					Radio&Checkbox
+				{{/link-to}}
+			</ol>
+		</nav>
+	</aside>
+	<section local-class="content">
+		{{outlet}}
+	</section>
+</section>
