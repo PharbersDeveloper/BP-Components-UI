@@ -10,6 +10,8 @@ Router.map(function() {
   this.route('layout');
   this.route('default');
   this.route('radio-checkbox');
+  this.route('theme-colors');
+  this.route('button');
 });
 
 export default Router;
