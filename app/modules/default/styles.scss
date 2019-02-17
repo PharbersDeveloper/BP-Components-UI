@@ -10,6 +10,10 @@
 	tr:last-child {
 		font-size: 14px;
 	}
+
+	tr>td {
+		vertical-align: middle;
+	}
 }
 
 .table-2 {
@@ -33,5 +37,9 @@
 
 	div.color-d {
 		background-color: #FF7D7E;
+	}
+
+	tr>td {
+		vertical-align: middle;
 	}
 }
