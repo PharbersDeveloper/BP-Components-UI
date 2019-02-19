@@ -20,6 +20,7 @@ Router.map(function() {
   this.route('card');
   this.route('navs');
   this.route('progress');
+  this.route('modal');
 });
 
 export default Router;
