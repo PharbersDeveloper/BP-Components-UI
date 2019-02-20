@@ -10,6 +10,18 @@ Router.map(function() {
   this.route('layout');
   this.route('default');
   this.route('radio-checkbox');
+  this.route('theme-colors');
+  this.route('button');
+  this.route('choose');
+  this.route('button-group');
+  this.route('dropdown');
+  this.route('input');
+  this.route('search-bar');
+  this.route('card');
+  this.route('navs');
+  this.route('progress');
+  this.route('modal');
+  this.route('tabs');
 });
 
 export default Router;

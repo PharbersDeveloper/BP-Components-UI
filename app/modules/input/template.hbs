@@ -1,0 +1,28 @@
+<h3>bp-input 组件的用法</h3>
+<h4>size</h4>
+{{bp-input size='small'}}
+{{bp-input size='default'}}
+{{bp-input size='large'}}
+<h4>block/title/placeholder/icon/</h4>
+{{bp-input
+	block=true 
+	size='small' 
+	title='市场' 
+	placeholder="请输入" 
+	icon="https://i.loli.net/2019/02/13/5c63df11c3b5c.png"
+	onChange=(action (mut inputValue))}}
+<p class="mt-3">您输入的值为： {{inputValue}}</p>
+{{bp-input
+	block=true 
+	title='市场2' 
+	placeholder="请输入" 
+	icon="https://i.loli.net/2019/02/13/5c63df11c3b5c.png"
+	onChange=(action (mut inputValue2))}}
+<p class="mt-3">您输入的值为： {{inputValue2}}</p>
+{{bp-input
+	block=true 
+	title='市场2' 
+	placeholder="请输入" 
+	icon="https://i.loli.net/2019/02/13/5c63df11c3b5c.png"
+	onChange=(action (mut inputValue3))}}
+<p class="mt-3">您输入的值为： {{inputValue3}}</p>

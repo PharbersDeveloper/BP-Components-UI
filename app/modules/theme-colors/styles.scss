@@ -1,0 +1,140 @@
+.table-1 {
+	.square {
+		width: 45px;
+		height: 45px;
+		border-radius: 7px;
+	}
+
+	div.color-a {
+		background-image: linear-gradient(-180deg, #5E81CF 0%, #4863AC 94%);
+	}
+
+	div.color-b {
+		background-color: #5E81CF;
+	}
+
+	div.color-c {
+		background-color: #899ED6;
+	}
+
+	div.color-d {
+		background-color: #F4F4F4;
+	}
+
+	div.color-e {
+		background-color: #FFFFFF;
+	}
+
+	tr>td {
+		vertical-align: middle;
+	}
+}
+
+.table-2 {
+
+
+	.square {
+		width: 45px;
+		height: 45px;
+		border-radius: 7px;
+	}
+
+	div.color-a {
+		background-color: #1890FF;
+	}
+
+	div.color-b {
+		background-color: #94E5B3;
+	}
+
+	div.color-c {
+		background-color: #FAAD15;
+	}
+
+	div.color-d {
+		background-color: #FF7D7E;
+	}
+}
+
+.table-4 {
+	display: flex;
+	flex-direction: column;
+
+	p {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 12px;
+	}
+
+	.rectangle {
+		width: 80px;
+		height: 35px;
+	}
+
+	div.color-a {
+		background-color: #EFEFEF;
+	}
+
+	div.color-b {
+		background-color: #E5F1F7;
+	}
+
+	div.color-c {
+		background-color: #9ECDEA;
+	}
+
+	div.color-d {
+		background-color: #58A1DB;
+	}
+
+	div.color-e {
+		background-color: #3589D4;
+	}
+
+	div.color-f {
+		background-color: #2568B1;
+	}
+}
+
+.table-6 {
+	display: flex;
+	flex-direction: column;
+
+	.rectangle {
+		width: 200px;
+		height: 35px;
+	}
+
+	div.color-a {
+		background-color: #1890FF;
+	}
+
+	div.color-b {
+		background-color: #2FC25B;
+	}
+
+	div.color-c {
+		background-color: #FACC14;
+	}
+
+	div.color-d {
+		background-color: #223273;
+	}
+
+	div.color-e {
+		background-color: #8543E0;
+	}
+
+	div.color-f {
+		background-color: #13C2C2;
+	}
+
+	div.color-g {
+		background-color: #3436C7;
+	}
+
+	div.color-h {
+		background-color: #F04864;
+	}
+}
