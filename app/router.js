@@ -21,6 +21,7 @@ Router.map(function() {
   this.route('navs');
   this.route('progress');
   this.route('modal');
+  this.route('tabs');
 });
 
 export default Router;
