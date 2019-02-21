@@ -24,6 +24,7 @@ Router.map(function() {
   this.route('tabs');
   this.route('badge');
   this.route('empty-state');
+  this.route('page-header');
 });
 
 export default Router;
