@@ -1,31 +1,4 @@
-{{!-- <h2 local-class="title">Welcome to BP-Components-UI</h2>
-<section local-class="container">
-	<aside>
-		<nav>
-			<ol>
-				{{#link-to "default" tagName='li' activeClass="nav-active" }}
-					Default
-				{{/link-to}}
-				{{#link-to "layout" tagName='li' activeClass="nav-active" }}
-					Layout
-				{{/link-to}}
-				{{#link-to "radio-checkbox" tagName='li' activeClass="nav-active" }}
-					Radio&Checkbox
-				{{/link-to}}
-				{{#link-to "theme-colors" tagName='li' activeClass="nav-active" }}
-					Theme-Colors
-				{{/link-to}}
-				{{#link-to "button" tagName='li' activeClass="nav-active" }}
-					Button
-				{{/link-to}}
-			</ol>
-		</nav>
-	</aside>
-	<section local-class="content">
-		{{outlet}}
-	</section>
-</section> --}}
-<h2 local-class="title" id="title">Welcome to BP-Components</h2>
+<h2 local-class="title" class="text-center  bg-info" id="title">Welcome to BP-Components-UI</h2>
 <section local-class="container">
 	<aside>
 		<nav>
@@ -89,6 +62,9 @@
 				{{/n.item}}
 				{{#n.item}}
 					{{#n.link-to "badge"}}Badge{{/n.link-to}}
+				{{/n.item}}
+				{{#n.item}}
+					{{#n.link-to "empty-state"}}Empty-State{{/n.link-to}}
 				{{/n.item}}
 			{{/bp-nav}}
 		</nav>

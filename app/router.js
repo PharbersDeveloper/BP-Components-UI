@@ -23,6 +23,7 @@ Router.map(function() {
   this.route('modal');
   this.route('tabs');
   this.route('badge');
+  this.route('empty-state');
 });
 
 export default Router;
