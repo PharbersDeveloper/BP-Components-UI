@@ -2,7 +2,7 @@
 <section local-class="container">
 	<aside>
 		<nav>
-			{{#bp-nav as |n|}}
+			{{#bp-nav theme='light' as |n|}}
 				{{#n.item}}
 					{{#n.link-to "default"}}Default{{/n.link-to}}
 				{{/n.item }}
@@ -11,21 +11,21 @@
 				{{/n.item }}
 				{{#n.item}}
 					{{#n.link-to "layout"}}
-						<img src="https://www.easyicon.net/api/resizeApi.php?id=1185721&size=72" alt="">
+						{{bp-icon icon='add' color='orange'}}
 						Layout{{/n.link-to}}
 				{{/n.item }}
 				{{#n.dropdown
 					title='Buttons' 
-					icon="https://www.easyicon.net/api/resizeApi.php?id=1228842&size=24" 
+					icon="trash" 
 					as |dd|}}
 					{{#dd.item}}
 						{{#dd.link-to "button"}}
-							<img src="https://www.easyicon.net/api/resizeApi.php?id=1228842&size=24" alt="">
+							{{bp-icon icon='add' color='lightgreen'}}
 							Button{{/dd.link-to}}
 					{{/dd.item}}
 					{{#dd.item}}
 						{{#dd.link-to "button-group"}}
-							<img src="https://www.easyicon.net/api/resizeApi.php?id=1181927&size=24" alt="">
+							{{bp-icon icon='add' color='gray' size='medium'}}
 							ButtonGroup{{/dd.link-to}}
 					{{/dd.item}}
 				{{/n.dropdown}}

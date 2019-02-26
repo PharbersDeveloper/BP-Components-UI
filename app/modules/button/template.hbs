@@ -30,7 +30,7 @@
 	{{#bp-button type="link-subtle" onClick=(action 'submit')}}Link-Subtle{{/bp-button}}
 	{{#bp-button type="subtle" onClick=(action 'submit')}}Subtle{{/bp-button}}
 	{{#bp-button type="default" onClick=(action 'submit')}}default{{/bp-button}}
-	{{#code-block src='template.hbs' language='handlebars'}}
+	{{#code-block language='handlebars'}}
 		{{btnBasic}}
 	{{/code-block}}
 	<div class="dropdown-divider"></div>
@@ -47,17 +47,29 @@
 	{{/code-block}}
 	<div class="dropdown-divider"></div>
 	<p class="mt-3">With Icon</p>
-	{{#bp-button class="mr-3" type="primary"
-		onClick=(action 'submit')
-		icon="https://s3.amazonaws.com/uifaces/faces/twitter/damenleeturks/128.jpg"}}
-		primary
+	{{#bp-button class="mr-3" type="default"
+		icon="raised-hand"
+		iconColor='green'}}
+		RaisedHand
 	{{/bp-button}}
 	{{#bp-button type="default"
-		onClick=(action 'submit')
 		iconOnly=true
-		icon="https://s3.amazonaws.com/uifaces/faces/twitter/damenleeturks/128.jpg"}}
+		icon="trash"
+		iconColor='red'}}
+		Default
+	{{/bp-button}}
+	{{#bp-button type="default"
+		iconOnly=true
+		icon="abord"
+		iconColor='red'}}
+		Abord
+	{{/bp-button}}
+	{{#bp-button type="default"}}
+		{{bp-icon icon="add" color="orange"}}
+		Add
 	{{/bp-button}}
 	{{#code-block src="template.hbs" language='handlebars'}}
 		{{btnIcon}}
 	{{/code-block}}
+	<p>{{someoneClickBtn}}</p>
 </section>

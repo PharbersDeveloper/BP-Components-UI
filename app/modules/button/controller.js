@@ -1,6 +1,7 @@
 import Controller from '@ember/controller';
 
 export default Controller.extend({
+	times: 0,
 	btnDefault: `
 	{{#bp-button}}default{{/bp-button}}`,
 	btnPrimary: `
@@ -38,7 +39,8 @@ export default Controller.extend({
 	{{/bp-button}}`,
 	actions: {
 		submit() {
-			// window.alert('click btn');
+			this.incrementProperty('times');
+			this.set('someoneClickBtn', `Someone clicked button ${this.get('times')}`);
 		}
 	}
 });
