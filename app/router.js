@@ -25,6 +25,7 @@ Router.map(function() {
   this.route('badge');
   this.route('empty-state');
   this.route('page-header');
+  this.route('pagination');
 });
 
 export default Router;

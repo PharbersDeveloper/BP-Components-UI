@@ -11,21 +11,21 @@
 				{{/n.item }}
 				{{#n.item}}
 					{{#n.link-to "layout"}}
-						{{bp-icon icon='add' color='orange'}}
+						{{bp-icon icon='add'}}
 						Layout{{/n.link-to}}
 				{{/n.item }}
 				{{#n.dropdown
 					title='Buttons' 
-					icon="trash" 
+					icon="add" 
 					as |dd|}}
 					{{#dd.item}}
 						{{#dd.link-to "button"}}
-							{{bp-icon icon='add' color='lightgreen'}}
+							{{bp-icon icon='add'}}
 							Button{{/dd.link-to}}
 					{{/dd.item}}
 					{{#dd.item}}
 						{{#dd.link-to "button-group"}}
-							{{bp-icon icon='add' color='gray' size='medium'}}
+							{{bp-icon icon='add' }}
 							ButtonGroup{{/dd.link-to}}
 					{{/dd.item}}
 				{{/n.dropdown}}
@@ -68,6 +68,9 @@
 				{{/n.item}}
 				{{#n.item}}
 					{{#n.link-to "page-header"}}Page-Header{{/n.link-to}}
+				{{/n.item}}
+				{{#n.item}}
+					{{#n.link-to "pagination" }}Pagination{{/n.link-to}}
 				{{/n.item}}
 			{{/bp-nav}}
 		</nav>
