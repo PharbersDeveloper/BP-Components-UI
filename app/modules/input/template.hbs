@@ -1,28 +1,101 @@
-<h3>bp-input 组件的用法</h3>
-<h4>size</h4>
-{{bp-input size='small'}}
-{{bp-input size='default'}}
-{{bp-input size='large'}}
-<h4>block/title/placeholder/icon/</h4>
-{{bp-input
+<h3 class="mt-3">bp-input 组件的用法</h3>
+<p>PROPERTIES</p>
+<nav class="nav justify-content-center">
+	<a class="nav-link active" href="#block">block</a>
+	<a class="nav-link" href="#disabled">disabled</a>
+	<a class="nav-link" href="#label">label</a>
+	<a class="nav-link" href="#state">state</a>
+	<a class="nav-link" href="#type">type</a>
+	<a class="nav-link" href="#size">size</a>
+	<a class="nav-link" href="#maxlength">maxLength</a>
+	<a class="nav-link" href="#placeholder">placeholder</a>
+	<a class="nav-link" href="#pretend">prepend / helpText</a>
+	<a class="nav-link" href="#prependdirection">prependDirection</a>
+</nav>
+<p>METHOD</p>
+<nav class="nav justify-content-center">
+	<a class="nav-link active" href="#onchange">onChange</a>
+</nav>
+<div id="block">
+	<h4>block</h4>
+	{{bp-input
 	block=true 
-	size='small' 
-	title='市场' 
-	placeholder="请输入" 
-	icon="https://i.loli.net/2019/02/13/5c63df11c3b5c.png"
-	onChange=(action (mut inputValue))}}
-<p class="mt-3">您输入的值为： {{inputValue}}</p>
-{{bp-input
+	label='block'
+	helpText='show block ' 	}}
+	{{bp-input
+	label='unblock'
+	helpText='show unblock '}}
+</div>
+<div class="dropdown-divider"></div>
+<div id="disabled">
+	<h4>disabled</h4>
+	{{bp-input disabled=true}}
+	{{bp-input }}
+</div>
+<div class="dropdown-divider"></div>
+<div id="label">
+	<h4>label</h4>
+	{{bp-input label='this is show label'}}
+</div>
+<div class="dropdown-divider"></div>
+<div id="state">
+	<h4>state</h4>
+	<p>state - default</p>
+	{{bp-input }}
+	<p>state - error</p>
+	{{bp-input state='error'}}
+	<p>state - success</p>
+	{{bp-input state='success'}}
+	<p>state - warning</p>
+	{{bp-input state='warning'}}
+	<h4>with placeholder</h4>
+	{{bp-input placeholder='with value'}}
+</div>
+<div class="dropdown-divider"></div>
+<div id="size">
+	<h4>size</h4>
+	{{bp-input }}
+	{{bp-input size='medium'}}
+	{{bp-input size='large'}}
+</div>
+<div class="dropdown-divider"></div>
+<div id="maxlength">
+	<h4>maxLength</h4>
+	{{bp-input
+		block=true 
+		helpText='help or instruction text goes here' 	
+		label='DirectRight'
+		maxLength=20
+		placeholder="请输入" 
+		onChange=(action (mut inputValuemaxl))}}
+	<p class="mt-3">您输入的值为： {{inputValuemaxl}}</p>
+</div>
+<div class="dropdown-divider"></div>
+<div id="placeholder">
+	<h4>placeholder</h4>
+	{{bp-input
+		placeholder="请输入" }}
+</div>
+<div class="dropdown-divider"></div>
+<div id="pretend">
+	<h4>pretend / helpText</h4>
+	{{bp-input
+	helpText='help or instruction text goes here' 	
+	label='label'
+	prepend='money'}}
+</div>
+<div class="dropdown-divider"></div>
+<div id="prependdirection">
+	<h4>prependDirection</h4>
+	{{bp-input
 	block=true 
-	title='市场2' 
-	placeholder="请输入" 
-	icon="https://i.loli.net/2019/02/13/5c63df11c3b5c.png"
-	onChange=(action (mut inputValue2))}}
-<p class="mt-3">您输入的值为： {{inputValue2}}</p>
-{{bp-input
+	prepend='right'
+	prependDirection='right'
+	onChange=(action (mut inputValuepd))}}
+	<p class="mt-3">您输入的值为： {{inputValuepd}}</p>
+	{{bp-input
 	block=true 
-	title='市场2' 
-	placeholder="请输入" 
-	icon="https://i.loli.net/2019/02/13/5c63df11c3b5c.png"
-	onChange=(action (mut inputValue3))}}
-<p class="mt-3">您输入的值为： {{inputValue3}}</p>
+	prepend='left'
+	onChange=(action (mut inputValuepd1))}}
+	<p class="mt-3">您输入的值为： {{inputValuepd1}}</p>
+</div>
