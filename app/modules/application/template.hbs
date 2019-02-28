@@ -1,35 +1,8 @@
-{{!-- <h2 local-class="title">Welcome to BP-Components-UI</h2>
+<h2 local-class="title" class="text-center  bg-info" id="title">Welcome to BP-Components-UI</h2>
 <section local-class="container">
 	<aside>
-		<nav>
-			<ol>
-				{{#link-to "default" tagName='li' activeClass="nav-active" }}
-					Default
-				{{/link-to}}
-				{{#link-to "layout" tagName='li' activeClass="nav-active" }}
-					Layout
-				{{/link-to}}
-				{{#link-to "radio-checkbox" tagName='li' activeClass="nav-active" }}
-					Radio&Checkbox
-				{{/link-to}}
-				{{#link-to "theme-colors" tagName='li' activeClass="nav-active" }}
-					Theme-Colors
-				{{/link-to}}
-				{{#link-to "button" tagName='li' activeClass="nav-active" }}
-					Button
-				{{/link-to}}
-			</ol>
-		</nav>
-	</aside>
-	<section local-class="content">
-		{{outlet}}
-	</section>
-</section> --}}
-<h2 local-class="title" id="title">Welcome to BP-Components</h2>
-<section local-class="container">
-	<aside>
-		<nav>
-			{{#bp-nav as |n|}}
+		{{!-- <nav>
+			{{#bp-nav theme='light' as |n|}}
 				{{#n.item}}
 					{{#n.link-to "default"}}Default{{/n.link-to}}
 				{{/n.item }}
@@ -38,21 +11,21 @@
 				{{/n.item }}
 				{{#n.item}}
 					{{#n.link-to "layout"}}
-						<img src="https://www.easyicon.net/api/resizeApi.php?id=1185721&size=72" alt="">
+						{{bp-icon icon='add'}}
 						Layout{{/n.link-to}}
 				{{/n.item }}
 				{{#n.dropdown
 					title='Buttons' 
-					icon="https://www.easyicon.net/api/resizeApi.php?id=1228842&size=24" 
+					icon="add" 
 					as |dd|}}
 					{{#dd.item}}
 						{{#dd.link-to "button"}}
-							<img src="https://www.easyicon.net/api/resizeApi.php?id=1228842&size=24" alt="">
+							{{bp-icon icon='add'}}
 							Button{{/dd.link-to}}
 					{{/dd.item}}
 					{{#dd.item}}
 						{{#dd.link-to "button-group"}}
-							<img src="https://www.easyicon.net/api/resizeApi.php?id=1181927&size=24" alt="">
+							{{bp-icon icon='add' }}
 							ButtonGroup{{/dd.link-to}}
 					{{/dd.item}}
 				{{/n.dropdown}}
@@ -87,6 +60,53 @@
 				{{#n.item}}
 					{{#n.link-to "tabs"}}Tabs{{/n.link-to}}
 				{{/n.item}}
+				{{#n.item}}
+					{{#n.link-to "badge"}}Badge{{/n.link-to}}
+				{{/n.item}}
+				{{#n.item}}
+					{{#n.link-to "empty-state"}}Empty-State{{/n.link-to}}
+				{{/n.item}}
+				{{#n.item}}
+					{{#n.link-to "page-header"}}Page-Header{{/n.link-to}}
+				{{/n.item}}
+				{{#n.item}}
+					{{#n.link-to "pagination" }}Pagination{{/n.link-to}}
+				{{/n.item}}
+			{{/bp-nav}}
+		</nav> --}}
+		<nav>
+			{{#bp-nav theme='light' as |n|}}
+				{{#n.link-to "default"}}Default{{/n.link-to}}
+				{{#n.link-to "theme-colors"}}Theme-Colors{{/n.link-to}}
+				{{#n.link-to "layout"}}
+					{{bp-icon icon='add'}}
+					Layout{{/n.link-to}}
+				{{#n.dropdown
+					title='Buttons' 
+					icon="add" 
+					as |dd|}}
+					{{#dd.link-to "button"}}
+						Button{{/dd.link-to}}
+					{{#dd.link-to "button-group"}}
+						ButtonGroup{{/dd.link-to}}
+				{{/n.dropdown}}
+				{{#n.link-to "dropdown"}}Dropdown{{/n.link-to}}
+				{{#n.link-to "choose"}}Radio&Checkbox{{/n.link-to}}
+				{{#n.dropdown title='Inputs' as |dd|}}
+					{{#dd.link-to "input"}}
+						BaiscInput{{/dd.link-to}}
+					{{#dd.link-to "search-bar"}}
+						SearchBar{{/dd.link-to}}
+				{{/n.dropdown}}
+				{{#n.link-to "card"}}Card{{/n.link-to}}
+				{{#n.link-to "navs"}}Nav{{/n.link-to}}
+				{{#n.link-to "progress"}}Progress{{/n.link-to}}
+				{{#n.link-to "modal"}}Modal{{/n.link-to}}
+				{{#n.link-to "tabs"}}Tabs{{/n.link-to}}
+				{{#n.link-to "badge"}}Badge{{/n.link-to}}
+				{{#n.link-to "empty-state"}}Empty-State{{/n.link-to}}
+				{{#n.link-to "page-header"}}Page-Header{{/n.link-to}}
+				{{#n.link-to "pagination" }}Pagination{{/n.link-to}}
 			{{/bp-nav}}
 		</nav>
 	</aside>

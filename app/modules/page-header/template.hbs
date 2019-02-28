@@ -1,0 +1,30 @@
+<h3>Page-header</h3>
+{{#bp-page-header as |ph|}}
+	{{#ph.body as |body|}}
+		{{#body.left as |left|}}
+			{{#left.item}}
+				Here is an incredibly super incredibly super incredibly long title
+			{{/left.item}}
+			{{#left.item}}
+				link label
+			{{/left.item}}
+		{{/body.left}}
+		{{#body.right}}
+			<button class="btn btn-secondary mr-3">Operation</button>
+			<button class="btn btn-warning">Danger</button>
+		{{/body.right}}
+	{{/ph.body}}
+	{{#ph.footer as |footer|}}
+		{{#footer.left as |left|}}
+			{{#left.item}}
+				校区 百造Pacee朝阳校区
+			{{/left.item}}
+			{{#left.item}}
+				时间 1970-01-01-1970-01-01
+			{{/left.item}}
+		{{/footer.left}}
+		{{#footer.right}}
+			0 学生人数
+		{{/footer.right}}
+	{{/ph.footer}}
+{{/bp-page-header}}

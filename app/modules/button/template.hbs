@@ -24,30 +24,48 @@
 	<hr>
 	<h4>基础的类型</h4>
 	{{#bp-button type="primary" onClick=(action 'submit')}}primary{{/bp-button}}
-	{{#bp-button type="secondary" onClick=(action 'submit')}}secondary{{/bp-button}}
 	{{#bp-button type="danger" onClick=(action 'submit')}}danger{{/bp-button}}
-	{{#bp-button type="default" disabled=false onClick=(action 'submit')}}default{{/bp-button}}
-	{{#bp-button type="default" disabled=true}}disabled default{{/bp-button}}
-	{{#bp-button type="primary"
-		onClick=(action 'submit')
-		icon="https://s3.amazonaws.com/uifaces/faces/twitter/damenleeturks/128.jpg"}}
-		primary
-	{{/bp-button}}
-	{{#code-block src="template.hbs" language='handlebars'}}
+	{{#bp-button type="warning" onClick=(action 'submit')}}Warning{{/bp-button}}
+	{{#bp-button type="link" onClick=(action 'submit')}}Link{{/bp-button}}
+	{{#bp-button type="link-subtle" onClick=(action 'submit')}}Link-Subtle{{/bp-button}}
+	{{#bp-button type="subtle" onClick=(action 'submit')}}Subtle{{/bp-button}}
+	{{#bp-button type="default" onClick=(action 'submit')}}default{{/bp-button}}
+	{{#code-block language='handlebars'}}
 		{{btnBasic}}
 	{{/code-block}}
-	<hr>
-	<h4>反转样式</h4>
-	{{#bp-button type="primary" reverse=true onClick=(action 'submit')}}reverse primary{{/bp-button}}
-	{{#bp-button type="secondary" reverse=true onClick=(action 'submit')}}reverse secondary{{/bp-button}}
-	{{#bp-button type="danger" reverse=true onClick=(action 'submit')}}reverse danger{{/bp-button}}
-	{{#bp-button type="default" reverse=true disabled=true}}reverse default{{/bp-button}}
-	{{#bp-button type="primary" 
-		reverse=true 
-		onClick=(action 'submit')
-		icon="https://s3.amazonaws.com/uifaces/faces/twitter/damenleeturks/128.jpg"}}reverse
-		primary{{/bp-button}}
-	{{#code-block src="template.hbs" language='handlebars' }}
-		{{btnReverse}}
+	<div class="dropdown-divider"></div>
+	<p class="mt-3">Disabled</p>
+	{{#bp-button type="primary" disabled=true onClick=(action 'submit')}}primary{{/bp-button}}
+	{{#bp-button type="danger" disabled=true onClick=(action 'submit')}}danger{{/bp-button}}
+	{{#bp-button type="warning" disabled=true onClick=(action 'submit')}}Warning{{/bp-button}}
+	{{#bp-button type="link" disabled=true onClick=(action 'submit')}}Link{{/bp-button}}
+	{{#bp-button type="link-subtle" disabled=true onClick=(action 'submit')}}Link-Subtle{{/bp-button}}
+	{{#bp-button type="subtle" disabled=true onClick=(action 'submit')}}Subtle{{/bp-button}}
+	{{#bp-button type="default" disabled=true}}disabled default{{/bp-button}}
+	{{#code-block src="template.hbs" language='handlebars'}}
+		{{btnTotalDisabled}}
 	{{/code-block}}
+	<div class="dropdown-divider"></div>
+	<p class="mt-3">With Icon</p>
+	{{#bp-button class="mr-3" type="default"
+		icon="raised-hand"}}
+		RaisedHand
+	{{/bp-button}}
+	{{#bp-button type="warning"
+		iconOnly=true
+		icon="trash"}}
+		Default
+	{{/bp-button}}
+	{{#bp-button type="primary"
+		iconOnly=true
+		icon="abord"}}
+	{{/bp-button}}
+	{{#bp-button type="danger"}}
+		{{bp-icon icon="add" }}
+		Add
+	{{/bp-button}}
+	{{#code-block src="template.hbs" language='handlebars'}}
+		{{btnIcon}}
+	{{/code-block}}
+	<p>{{someoneClickBtn}}</p>
 </section>

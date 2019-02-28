@@ -22,6 +22,10 @@ Router.map(function() {
   this.route('progress');
   this.route('modal');
   this.route('tabs');
+  this.route('badge');
+  this.route('empty-state');
+  this.route('page-header');
+  this.route('pagination');
 });
 
 export default Router;
