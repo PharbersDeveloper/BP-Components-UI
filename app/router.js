@@ -26,6 +26,7 @@ Router.map(function() {
   this.route('empty-state');
   this.route('page-header');
   this.route('pagination');
+  this.route('icon');
 });
 
 export default Router;

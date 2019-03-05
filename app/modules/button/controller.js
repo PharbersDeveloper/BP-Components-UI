@@ -27,18 +27,19 @@ export default Controller.extend({
 	{{#bp-button type="subtle" disabled=true onClick=(action 'submit')}}Subtle{{/bp-button}}
 	{{#bp-button type="default" disabled=true}}disabled default{{/bp-button}}`,
 	btnIcon: `
-	{{#bp-button class="mr-3" type="default"
-		icon="raised-hand"}}
+	{{#bp-button class="mr-3" 
+			type="default"
+			icon="raised-hand"}}
 		RaisedHand
 	{{/bp-button}}
 	{{#bp-button type="warning"
-		iconOnly=true
-		icon="trash"}}
+			iconOnly=true
+			icon="trash"}}
 		Default
 	{{/bp-button}}
-	{{#bp-button type="primary"
-		iconOnly=true
-		icon="abord"}}
+	{{#bp-button type="default"
+			iconOnly=true
+			icon="abord"}}
 	{{/bp-button}}
 	{{#bp-button type="danger"}}
 		{{bp-icon icon="add" }}
