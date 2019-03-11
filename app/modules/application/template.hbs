@@ -35,6 +35,12 @@
 				{{#n.link-to "empty-state"}}{{bp-icon icon='management'}}Empty-State{{/n.link-to}}
 				{{#n.link-to "page-header"}}{{bp-icon icon='management'}}Page-Header{{/n.link-to}}
 				{{#n.link-to "pagination" }}{{bp-icon icon='management'}}Pagination{{/n.link-to}}
+				{{#n.dropdown title='Charts' icon="management"  as |dd|}}
+					{{#dd.link-to "line"}}
+						Charts-line{{/dd.link-to}}
+					{{#dd.link-to "bar"}}
+						Charts-bar{{/dd.link-to}}
+				{{/n.dropdown}}
 			{{/bp-nav}}
 		</nav>
 	</aside>

@@ -27,6 +27,8 @@ Router.map(function() {
   this.route('page-header');
   this.route('pagination');
   this.route('icon');
+  this.route('line');
+  this.route('bar');
 });
 
 export default Router;
