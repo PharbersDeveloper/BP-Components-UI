@@ -29,6 +29,7 @@ Router.map(function() {
   this.route('icon');
   this.route('line');
   this.route('bar');
+  this.route('chart-pie');
 });
 
 export default Router;
