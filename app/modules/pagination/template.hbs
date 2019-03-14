@@ -1,3 +1,30 @@
+<h3>bp-pagination</h3>
 <div class="dropdown-divider"></div>
-<h3>分页未完成/样式需要修改/hbs 代码需要修改！！！</h3>
-{{bp-pagination pageCount=100 curPage=1 sendPageNum=(action "handlePageChange")}}
+{{bp-pagination
+	totalPageCounts=5
+	onClickPage=(action ( mut handlePage))}}
+<p>{{handlePage}}</p>
+<div class="dropdown-divider"></div>
+{{bp-pagination
+	totalPageCounts=7
+	onClickPage=(action ( mut handlePage12))}}
+<p>{{handlePage12}}</p>
+<div class="dropdown-divider"></div>
+{{bp-pagination
+	totalPageCounts=10
+	onClickPage=(action ( mut handlePage2))}}
+<p>{{handlePage2}}</p>
+<div class="dropdown-divider"></div>
+{{bp-pagination
+	totalPageCounts=50
+	onClickPage=(action ( mut handlePage3))}}
+<p>{{handlePage3}}</p>
+<div class="dropdown-divider"></div>
+<p>bp-pagination-mini</p>
+{{bp-pagination-mini totalPageCounts=5 onClickPage=(action (mut handlePageMini))}}
+<p>{{handlePageMini}}</p>
+<p>bp-pagination-mini</p>
+{{bp-pagination-simple
+	totalPageCounts=55
+	onClickPage=(action (mut handlePageSimple))}}
+<p>{{handlePageSimple}}</p>

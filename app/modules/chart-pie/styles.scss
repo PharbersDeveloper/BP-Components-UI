@@ -1,0 +1,8 @@
+.simple-bar {
+	height: 500px;
+
+	:global(.echarts-chart) {
+		width: 100%;
+		height: 100%;
+	}
+}

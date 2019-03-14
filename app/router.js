@@ -26,6 +26,10 @@ Router.map(function() {
   this.route('empty-state');
   this.route('page-header');
   this.route('pagination');
+  this.route('icon');
+  this.route('line');
+  this.route('bar');
+  this.route('chart-pie');
 });
 
 export default Router;

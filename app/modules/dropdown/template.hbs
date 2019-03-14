@@ -1,19 +1,41 @@
 <section>
-	<h3>p-dropdown 的使用方法</h3>
-	<p>接受 value 属性，以及 onChange 事件</p>
-	<p>value 为当前选中的值，为非对象类型。由 onChange 事件中的值赋予其。</p>
-	<p>
-		{{#bp-dropdown
-			value=option
-			onChange=(action "changeOption") 
-			 as |xs|}}
-			{{#xs.option value='' hidden=true}}请选择{{/xs.option}}
-			{{#each readyOptions as |item|}}
-				{{#xs.option value=item.id}}{{item.value}}{{/xs.option}}
+	<h3>bp-dropdown</h3>
+	<p>其中 button 为要选中的内容或默认值</p>
+	<p> option 为选项。接受 value 参数以及 onClick 方法。其中 value 为选中后要展示的值，
+		onClick 方法为
+	</p>
+	{{#bp-dropdown as |dd|}}
+		{{#dd.button }}
+			{{#if dropdownValue.value}}
+				<p>{{dropdownValue.value}}</p>
+			{{else}}
+				请选择
+			{{/if}}
+			{{bp-icon icon='down'}}
+		{{/dd.button}}
+		{{#dd.menu as |menu|}}
+			{{#each model as |item|}}
+				{{#menu.option value=item onClick=(action (mut dropdownValue))}}
+					{{item.value}}
+				{{/menu.option}}
 			{{/each}}
-		{{/bp-dropdown}}
-	</p>
-	<p>
-		Selected id: <span data-test-selected="true">{{option}}</span>
-	</p>
+		{{/dd.menu}}
+	{{/bp-dropdown}}
+	<div class="dropdown-divider"></div>
+	<table class="table">
+		<thead class="thead-light">
+			<th>Property</th>
+			<th>value</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>value</td>
+				<td>{{dropdownValue.value}}</td>
+			</tr>
+			<tr>
+				<td>id</td>
+				<td>{{dropdownValue.id}}</td>
+			</tr>
+		</tbody>
+	</table>
 </section>

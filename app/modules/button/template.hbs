@@ -9,7 +9,7 @@
 	{{#code-block src="template.hbs" language='handlebars' }}
 		{{btnPrimary}}
 	{{/code-block}}
-	<hr>
+	<div class="dropdown-divider"></div>
 	<h4>禁止属性 disabled</h4>
 	{{#bp-button disabled=true}}disabled button{{/bp-button}}
 	{{#code-block src="template.hbs" language='handlebars' }}
@@ -52,11 +52,10 @@
 		RaisedHand
 	{{/bp-button}}
 	{{#bp-button type="warning"
-		iconOnly=true
 		icon="trash"}}
-		Default
+		Trash
 	{{/bp-button}}
-	{{#bp-button type="primary"
+	{{#bp-button type="default"
 		iconOnly=true
 		icon="abord"}}
 	{{/bp-button}}
