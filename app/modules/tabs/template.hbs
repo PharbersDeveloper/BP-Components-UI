@@ -68,3 +68,36 @@
 		{{/tabs.pane}}
 	</div>
 {{/bp-tabs}}
+<div class="dropdown-divider"></div>
+{{#bp-tabs selection=selection1 as |tabs|}}
+	{{#tabs.tablist as |list|}}
+		<li class="nav-item">
+			{{#list.tab
+				selectPaneId='tab-j' 
+				onSelect=(action (mut selection1))}}将进酒{{/list.tab}}
+		</li>
+		<li class="nav-item">
+			{{#list.tab
+				selectPaneId='tab-s' 
+				onSelect=(action (mut selection1))}}水调歌头·明月几时有
+			{{/list.tab}}
+		</li>
+		<li class="nav-item">
+			{{#list.tab
+				selectPaneId='tab-t' 
+				onSelect=(action (mut selection1))}}桃花源记
+			{{/list.tab}}
+		</li>
+	{{/tabs.tablist}}
+	<div class="tab-content">
+		{{#tabs.pane elementId="tab-j"}}
+			<h4 class="text-center m-3">将进酒</h4>
+		{{/tabs.pane}}
+		{{#tabs.pane elementId="tab-s"}}
+			<h4 class="text-center m-3">水调歌头·明月几时有</h4>
+		{{/tabs.pane}}
+		{{#tabs.pane elementId="tab-t"}}
+			<h4 class="text-center m-3">桃花源记</h4>
+		{{/tabs.pane}}
+	</div>
+{{/bp-tabs}}

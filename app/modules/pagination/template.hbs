@@ -1,4 +1,9 @@
 <h3>bp-pagination</h3>
+<p>only one</p>
+{{bp-pagination
+	totalPageCounts=1
+	onClickPage=(action ( mut onlyonepage))}}
+<p>{{onlyonepage}}</p>
 <div class="dropdown-divider"></div>
 {{bp-pagination
 	totalPageCounts=5

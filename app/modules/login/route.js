@@ -4,9 +4,8 @@ export default Route.extend({
 	beforeModel() {
 		let token = localStorage.getItem('token');
 
-		if (!token) {
-			this.transitionTo('login')
+		if (token) {
+			this.transitionTo('index')
 		}
-	},
-
+	}
 });
