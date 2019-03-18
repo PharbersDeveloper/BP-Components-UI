@@ -1,8 +1,9 @@
 <section local-class="layout-container">
 	<h3>Layout 的使用方法</h3>
-	<h3>
+	<h4>
 		布局器有五个非必选属性,包括: direction / main / cross / wrap / multi;
-	</h3>
+	</h4>
+	<p>classNames 属性为容器添加类名</p>
 	<ul>
 		<li>direction: 目前支持
 			{{#bp-button onClick=(action (mut direction) 'col')}}col{{/bp-button}}
@@ -41,7 +42,7 @@
 			;默认值:
 			'stretch'.</li>
 	</ul>
-	{{#bp-layout direction main cross wrap multi local-class="layout-demo"}}
+	{{#bp-layout direction main cross wrap multi classNames="demo-layout" local-class="layout-demo"}}
 		<div>1</div>
 		<div>2</div>
 		<div>3</div>

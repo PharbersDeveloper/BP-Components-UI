@@ -18,6 +18,10 @@ export default Controller.extend({
 			{{choose.item radio=radio}}
 		{{/each}}
 	{{/choose-group}}`,
+	init() {
+		this._super(...arguments);
+		this.set('radioValue', { id: 1, value: 'man', label: 'man-label' })
+	},
 	actions: {
 		chooseItem(item) {
 			if (item instanceof Array) {

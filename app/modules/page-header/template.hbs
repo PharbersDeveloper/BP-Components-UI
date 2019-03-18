@@ -10,8 +10,8 @@
 			{{/left.item}}
 		{{/body.left}}
 		{{#body.right}}
-			<button class="btn btn-secondary mr-3">Operation</button>
-			<button class="btn btn-warning">Danger</button>
+			{{#bp-button type='link'}}Operation{{/bp-button}}
+			{{#bp-button type='primary'}}primary{{/bp-button}}
 		{{/body.right}}
 	{{/ph.body}}
 	{{#ph.footer as |footer|}}
@@ -24,19 +24,47 @@
 			{{/left.item}}
 		{{/footer.left}}
 		{{#footer.right}}
-			0 学生人数
+			{{#bp-layout main="end"}}
+				{{footer.item number=23 label="学生数量"}}
+				{{footer.item number=12 label="消费人数"}}
+			{{/bp-layout}}
 		{{/footer.right}}
 	{{/ph.footer}}
 {{/bp-page-header}}
+{{#code-block src="template.hbs" language='handlebars' }}
+	{{total}}
+{{/code-block}}
 <div class="dropdown-divider"></div>
 <h4>bp-page-header/only-title-desc</h4>
+<h5>非 link</h5>
+<p>properties</p>
+<ul>
+	<li>class</li>
+	<li>title</li>
+	<li>desc</li>
+</ul>
 {{bp-page-header/only-title-desc
+	class='not-linkto'
 	title='百造Pacee朝阳'
 	desc='北京市密云区朝阳北路龙湖长楹天街购物中心西区三层24、25b'
 }}
+{{#code-block src="template.hbs" language='handlebars' }}
+	{{onlyTitleDesc}}
+{{/code-block}}
+<h5>link</h5>
+<p>properties</p>
+<ul>
+	<li>class</li>
+	<li>title</li>
+	<li>linkTo</li>
+	<li>linkToText</li>
+</ul>
 {{bp-page-header/only-title-desc
 	title='百造Pacee朝阳'
 	linkTo='card'
 	linkToText="let's go to another route"
 }}
+{{#code-block src="template.hbs" language='handlebars' }}
+	{{onlyTitleDescLink}}
+{{/code-block}}
 <div class="dropdown-divider"></div>
