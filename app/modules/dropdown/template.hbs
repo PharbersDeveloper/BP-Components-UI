@@ -17,7 +17,7 @@
 			{{bp-icon icon='down'}}
 		{{/dd.button}}
 		{{#dd.menu as |menu|}}
-			{{#each model as |item|}}
+			{{#each model.keyValue as |item|}}
 				{{#menu.option value=item onClick=(action (mut dropdownValue))}}
 					{{item.value}}
 				{{/menu.option}}
@@ -44,4 +44,30 @@
 	{{#code-block src="template.hbs" language='handlebars' }}
 		{{dropdownCode}}
 	{{/code-block}}
+	<h4>simple use</h4>
+	{{bp-dropdown-simple
+		title='choose your favorit'
+		desc='which one?'
+		choosedValue=simpleChoosedValue
+		options=model.keyName
+		optionKey='name'}}
+	{{#code-block src="template.hbs" language='handlebars' }}
+		{{simpleUse}}
+	{{/code-block}}
+	<table class="table">
+		<thead class="thead-light">
+			<th>Property</th>
+			<th>value</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>value</td>
+				<td>{{simpleChoosedValue.name}}</td>
+			</tr>
+			<tr>
+				<td>id</td>
+				<td>{{simpleChoosedValue.id}}</td>
+			</tr>
+		</tbody>
+	</table>
 </section>

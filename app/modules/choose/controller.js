@@ -20,20 +20,18 @@ export default Controller.extend({
 	{{/choose-group}}`,
 	init() {
 		this._super(...arguments);
-		this.set('radioValue', { id: 1, value: 'man', label: 'man-label' })
+		this.set('radioValue', { id: 1, value: 'man', label: 'man-label' });
+		this.set('radioValue1', 'outside');
+		this.set('checkboxValue', [{ id: 1, value: 'man', label: 'man-label' }]);
+		this.set('checkboxValue1', ['outside'])
+
 	},
 	actions: {
 		chooseItem(item) {
 			if (item instanceof Array) {
-				let value = '';
-
-				for (let ele of item) {
-					value += ele.value;
-				}
-				this.set('checkboxValue', value)
+				this.set('checkboxValue', item);
 			} else {
 				this.set('radioValue', item.value)
-
 			}
 		}
 	}

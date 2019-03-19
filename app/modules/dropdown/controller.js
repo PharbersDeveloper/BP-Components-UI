@@ -18,5 +18,15 @@ export default Controller.extend({
 			{{/menu.option}}
 		{{/each}}
 	{{/dd.menu}}
-{{/bp-dropdown}}`
+{{/bp-dropdown}}`,
+	simpleUse: `
+	{{bp-dropdown-simple
+			choosedValue=simpleChoosedValue
+			options=model.keyName
+			optionKey='name'}}`,
+	init() {
+		this._super(...arguments);
+		this.set('dropdownValue', { id: 1, value: '将进酒' });
+		this.set('simpleChoosedValue', { id: 1, name: '将进酒' })
+	}
 });
