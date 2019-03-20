@@ -24,9 +24,18 @@ export default Controller.extend({
 			choosedValue=simpleChoosedValue
 			options=model.keyName
 			optionKey='name'}}`,
+	simpleUse2: `
+			{{bp-dropdown-simple
+				title='choose your poem'
+				desc='which one?'
+				valueId=modelId
+				options=model.keyName
+				optionKey='name'}}`,
 	init() {
 		this._super(...arguments);
 		this.set('dropdownValue', { id: 1, value: '将进酒' });
-		this.set('simpleChoosedValue', { id: 1, name: '将进酒' })
+		this.set('simpleChoosedValue', '将进酒');
+		this.set('modelId', 4);
+
 	}
 });

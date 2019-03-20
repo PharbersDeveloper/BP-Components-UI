@@ -45,6 +45,8 @@
 		{{dropdownCode}}
 	{{/code-block}}
 	<h4>simple use</h4>
+	<p>choosedValue 为当前选中项的 值。而非 object，如要更改 object，
+		查看 bp-dropdown 组件。（此举为了适合 bmsaas 的需求）</p>
 	{{bp-dropdown-simple
 		title='choose your favorit'
 		desc='which one?'
@@ -62,11 +64,31 @@
 		<tbody>
 			<tr>
 				<td>value</td>
-				<td>{{simpleChoosedValue.name}}</td>
+				<td>{{simpleChoosedValue}}</td>
 			</tr>
+		</tbody>
+	</table>
+	<div class="dropdown-divider"></div>
+	<h4>输出id 的时候 </h4>
+	<p>其他跟上例类似，需要多传入的属性为 valueId</p>
+	{{bp-dropdown-simple
+		title='choose your poem'
+		desc='which one?'
+		valueId=modelId
+		options=model.keyName
+		optionKey='name'}}
+	{{#code-block src="template.hbs" language='handlebars' }}
+		{{simpleUse2}}
+	{{/code-block}}
+	<table class="table">
+		<thead class="thead-light">
+			<th>Property</th>
+			<th>value</th>
+		</thead>
+		<tbody>
 			<tr>
-				<td>id</td>
-				<td>{{simpleChoosedValue.id}}</td>
+				<td>ID</td>
+				<td>{{modelId}}</td>
 			</tr>
 		</tbody>
 	</table>

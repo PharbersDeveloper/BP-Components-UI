@@ -23,7 +23,8 @@ export default Controller.extend({
 		this.set('radioValue', { id: 1, value: 'man', label: 'man-label' });
 		this.set('radioValue1', 'outside');
 		this.set('checkboxValue', [{ id: 1, value: 'man', label: 'man-label' }]);
-		this.set('checkboxValue1', ['outside'])
+		this.set('checkboxValue1', ['outside']);
+		// this.set('radioValue2', 0);
 
 	},
 	actions: {
