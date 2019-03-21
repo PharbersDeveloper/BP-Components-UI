@@ -1,0 +1,17 @@
+<div local-class="login">
+	<h3>login page</h3>
+	{{bp-input
+		block=true 
+		label='useName'
+		helpText='input username'
+		onChange=(action (mut userName))}}
+	{{bp-input
+		type='password'
+		block=true 
+		label='userPassword'
+		helpText='input userPassword'
+		onChange=(action (mut userPassword))}}
+	{{#bp-button type='primary' onClick=(action 'login' userName userPassword)}}
+		login
+	{{/bp-button}}
+</div>

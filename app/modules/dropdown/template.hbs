@@ -1,9 +1,12 @@
 <section>
 	<h3>bp-dropdown</h3>
-	<p>其中 button 为要选中的内容或默认值</p>
-	<p> option 为选项。接受 value 参数以及 onClick 方法。其中 value 为选中后要展示的值，
-		onClick 方法为
+	<p>其中 bp-dropdown.button 为要选中的内容或默认值</p>
+	<p>bp-dropdown.menu 为下拉展示栏</p>
+	<p> menu.option 为选项。接受 value 参数以及 onClick 方法。
+		其中 value 为item项目，具体展示值在 option 内部自主选择。
 	</p>
+	<h4>method</h4>
+	<p>onClick 点击选项之后的操作</p>
 	{{#bp-dropdown as |dd|}}
 		{{#dd.button }}
 			{{#if dropdownValue.value}}
@@ -14,7 +17,7 @@
 			{{bp-icon icon='down'}}
 		{{/dd.button}}
 		{{#dd.menu as |menu|}}
-			{{#each model as |item|}}
+			{{#each model.keyValue as |item|}}
 				{{#menu.option value=item onClick=(action (mut dropdownValue))}}
 					{{item.value}}
 				{{/menu.option}}
@@ -35,6 +38,59 @@
 			<tr>
 				<td>id</td>
 				<td>{{dropdownValue.id}}</td>
+			</tr>
+		</tbody>
+	</table>
+	{{#code-block src="template.hbs" language='handlebars' }}
+		{{dropdownCode}}
+	{{/code-block}}
+	<h4>simple use</h4>
+	<p>choosedValue 为当前选中项的 值。而非 object，如要更改 object，
+		查看 bp-dropdown 组件。（此举为了适合 bmsaas 的需求）</p>
+	{{bp-dropdown-simple
+		title='choose your favorit'
+		desc='which one?'
+		disabled=true
+		choosedValue=simpleChoosedValue
+		options=model.keyName
+		optionKey='name'}}
+	{{#code-block src="template.hbs" language='handlebars' }}
+		{{simpleUse}}
+	{{/code-block}}
+	<table class="table">
+		<thead class="thead-light">
+			<th>Property</th>
+			<th>value</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>value</td>
+				<td>{{simpleChoosedValue}}</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="dropdown-divider"></div>
+	<h4>输出id 的时候 </h4>
+	<p>其他跟上例类似，需要多传入的属性为 valueId</p>
+	{{bp-dropdown-simple
+		title='choose your poem'
+		desc='which one?'
+		valueId=modelId
+		options=model.keyName
+		onChange=(action 'itemChanged')
+		optionKey='name'}}
+	{{#code-block src="template.hbs" language='handlebars' }}
+		{{simpleUse2}}
+	{{/code-block}}
+	<table class="table">
+		<thead class="thead-light">
+			<th>Property</th>
+			<th>value</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>ID</td>
+				<td>{{modelId}}</td>
 			</tr>
 		</tbody>
 	</table>

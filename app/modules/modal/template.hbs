@@ -1,7 +1,11 @@
 <h2>Simple modal</h2>
 <div class="bs-example">
 	<!-- BEGIN-SNIPPET modal-custom -->
-	{{#bp-modal open=modal3 onSubmit=(action "submit") onHidden=(action (mut modal3) false) as |modal|}}
+	{{#bp-modal
+		open=modal3 
+		position='center'
+		onSubmit=(action "submit") 
+		onHidden=(action (mut modal3) false) as |modal|}}
 		{{#modal.header}}
 			<h4 class="modal-title">
 				Custom Dialog

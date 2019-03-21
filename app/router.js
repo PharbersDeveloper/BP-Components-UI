@@ -30,6 +30,11 @@ Router.map(function() {
   this.route('line');
   this.route('bar');
   this.route('chart-pie');
+  this.route('login');
+  this.route('empty-state-primary');
+  this.route('empty-state-double-btn');
+  this.route('empty-state-link-button');
+  this.route('empty-state-no-button');
 });
 
 export default Router;
