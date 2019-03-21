@@ -37,5 +37,10 @@ export default Controller.extend({
 		this.set('simpleChoosedValue', '将进酒');
 		this.set('modelId', 4);
 
+	},
+	actions: {
+		itemChanged(item) {
+			console.log(item);
+		}
 	}
 });

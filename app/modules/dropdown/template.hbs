@@ -50,6 +50,7 @@
 	{{bp-dropdown-simple
 		title='choose your favorit'
 		desc='which one?'
+		disabled=true
 		choosedValue=simpleChoosedValue
 		options=model.keyName
 		optionKey='name'}}
@@ -74,9 +75,9 @@
 	{{bp-dropdown-simple
 		title='choose your poem'
 		desc='which one?'
-		disabled=true
 		valueId=modelId
 		options=model.keyName
+		onChange=(action 'itemChanged')
 		optionKey='name'}}
 	{{#code-block src="template.hbs" language='handlebars' }}
 		{{simpleUse2}}
