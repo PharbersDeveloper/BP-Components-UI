@@ -39,8 +39,7 @@ export default Controller.extend({
 
 	},
 	actions: {
-		itemChanged(item) {
-			console.log(item);
+		itemChanged() {
 		}
 	}
 });
