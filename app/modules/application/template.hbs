@@ -6,13 +6,10 @@
 				{{#n.link-to "default"}}{{bp-icon icon='management'}}Default{{/n.link-to}}
 				{{#n.link-to "theme-colors"}}{{bp-icon icon='management'}}Theme-Colors{{/n.link-to}}
 				{{#n.link-to "layout"}}
-					{{bp-icon icon='management'}}
-					Layout{{/n.link-to}}
+					{{bp-icon icon='management'}} Layout
+				{{/n.link-to}}
 				{{#n.link-to "icon"}}{{bp-icon icon='management'}}Icon{{/n.link-to}}
-				{{#n.dropdown
-					title='Buttons' 
-					icon="management" 
-					as |dd|}}
+				{{#n.dropdown title='Buttons' icon="management" as |dd|}}
 					{{#dd.link-to "button"}}
 						Button{{/dd.link-to}}
 					{{#dd.link-to "button-group"}}
@@ -20,7 +17,7 @@
 				{{/n.dropdown}}
 				{{#n.link-to "dropdown"}}{{bp-icon icon='management'}}Dropdown{{/n.link-to}}
 				{{#n.link-to "choose"}}{{bp-icon icon='management'}}Radio&Checkbox{{/n.link-to}}
-				{{#n.dropdown title='Inputs' icon="management"  as |dd|}}
+				{{#n.dropdown title='Inputs' icon="management" as |dd|}}
 					{{#dd.link-to "input"}}
 						BaiscInput{{/dd.link-to}}
 					{{#dd.link-to "search-bar"}}
@@ -32,7 +29,7 @@
 				{{#n.link-to "modal"}}{{bp-icon icon='management'}}Modal{{/n.link-to}}
 				{{#n.link-to "tabs"}}{{bp-icon icon='management'}}Tabs{{/n.link-to}}
 				{{#n.link-to "badge"}}{{bp-icon icon='management'}}Badge{{/n.link-to}}
-				{{#n.dropdown title='Empty-State' icon="management"  as |dd|}}
+				{{#n.dropdown title='Empty-State' icon="management" as |dd|}}
 					{{#dd.link-to "empty-state"}}
 						totalEmptyState{{/dd.link-to}}
 					{{#dd.link-to "empty-state-primary"}}
@@ -46,13 +43,17 @@
 				{{/n.dropdown}}
 				{{#n.link-to "page-header"}}{{bp-icon icon='management'}}Page-Header{{/n.link-to}}
 				{{#n.link-to "pagination" }}{{bp-icon icon='management'}}Pagination{{/n.link-to}}
-				{{#n.dropdown title='Charts' icon="management"  as |dd|}}
+				{{#n.dropdown title='Charts' icon="management" as |dd|}}
 					{{#dd.link-to "line"}}
 						Chart-Line{{/dd.link-to}}
 					{{#dd.link-to "bar"}}
 						Chart-Bar{{/dd.link-to}}
 					{{#dd.link-to "chart-pie"}}
 						Chart-Pie{{/dd.link-to}}
+					{{#dd.link-to "chart-radar"}}
+						Chart-Radar{{/dd.link-to}}
+					{{#dd.link-to "chart-circle"}}
+						Chart-Circle{{/dd.link-to}}
 				{{/n.dropdown}}
 			{{/bp-nav}}
 		</nav>
