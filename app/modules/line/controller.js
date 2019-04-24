@@ -39,7 +39,7 @@ export default Controller.extend({
 				'2018-09', '2018-10', '2018-11', '2018-12'],
 			data: [820, 932, 901, 934, 1290, 1330, 1320, 244, 365, 109, 203, 273]
 		}]));
-		this.set('lineColor', A(['#0070c0', '#c00000']));
+		// this.set('lineColor', A(['#0070c0', '#c00000']));
 		this.set('legendPosition', { left: 'center' });
 	}
 });
