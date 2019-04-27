@@ -1,4 +1,10 @@
 .font-setting {
+	.display-large {
+		td:nth-child(2) {
+			@extend %display-large;
+		}
+	}
+
 	.title {
 		td:nth-child(2) {
 			@extend %title;
