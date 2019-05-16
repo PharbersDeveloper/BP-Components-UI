@@ -29,6 +29,12 @@
 		}
 	}
 
+	.header-xsmall {
+		td:nth-child(2) {
+			@extend %header-xsmall;
+		}
+	}
+
 	.p-primary {
 		td:nth-child(2) {
 			@extend %p-primary;
