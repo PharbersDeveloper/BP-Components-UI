@@ -37,6 +37,7 @@ Router.map(function() {
   this.route('empty-state-no-button');
   this.route('chart-radar');
   this.route('chart-circle');
+  this.route('charts');
 });
 
 export default Router;
