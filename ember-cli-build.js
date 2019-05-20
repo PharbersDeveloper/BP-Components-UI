@@ -16,6 +16,8 @@ module.exports = function (defaults) {
 		},
 
 	});
+	
+	app.import('vendor/echarts/china.js');
 
 	return app.toTree();
 };

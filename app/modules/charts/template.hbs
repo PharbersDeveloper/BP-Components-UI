@@ -1,12 +1,27 @@
 <h2>bp-scatter</h2>
-<div local-class="scatter">
+<div local-class="scatter custom-height">
 	{{bp-scatter eid='bp-scatter' 
 		title='scatter title'
 		chartData=model.scatterData}}
 </div>
 <h2>bp-bar-stack</h2>
-<div local-class="stack">
+<div local-class="stack custom-height">
 	{{bp-bar-stack eid='bp-stack' 
 		title='stack title'
 		chartData=model.stackData}}
+</div>
+<h2>bp-bar-double</h2>
+<div local-class="double custom-height">
+	{{bp-bar-double eid='bp-bar-double' 
+		chartData=model.doubleData}}
+</div>
+<h2>bp-map</h2>
+<h3>使用方法</h3>
+<p>将 china.js 放入项目 vendor/echarts/chins.js，而后在 ember-cli-build.js 中进行引入 </p>
+<p>app.import('vendor/echarts/china.js');</p>
+<p>重启项目即可</p>
+<p>后续这一块可能重写。</p>
+<div local-class="double custom-height">
+	{{bp-map eid='bp-map' 
+		chartData=model.mapData}}
 </div>
