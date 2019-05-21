@@ -16,8 +16,10 @@ module.exports = function (defaults) {
 		},
 
 	});
-	
+
 	app.import('vendor/echarts/china.js');
+	// app.import('node_modules/echarts/lib/component/legendScroll.js');
+
 
 	return app.toTree();
 };
