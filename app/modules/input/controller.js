@@ -7,6 +7,9 @@ export default Controller.extend({
 		},
 		keyPress(event) {
 			this.set('inputValuepd2', event.target.value);
+		},
+		warning() {
+			window.alert('no!!!!')
 		}
 	}
 });
