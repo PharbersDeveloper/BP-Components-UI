@@ -39,6 +39,7 @@ Router.map(function() {
   this.route('chart-circle');
   this.route('charts');
   this.route('avatar');
+  this.route('dashboard');
 });
 
 export default Router;

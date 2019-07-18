@@ -16,6 +16,11 @@
 <nav class="nav justify-content-center">
 	<a class="nav-link active" href="#onchange">onChange</a>
 	<a class="nav-link active" href="#onkeypress">onKeyPress</a>
+	<a class="nav-link active" href="#onwarning">onWarning</a>
+</nav>
+<p>Verify type</p>
+<nav class="nav justify-content-center">
+	<a class="nav-link active" href="#number">number</a>
 </nav>
 <div id="block">
 	<h4>block</h4>
@@ -115,5 +120,14 @@
 {{bp-input/simple title='simple' value=23 vertical=false color='red'}}
 <h4>widthSize</h4>
 {{bp-input/simple title='simple' widthSize='small' vertical=false color='red'}}
-<h3>bp-input/number</h3>
-{{bp-input/number onWarning=(action 'warning')}}
+<h3>Verify type</h3>
+<h4 id='number'>bp-input/number</h4>
+{{bp-input/number}}
+<div id="onWarning">
+	<h4>onWarning</h4>
+	{{bp-input/number
+	block=true 
+	onWarning=(action 'warning')
+	value=varifyNumberValue}}
+	<p class="mt-3">您输入的值为： {{varifyNumberValue}}</p>
+</div>

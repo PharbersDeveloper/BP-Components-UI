@@ -1,0 +1,6 @@
+<h2>this is dashboard example.</h2>
+{{bp-dashboard dashboardModel=model.config}}
+<h2>This is row example.</h2>
+{{#each model.rowConfigs as |row|}}
+	{{bp-row direction='col' rowModel=row}}
+{{/each}}
