@@ -18,38 +18,84 @@ export default Route.extend({
 						height: 400,
 						panels: A([
 							{
-								id: 1,
-								line: true,
-								bar: false,
-								pie: false,
-								stack: false,
-								scatter: false,
-								xaxis: {
+								id: 'line1',
+								xAxis: {
 									show: true,
 									type: 'category',
 									name: '',
-									axisTickShow: true,
-									axisLineShow: true,
-									axisLabelShow: true
+									axisTick: {
+										show: true,
+										alignWithLabel: true
+									},
+									axisLine: {
+										show: true,
+										lineStyle: {
+											type: 'dotted',
+											color: '#DFE1E6'
+										}
+									},
+									axisLabel: {
+										show: true,
+										color: '#7A869A',
+										fontSize: 14,
+										lineHeight: 20
+									}
 								},
-								yaxis: {
+								yAxis: {
 									show: true,
 									type: 'value',
-									name: '',
-									unit: '',
-									formatType: 'rate',
-									axisTickShow: false,
-									axisLineShow: false,
-									axisLabelShow: true
+									axisLine: {
+										show: false
+									},
+									axisTick: {
+										show: false
+									},
+									axisLabel: {
+										show: true,
+										color: '#7A869A',
+										// formatter: function (value) {
+										// 	return value * 100 + axisConfig.unit;
+										// }
+									},
+									splitLine: {
+										show: true,
+										lineStyle: {
+											type: 'dotted',
+											color: '#DFE1E6'
+										}
+									}
 								},
 								tooltip: {
-									show: true
+									show: true,
+									trigger: 'axis',
+									axisPointer: { // 坐标轴指示器，坐标轴触发有效
+										type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+									},
+									backgroundColor: 'rgba(9,30,66,0.54)'
 								},
 								legend: {
 									show: true,
 									x: 'center',
-									y: 'top'
-								}
+									y: 'top',
+									orient: 'horizontal',
+									textStyle: {
+										fontSize: 14,
+										color: '#7A869A'
+									}
+								},
+								series: [{
+									type: 'line',
+									seriesLayoutBy: 'row'
+								}, {
+									type: 'line',
+									seriesLayoutBy: 'row'
+								}, {
+									type: 'line',
+									seriesLayoutBy: 'row'
+								}, {
+									type: 'line',
+									seriesLayoutBy: 'row'
+								}]
 							}
 						])
 					}
@@ -58,41 +104,116 @@ export default Route.extend({
 			data: null,
 			rowConfigs: A([{
 				height: 400,
-				panels: A([
-					{
-						id: 2,
-						line: false,
-						bar: true,
-						pie: false,
-						stack: false,
-						scatter: false,
-						xaxis: {
+				panels: A([{
+					id: 2,
+					color: A(['#73ABFF', '#2355A9', '#FFC400', '#5799ff']),
+					xAxis: {
+						// show: true,
+						// type: 'category',
+						// name: '',
+						// axisTickShow: true,
+						// axisLineShow: true,
+						// axisLabelShow: true,
+						show: true,
+						type: 'category',
+						name: '',
+						axisTick: {
 							show: true,
-							type: 'category',
-							name: '',
-							axisTickShow: true,
-							axisLineShow: true,
-							axisLabelShow: true
+							alignWithLabel: true
 						},
-						yaxis: {
+						axisLine: {
 							show: true,
-							type: 'value',
-							name: '',
-							unit: '',
-							axisTickShow: false,
-							axisLineShow: false,
-							axisLabelShow: true
-
+							lineStyle: {
+								type: 'dotted',
+								color: '#DFE1E6'
+							}
 						},
-						tooltip: {
+						axisLabel: {
+							show: true,
+							color: '#7A869A',
+							fontSize: 14,
+							lineHeight: 20
+						}
+					},
+					yAxis: {
+						// show: true,
+						// type: 'value',
+						// name: '',
+						// unit: '',
+						// axisTickShow: false,
+						// axisLineShow: false,
+						// axisLabelShow: true
+						show: true,
+						type: 'value',
+						axisLine: {
 							show: false
 						},
-						legend: {
+						axisTick: {
+							show: false
+						},
+						axisLabel: {
 							show: true,
-							x: 'left',
-							y: 'bottom'
+							color: '#7A869A',
+							// formatter: function (value) {
+							// 	return value * 100 + axisConfig.unit;
+							// }
+						},
+						splitLine: {
+							show: true,
+							lineStyle: {
+								type: 'dotted',
+								color: '#DFE1E6'
+							}
 						}
-					}
+
+					},
+					tooltip: {
+						show: true,
+						trigger: 'axis',
+						axisPointer: { // 坐标轴指示器，坐标轴触发有效
+							type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+						},
+						backgroundColor: 'rgba(9,30,66,0.54)'
+					},
+					legend: {
+						show: false,
+						x: 'left',
+						y: 'bottom'
+					},
+					series: [
+						{
+							type: 'bar',
+							seriesLayoutBy: 'row',
+							encode: {
+								y: 3,
+								seriesName: [3],
+							},
+							barWidth: '8px',
+							itemStyle: {
+								barBorderRadius: [5, 5, 0, 0]
+							}
+						}
+						// {
+						// 	type: 'bar',
+						// 	seriesLayoutBy: 'row',
+						// 	encode: {
+						// 		y: 4,
+						// 		seriesName: [4],
+						// 	},
+						// 	barWidth: '8px',
+						// 	itemStyle: {
+						// 		barBorderRadius: [5, 5, 0, 0]
+						// 	}
+						// },
+						// {
+						// 	type: 'line', seriesLayoutBy: 'row',
+						// 	encode: {
+						// 		y: 2,
+						// 		seriesName: [2],
+						// 	}
+						// }
+					]
+				}
 				])
 			}]),
 			radar: {
@@ -127,42 +248,79 @@ export default Route.extend({
 					{
 						name: 'chart"s circle',
 						id: 'circle1',
-						line: false,
-						bar: false,
-						pie: true,
-						radar: false,
-						stack: false,
-						scatter: false,
+						// line: false,
+						// bar: false,
+						// pie: true,
+						// radar: false,
+						// stack: false,
+						// scatter: false,
 						tooltip: {
 							show: true,
 							trigger: 'item',
+							// axisPointer: { // 坐标轴指示器，坐标轴触发有效
+							// 	type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+							// },
+							// backgroundColor: 'rgba(9,30,66,0.54)'
 						},
-						pieConfig: {
-							radius: '65%'
-						},
+						// pieConfig: {
+						// 	radius: '65%'
+						// },
 						legend: {
 							show: true,
 							x: 'center',
-							y: 'bottom',
+							y: 'top',
 							// orient: 'vertical'
 						},
-						pieConfigs: A([
-							{
-								insideRadius: '60%',
-								outsideRadius: '95%',
-								avoidLabelOverlap: false,
-								hoverOffset: 3, // 高亮扇区的偏移距离
+						series: [{
+							name: '',
+							type: 'pie',
+							radius: ['60%', '75%'],
+							avoidLabelOverlap: false,
+							hoverOffset: 3,
+							label: {
+								normal: {
+									show: false,
+									position: 'center'
+								},
+							},
+							emphasis: {
 								label: {
-									normal: {
-										show: false,
-										position: 'center', // 'outside'/'inside'/'center'
+									show: true,
+									textStyle: {
+										fontSize: '14',
+										fontWeight: 'normal'
 									},
-									emphasis: {
-										show: true
-									}
+									formatter: '{b}: {d}'
 								}
-							}
-						])
+							},
+
+							labelLine: {
+								normal: {
+									show: false
+								}
+							},
+							// 			encode: {
+							// 			   radius: 3,
+							//                 angle: 2
+							// 			}
+						}]
+						// pieConfigs: A([
+						// 	{
+						// 		insideRadius: '60%',
+						// 		outsideRadius: '95%',
+						// 		avoidLabelOverlap: false,
+						// 		hoverOffset: 3, // 高亮扇区的偏移距离
+						// 		label: {
+						// 			normal: {
+						// 				show: false,
+						// 				position: 'center', // 'outside'/'inside'/'center'
+						// 			},
+						// 			emphasis: {
+						// 				show: true
+						// 			}
+						// 		}
+						// 	}
+						// ])
 					}
 				])
 			},
