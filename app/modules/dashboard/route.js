@@ -136,13 +136,6 @@ export default Route.extend({
 						}
 					},
 					yAxis: {
-						// show: true,
-						// type: 'value',
-						// name: '',
-						// unit: '',
-						// axisTickShow: false,
-						// axisLineShow: false,
-						// axisLabelShow: true
 						show: true,
 						type: 'value',
 						axisLine: {
@@ -193,25 +186,6 @@ export default Route.extend({
 								barBorderRadius: [5, 5, 0, 0]
 							}
 						}
-						// {
-						// 	type: 'bar',
-						// 	seriesLayoutBy: 'row',
-						// 	encode: {
-						// 		y: 4,
-						// 		seriesName: [4],
-						// 	},
-						// 	barWidth: '8px',
-						// 	itemStyle: {
-						// 		barBorderRadius: [5, 5, 0, 0]
-						// 	}
-						// },
-						// {
-						// 	type: 'line', seriesLayoutBy: 'row',
-						// 	encode: {
-						// 		y: 2,
-						// 		seriesName: [2],
-						// 	}
-						// }
 					]
 				}
 				])
@@ -221,25 +195,61 @@ export default Route.extend({
 				panels: A([{
 					name: 'chart"s name',
 					id: 'radar1',
-					line: false,
-					bar: false,
-					pie: false,
-					radar: true,
-					stack: false,
-					scatter: false,
 					tooltip: {
 						show: true,
 						trigger: 'item',
 					},
-					radarConfig: {
-						radius: '65%'
-					},
+					color: ['#3172E0', '#979797'],
 					legend: {
 						show: true,
 						x: 'center',
 						y: 'bottom',
-						// orient: 'vertical'
-					}
+						orient: 'vertical'
+					},
+					radar: {
+						radius: '65%',
+						name: {
+							textStyle: {
+								color: '#7A869A',
+								borderRadius: 3,
+								padding: [0, 0]
+							}
+						},
+						indicator: [
+							{ text: '2018年第一季度', max: 1 },
+							{ text: '2018年第二季度', max: 1 },
+							{ text: '2018年第三季度', max: 1 },
+							{ text: '2018年第四季度', max: 1 },
+							{ text: '2019年第一季度', max: 1 }
+						],
+						splitNumber: 5, //default
+						axisLine: {
+							lineStyle: {
+								color: '#DFE1E6'
+							}
+						},
+						splitLine: {
+							lineStyle: {
+								color: '#DFE1E6'
+							}
+						},
+						splitArea: {
+							areaStyle: {
+								color: ['#fff', '#fff']
+							}
+						}
+					},
+					series: [{
+						name: '',
+						type: 'radar',
+						areaStyle: {
+							opacity: 0.3
+						},
+						encode: {
+							itemName: 0,
+							value: 0
+						}
+					}]
 				}])
 			},
 			circle: {
