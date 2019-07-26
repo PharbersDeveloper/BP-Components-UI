@@ -101,6 +101,114 @@ export default Route.extend({
 					}
 				])
 			}),
+			rightLegendConfig: EmberObject.create({
+				id: 0,
+				uid: 'other',
+				time: {
+					from: 1563393611323,
+					to: 1563415211323
+				},
+				rows: A([
+					{
+						height: 400,
+						panels: A([
+							{
+								id: 'line2',
+								toolbox: {
+									show: true,
+									feature: {
+										dataZoom: {
+											yAxisIndex: 'none'
+										},
+										dataView: { readOnly: false },
+										magicType: { type: ['line', 'bar'] },
+										restore: {},
+										saveAsImage: {}
+									}
+								},
+								xAxis: {
+									show: true,
+									type: 'category',
+									name: '',
+									axisTick: {
+										show: true,
+										alignWithLabel: true
+									},
+									axisLine: {
+										show: true,
+										lineStyle: {
+											type: 'dotted',
+											color: '#DFE1E6'
+										}
+									},
+									axisLabel: {
+										show: true,
+										color: '#7A869A',
+										fontSize: 14,
+										lineHeight: 20
+									}
+								},
+								yAxis: {
+									show: true,
+									type: 'value',
+									axisLine: {
+										show: false
+									},
+									axisTick: {
+										show: false
+									},
+									axisLabel: {
+										show: true,
+										color: '#7A869A',
+										// formatter: function (value) {
+										// 	return value * 100 + axisConfig.unit;
+										// }
+									},
+									splitLine: {
+										show: true,
+										lineStyle: {
+											type: 'dotted',
+											color: '#DFE1E6'
+										}
+									}
+								},
+								tooltip: {
+									show: true,
+									trigger: 'axis',
+									axisPointer: { // 坐标轴指示器，坐标轴触发有效
+										type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+									},
+									backgroundColor: 'rgba(9,30,66,0.54)'
+								},
+								legend: {
+									show: true,
+									x: 'right',
+									y: 'middle',
+									orient: 'vertical',//'horizontal' 'vertical'
+
+									textStyle: {
+										fontSize: 14,
+										color: '#7A869A'
+									}
+								},
+								series: [{
+									type: 'line',
+									seriesLayoutBy: 'row'
+								}, {
+									type: 'line',
+									seriesLayoutBy: 'row'
+								}, {
+									type: 'line',
+									seriesLayoutBy: 'row'
+								}, {
+									type: 'line',
+									seriesLayoutBy: 'row'
+								}]
+							}
+						])
+					}
+				])
+			}),
 			data: null,
 			rowConfigs: A([{
 				height: 400,
@@ -258,12 +366,11 @@ export default Route.extend({
 					{
 						name: 'chart"s circle',
 						id: 'circle1',
-						// line: false,
-						// bar: false,
-						// pie: true,
-						// radar: false,
-						// stack: false,
-						// scatter: false,
+						condition: {
+							"_source": {
+								"value": ['department', 'count']
+							}
+						},
 						tooltip: {
 							show: true,
 							trigger: 'item',
@@ -272,14 +379,11 @@ export default Route.extend({
 							// },
 							// backgroundColor: 'rgba(9,30,66,0.54)'
 						},
-						// pieConfig: {
-						// 	radius: '65%'
-						// },
 						legend: {
 							show: true,
-							x: 'center',
-							y: 'top',
-							// orient: 'vertical'
+							x: 'right',
+							y: 'middle',
+							orient: 'vertical'
 						},
 						series: [{
 							name: '',
@@ -309,36 +413,221 @@ export default Route.extend({
 									show: false
 								}
 							},
-							// 			encode: {
-							// 			   radius: 3,
-							//                 angle: 2
-							// 			}
 						}]
-						// pieConfigs: A([
-						// 	{
-						// 		insideRadius: '60%',
-						// 		outsideRadius: '95%',
-						// 		avoidLabelOverlap: false,
-						// 		hoverOffset: 3, // 高亮扇区的偏移距离
-						// 		label: {
-						// 			normal: {
-						// 				show: false,
-						// 				position: 'center', // 'outside'/'inside'/'center'
-						// 			},
-						// 			emphasis: {
-						// 				show: true
-						// 			}
-						// 		}
-						// 	}
-						// ])
 					}
 				])
 			},
-			// time 不应该放入这里面，应该由某一个时间选择器选择的值
-			time: {
-				from: 1514736000000,
-				to: 1543593600000
+			doubleCircle: {
+				height: 300,
+				panels: A([
+					{
+						name: 'chart"s double circle',
+						id: 'doubleCircle1',
+						condition: {
+							"_source": {
+								"value": ['department', 'count']
+							}
+						},
+						tooltip: {
+							show: true,
+							trigger: 'item',
+							// axisPointer: { // 坐标轴指示器，坐标轴触发有效
+							// 	type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+							// },
+							// backgroundColor: 'rgba(9,30,66,0.54)'
+						},
+						legend: {
+							show: true,
+							x: 'center',
+							y: 'bottom',
+							// orient: 'vertical'
+						},
+						series: [{
+							type: 'pie',
+							radius: [0, 90],
+							center: ['25%', '50%'],
+							legendHoverLink: false,
+							label: {
+								normal: {
+									show: false
+								},
+								emphasis: {
+									show: false
+								}
+							},
+							// encode: {
+							// 	itemName: 'department',
+							// 	value: 1,
+							// }
+						}, {
+							type: 'pie',
+							radius: [0, 90],
+							center: ['75%', '50%'],
+							legendHoverLink: false,
+							label: {
+								normal: {
+									show: false
+								},
+								emphasis: {
+									show: false
+								}
+							},
+							// encode: {
+							// 	itemName: 'department',
+							// 	value: 2,
+							// }
+						}]
+					}
+				])
 			},
+			barLine: {
+				height: 600,
+				panels: A([
+					{
+						id: 'barline',
+						color: ['#579AFF ', '#C2DAFF', '#FFAB00'],
+						xAxis: {
+							show: true,
+							type: 'category',
+							name: '',
+							axisTick: {
+								show: true,
+								alignWithLabel: true
+							},
+							axisLine: {
+								show: true,
+								lineStyle: {
+									type: 'dotted',
+									color: '#DFE1E6'
+								}
+							},
+							axisLabel: {
+								show: true,
+								color: '#7A869A',
+								fontSize: 14,
+								lineHeight: 20
+							}
+						},
+						yAxis: [
+							{
+								type: 'value',
+								show: true,
+								min: 0,
+								// max: yAxisRightMax,
+								// interval: 50,
+								axisLabel: {
+									color: '#7A869A',
+									// 		formatter: function (value) {
+									// 			let formatValue = formatNumber(value);
+
+									// 			return `${numberUnit}${formatValue}`;
+									// 		}
+								},
+								axisTick: {
+									show: false,
+									alignWithLabel: true
+								},
+								axisLine: {
+									show: false,
+									lineStyle: {
+										type: 'solid',
+										color: '#EBECF0'
+									}
+								},
+								splitLine: {
+									show: true,
+									lineStyle: {
+										color: '#D2D4D9',
+										width: 1,
+										type: 'dashed'
+									}
+								}
+							},
+							{
+								type: 'value',
+								name: '',
+								min: 0,
+								// max: yAxisLeftMax,
+								// interval: 6,
+								axisTick: {
+									show: false,
+									alignWithLabel: true
+								},
+								axisLabel: {
+									color: '#7A869A',
+									// 		formatter: `{value}${rateUnit}`
+								},
+								axisLine: {
+									show: false,
+									type: 'solid',
+									lineStyle: {
+										type: 'solid',
+										color: '#EBECF0'
+									}
+								},
+								splitLine: {
+									show: false,
+									lineStyle: {
+										color: '#D2D4D9',
+										width: 1,
+										type: 'dashed'
+									}
+								}
+							}
+						],
+						tooltip: {
+							show: true,
+							trigger: 'axis',
+							axisPointer: { // 坐标轴指示器，坐标轴触发有效
+								type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+							},
+							backgroundColor: 'rgba(9,30,66,0.54)'
+						},
+						legend: {
+							show: true,
+							x: 'center',
+							y: 'bottom',
+							orient: 'horizontal',
+							textStyle: {
+								fontSize: 14,
+								color: '#7A869A'
+							}
+						},
+						series: [{
+							type: 'bar',
+							seriesLayoutBy: 'row',
+							yAxisIndex: 0,
+							barWidth: '12px',
+							itemStyle: {
+								barBorderRadius: [0, 0, 0, 0]
+							}
+						}, {
+							type: 'bar',
+							seriesLayoutBy: 'row',
+							yAxisIndex: 0,
+							barWidth: '12px',
+							itemStyle: {
+								barBorderRadius: [0, 0, 0, 0]
+							}
+						}, {
+							type: 'line',
+							seriesLayoutBy: 'row',
+							yAxisIndex: 1,
+							itemStyle: {
+								normal: {
+									label: {
+										show: true,
+										position: 'top',
+										// 			formatter: function (params) {
+										// 				return `${params.value} ${rateUnit}`;
+										// 			}
+									}
+								}
+							}
+						}]
+					}
+				])
+			}
 		})
 	}
 });
