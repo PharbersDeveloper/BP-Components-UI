@@ -1,6 +1,22 @@
 <h2>this is dashboard example.</h2>
-{{bp-dashboard dashboardModel=model.config}}
-<h2>This is row example.</h2>
+{{bp-dashboard dashboardModel=model.config }}
+<h2>this example is for right legend that the line chart.</h2>
+{{bp-dashboard dashboardModel=model.rightLegendConfig}}
+<h2>This is row example.For bar</h2>
 {{#each model.rowConfigs as |row|}}
-	{{bp-row direction='col' rowModel=row time=model.time}}
+	{{bp-row direction='col' rowModel=row}}
 {{/each}}
+<div class="dropdown-divided"></div>
+<h2>This is radar example</h2>
+{{#bp-layout}}
+	<div local-class='radar-left'>
+		{{bp-row direction='col' rowModel=model.radar }}
+	</div>
+	<div local-class='radar-right'>
+		{{bp-row direction='col'  rowModel=model.circle}}
+	</div>
+{{/bp-layout}}
+<h2>This example is for double pies chart</h2>
+{{bp-row direction='col' rowModel=model.doubleCircle}}
+<h2>This chart for bar & line</h2>
+{{bp-row direction='col' rowModel=model.barLine}}
