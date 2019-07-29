@@ -326,6 +326,7 @@ export default Route.extend({
 				])
 			}]),
 			radar: {
+				id: 'row4',
 				height: 380,
 				panels: A([{
 					name: 'chart"s name',
@@ -397,6 +398,7 @@ export default Route.extend({
 				}])
 			},
 			circle: {
+				id: 'row5',
 				height: 300,
 				panels: A([
 					{
@@ -420,7 +422,7 @@ export default Route.extend({
 							// backgroundColor: 'rgba(9,30,66,0.54)'
 						},
 						legend: {
-							show: true,
+							show: false,
 							x: 'right',
 							y: 'middle',
 							orient: 'vertical'
@@ -431,33 +433,38 @@ export default Route.extend({
 							radius: ['60%', '75%'],
 							avoidLabelOverlap: false,
 							hoverOffset: 3,
-							label: {
-								normal: {
-									show: false,
-									position: 'center'
-								},
-							},
-							emphasis: {
-								label: {
-									show: true,
-									textStyle: {
-										fontSize: '14',
-										fontWeight: 'normal'
-									},
-									formatter: '{b}: {d}'
-								}
-							},
-
 							labelLine: {
 								normal: {
-									show: false
+									show: true
 								}
 							},
+							// label: {
+							// 	normal: {
+							// 		show: false,
+							// 		position: 'center'
+							// 	},
+							// },
+							// emphasis: {
+							// 	label: {
+							// 		show: true,
+							// 		textStyle: {
+							// 			fontSize: '14',
+							// 			fontWeight: 'normal'
+							// 		},
+							// 		formatter: '{b}: {d}'
+							// 	}
+							// },
+							// labelLine: {
+							// 	normal: {
+							// 		show: false
+							// 	}
+							// },
 						}]
 					}
 				])
 			},
 			doubleCircle: {
+				id: 'row6',
 				height: 300,
 				panels: A([
 					{
@@ -538,6 +545,7 @@ export default Route.extend({
 				])
 			},
 			barLine: {
+				id: 'row7',
 				height: 600,
 				panels: A([
 					{
@@ -695,6 +703,7 @@ export default Route.extend({
 				])
 			},
 			barStack: {
+				id: 'row8',
 				height: 600,
 				panels: A([{
 					id: 'stackbar1',
