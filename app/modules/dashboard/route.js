@@ -19,6 +19,15 @@ export default Route.extend({
 						panels: A([
 							{
 								id: 'line1',
+								condition: {
+									"_source": [
+										"department",
+										"count"
+									],
+									"sort": [
+										{ "count": "asc" }
+									]
+								},
 								xAxis: {
 									show: true,
 									type: 'category',
@@ -114,18 +123,27 @@ export default Route.extend({
 						panels: A([
 							{
 								id: 'line2',
-								toolbox: {
-									show: true,
-									feature: {
-										dataZoom: {
-											yAxisIndex: 'none'
-										},
-										dataView: { readOnly: false },
-										magicType: { type: ['line', 'bar'] },
-										restore: {},
-										saveAsImage: {}
-									}
+								condition: {
+									"_source": [
+										"department",
+										"count"
+									],
+									"sort": [
+										{ "count": "asc" }
+									]
 								},
+								// toolbox: {
+								// 	show: true,
+								// 	feature: {
+								// 		dataZoom: {
+								// 			yAxisIndex: 'none'
+								// 		},
+								// 		dataView: { readOnly: false },
+								// 		magicType: { type: ['line', 'bar'] },
+								// 		restore: {},
+								// 		saveAsImage: {}
+								// 	}
+								// },
 								xAxis: {
 									show: true,
 									type: 'category',
@@ -214,6 +232,15 @@ export default Route.extend({
 				height: 400,
 				panels: A([{
 					id: 2,
+					condition: {
+						"_source": [
+							"department",
+							"count"
+						],
+						"sort": [
+							{ "count": "asc" }
+						]
+					},
 					color: A(['#73ABFF', '#2355A9', '#FFC400', '#5799ff']),
 					xAxis: {
 						// show: true,
@@ -303,6 +330,15 @@ export default Route.extend({
 				panels: A([{
 					name: 'chart"s name',
 					id: 'radar1',
+					condition: {
+						"_source": [
+							"department",
+							"count"
+						],
+						"sort": [
+							{ "count": "asc" }
+						]
+					},
 					tooltip: {
 						show: true,
 						trigger: 'item',
@@ -367,9 +403,13 @@ export default Route.extend({
 						name: 'chart"s circle',
 						id: 'circle1',
 						condition: {
-							"_source": {
-								"value": ['department', 'count']
-							}
+							"_source": [
+								"department",
+								"count"
+							],
+							"sort": [
+								{ "count": "asc" }
+							]
 						},
 						tooltip: {
 							show: true,
@@ -424,8 +464,25 @@ export default Route.extend({
 						name: 'chart"s double circle',
 						id: 'doubleCircle1',
 						condition: {
-							"_source": {
-								"value": ['department', 'count']
+							"_source": [
+								"department",
+								"count"
+							],
+							"sort": [
+								{ "count": "asc" }
+							],
+							"query": {
+								"bool": {
+									"filter": [
+										{
+											"range": {
+												"count": {
+													"gte": "2"
+												}
+											}
+										}
+									]
+								}
 							}
 						},
 						tooltip: {
@@ -485,6 +542,15 @@ export default Route.extend({
 				panels: A([
 					{
 						id: 'barline',
+						condition: {
+							"_source": [
+								"department",
+								"count"
+							],
+							"sort": [
+								{ "count": "asc" }
+							]
+						},
 						color: ['#579AFF ', '#C2DAFF', '#FFAB00'],
 						xAxis: {
 							show: true,
@@ -627,7 +693,109 @@ export default Route.extend({
 						}]
 					}
 				])
+			},
+			barStack: {
+				height: 600,
+				panels: A([{
+					id: 'stackbar1',
+					condition: {
+						"_source": [
+							"department",
+							"count"
+						],
+						"sort": [
+							{ "count": "asc" }
+						]
+					},
+					tooltip: {
+						trigger: 'axis'
+					},
+					legend: {
+						type: 'scroll',
+						orient: 'vertical',
+						itemWidth: 8,
+						itemHeight: 8,
+						x: 'right',
+						y: 'center',
+						padding: 5,
+						icon: 'circle',
+					},
+					xAxis: {
+						type: 'category',
+						splitLine: {
+							show: false
+						},
+						axisLabel: {
+							color: '#7A869A'
+						},
+						axisLine: {
+							show: true,
+							lineStyle: {
+								type: 'solid',
+								color: '#DFE1E6'
+							}
+						}
+					},
+					yAxis: {
+						splitLine: {
+							lineStyle: {
+								type: 'dotted'
+							}
+						},
+						axisLabel: {
+							color: '#7A869A'
+						},
+						axisLine: {
+							show: true,
+							lineStyle: {
+								type: 'dotted',
+								color: '#DFE1E6'
+							}
+						}
+					},
+					series: [{
+						seriesLayoutBy: 'row',
+						type: 'bar',
+						barWidth: 24,
+						stack: 'stack',
+						name: 'prodA',
+						encode: {
+							x: 0,
+							y: 'prodA'
+						}
+					}, {
+						seriesLayoutBy: 'row',
+						type: 'bar',
+						barWidth: 24,
+						stack: 'stack',
+						name: 'prodB',
+						encode: {
+							x: 0,
+							y: 'prodB'
+						}
+					}, {
+						seriesLayoutBy: 'row',
+						type: 'bar',
+						barWidth: 24,
+						stack: 'stack',
+						name: 'prodC',
+						encode: {
+							x: 0,
+							y: 'prodC'
+						}
+					}, {
+						seriesLayoutBy: 'row',
+						type: 'bar',
+						barWidth: 24,
+						stack: 'stack',
+						name: 'prodD',
+						encode: {
+							x: 0,
+							y: 'prodD'
+						}
+					}]
+				}])
 			}
-		})
+		});
 	}
 });
