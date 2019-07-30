@@ -18,7 +18,7 @@ export default Route.extend({
 						height: 400,
 						panels: A([
 							{
-								id: 'line1',
+								id: 'demoline1',
 								condition: {
 									"_source": [
 										"department",
@@ -416,6 +416,7 @@ export default Route.extend({
 						tooltip: {
 							show: true,
 							trigger: 'item',
+							// formatter: "{a} <br/>{b} : {c} ({d}%)"
 							// axisPointer: { // 坐标轴指示器，坐标轴触发有效
 							// 	type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
 							// },
@@ -804,7 +805,1026 @@ export default Route.extend({
 						}
 					}]
 				}])
-			}
+			},
+			tmProductCircle0: {
+				id: 'circleproductcontainer0',
+				height: 168,
+				panels: A([
+					{
+						name: 'tmcircleproduct0',
+						id: 'tmcircleproduct0',
+						color: ['#73ABFF', '#FFC400', '#57D9A3'],
+						condition: {
+							"_source": [
+								"product",
+								"sales",
+								"date",
+								"rate"
+							],
+							"sort": [
+								{ "count": "asc" }
+							]
+						},
+						tooltip: {
+							show: true,
+							trigger: 'item',
+						},
+						legend: {
+							show: false,
+						},
+						series: [{
+							name: '',
+							type: 'pie',
+							radius: ['50', '64'],
+							avoidLabelOverlap: false,
+							hoverOffset: 3,
+							labelLine: {
+								normal: {
+									show: true
+								}
+							},
+							label: {
+								color: '#7A869A',
+								formatter: '{b}  {d}%'
+							}
+						}]
+					}
+				])
+			},
+			tmProductCircle1: {
+				id: 'circleproductcontainer1',
+				height: 168,
+				panels: A([
+					{
+						name: 'tmcircleproduct1',
+						id: 'tmcircleproduct1',
+						condition: {
+							"_source": [
+								"product",
+								"sales",
+								"date",
+								"rate"
+							],
+							"sort": [
+								{ "count": "asc" }
+							]
+						},
+						color: ['#73ABFF', '#FFC400', '#57D9A3'],
+						tooltip: {
+							show: true,
+							trigger: 'item',
+						},
+						legend: {
+							show: false,
+						},
+						series: [{
+							name: '',
+							type: 'pie',
+							radius: ['50', '64'],
+							avoidLabelOverlap: false,
+							hoverOffset: 3,
+							labelLine: {
+								normal: {
+									show: true
+								}
+							},
+							label: {
+								color: '#7A869A',
+								formatter: '{b}  {d}%'
+							}
+
+						}]
+					}
+				])
+			},
+			tmProductBarLine0: {
+				id: 'tmProductBarLineContainer',
+				height: 305,
+				panels: A([
+					{
+						id: 'bartmProductBarLine0',
+						condition: {
+							"_source": [
+								"date",
+								"sales",
+								"target",
+								"targetRate",
+								"product"
+							],
+							"sort": [
+								{ "count": "asc" }
+							]
+						},
+						color: ['#579AFF ', '#C2DAFF', '#FFAB00'],
+						xAxis: {
+							show: true,
+							type: 'category',
+							name: '',
+							axisTick: {
+								show: true,
+								alignWithLabel: true
+							},
+							axisLine: {
+								show: true,
+								lineStyle: {
+									type: 'dotted',
+									color: '#DFE1E6'
+								}
+							},
+							axisLabel: {
+								show: true,
+								color: '#7A869A',
+								fontSize: 14,
+								lineHeight: 20
+							}
+						},
+						yAxis: [
+							{
+								type: 'value',
+								show: true,
+								min: 0,
+								axisLabel: {
+									color: '#7A869A',
+									// formatter: '¥ {value}'
+								},
+								axisTick: {
+									show: false,
+									alignWithLabel: true
+								},
+								axisLine: {
+									show: false,
+									lineStyle: {
+										type: 'solid',
+										color: '#EBECF0'
+									}
+								},
+								splitLine: {
+									show: true,
+									lineStyle: {
+										color: '#D2D4D9',
+										width: 1,
+										type: 'dashed'
+									}
+								}
+							},
+							{
+								type: 'value',
+								name: '',
+								axisTick: {
+									show: false,
+									alignWithLabel: true
+								},
+								axisLabel: {
+									color: '#7A869A',
+									// 		formatter: `{value}${rateUnit}`
+								},
+								axisLine: {
+									show: false,
+									type: 'solid',
+									lineStyle: {
+										type: 'solid',
+										color: '#EBECF0'
+									}
+								},
+								splitLine: {
+									show: false,
+									lineStyle: {
+										color: '#D2D4D9',
+										width: 1,
+										type: 'dashed'
+									}
+								}
+							}
+						],
+						tooltip: {
+							show: true,
+							trigger: 'axis',
+							axisPointer: { // 坐标轴指示器，坐标轴触发有效
+								type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+							},
+							backgroundColor: 'rgba(9,30,66,0.54)'
+						},
+						legend: {
+							icon: 'circle',
+							show: true,
+							x: 'center',
+							y: 'bottom',
+							orient: 'horizontal',
+							textStyle: {
+								fontSize: 14,
+								color: '#7A869A'
+							}
+						},
+						series: [{
+							type: 'bar',
+							name: '销售额',
+							yAxisIndex: 0,
+							barWidth: '12px',
+							itemStyle: {
+								barBorderRadius: [0, 0, 0, 0]
+							},
+							encode: {
+								y: 'sales'
+							}
+						}, {
+							type: 'bar',
+							name: '指标',
+							yAxisIndex: 0,
+							barWidth: '12px',
+							itemStyle: {
+								barBorderRadius: [0, 0, 0, 0]
+							},
+							encode: {
+								y: 'target'
+							}
+						}, {
+							type: 'line',
+							name: '指标达成率',
+							yAxisIndex: 1,
+							encode: {
+								y: 'targetRate'
+							},
+							itemStyle: {
+								normal: {
+									label: {
+										show: true,
+										position: 'top',
+										// 			formatter: function (params) {
+										// 				return `${params.value} ${rateUnit}`;
+										// 			}
+									}
+								}
+							},
+
+						}]
+					}
+				])
+			},
+			tmRegionCircle0: {
+				id: 'regionCircleContainer0',
+				height: 168,
+				panels: A([
+					{
+						name: 'tmcircleregion0',
+						id: 'tmcircleregion0',
+						color: ['#73ABFF', '#FFC400', '#57D9A3'],
+						condition: {
+							"_source": [
+								"region",
+								"sales",
+								"date",
+								"rate"
+							],
+							"sort": [
+								{ "count": "asc" }
+							]
+						},
+						tooltip: {
+							show: true,
+							trigger: 'item',
+						},
+						legend: {
+							show: false,
+						},
+						series: [{
+							name: '',
+							type: 'pie',
+							radius: ['44', '64'],
+							avoidLabelOverlap: false,
+							hoverOffset: 3,
+							labelLine: {
+								normal: {
+									show: true
+								}
+							},
+							label: {
+								color: '#7A869A',
+								formatter: '{b}  {d}%'
+							}
+						}]
+					}
+				])
+			},
+			tmRegionCircle1: {
+				id: 'circleRegionContainer1',
+				height: 168,
+				panels: A([
+					{
+						name: 'tmcircleregion1',
+						id: 'tmcircleregion1',
+						condition: {
+							"_source": [
+								"region",
+								"sales",
+								"date",
+								"rate"
+							],
+							"sort": [
+								{ "count": "asc" }
+							]
+						},
+						color: ['#73ABFF', '#FFC400', '#57D9A3'],
+						tooltip: {
+							show: true,
+							trigger: 'item',
+						},
+						legend: {
+							show: false,
+						},
+						series: [{
+							name: '',
+							type: 'pie',
+							radius: ['44', '64'],
+							avoidLabelOverlap: false,
+							hoverOffset: 3,
+							labelLine: {
+								normal: {
+									show: true
+								}
+							},
+							label: {
+								color: '#7A869A',
+								formatter: '{b}  {d}%'
+							}
+
+						}]
+					}
+				])
+			},
+			tmRegionBarLine0: {
+				id: 'tmRegionBarLineContainer',
+				height: 305,
+				panels: A([
+					{
+						id: 'bartmRegionBarLine0',
+						condition: {
+							"_source": [
+								"date",
+								"sales",
+								"target",
+								"targetRate",
+								"product",
+								"region"
+							],
+							"sort": [
+								{ "count": "asc" }
+							]
+						},
+						color: ['#579AFF ', '#C2DAFF', '#FFAB00'],
+						xAxis: {
+							show: true,
+							type: 'category',
+							name: '',
+							axisTick: {
+								show: true,
+								alignWithLabel: true
+							},
+							axisLine: {
+								show: true,
+								lineStyle: {
+									type: 'dotted',
+									color: '#DFE1E6'
+								}
+							},
+							axisLabel: {
+								show: true,
+								color: '#7A869A',
+								fontSize: 14,
+								lineHeight: 20
+							}
+						},
+						yAxis: [
+							{
+								type: 'value',
+								show: true,
+								min: 0,
+								axisLabel: {
+									color: '#7A869A',
+									// formatter: '¥ {value}'
+								},
+								axisTick: {
+									show: false,
+									alignWithLabel: true
+								},
+								axisLine: {
+									show: false,
+									lineStyle: {
+										type: 'solid',
+										color: '#EBECF0'
+									}
+								},
+								splitLine: {
+									show: true,
+									lineStyle: {
+										color: '#D2D4D9',
+										width: 1,
+										type: 'dashed'
+									}
+								}
+							},
+							{
+								type: 'value',
+								name: '',
+								axisTick: {
+									show: false,
+									alignWithLabel: true
+								},
+								axisLabel: {
+									color: '#7A869A',
+									// 		formatter: `{value}${rateUnit}`
+								},
+								axisLine: {
+									show: false,
+									type: 'solid',
+									lineStyle: {
+										type: 'solid',
+										color: '#EBECF0'
+									}
+								},
+								splitLine: {
+									show: false,
+									lineStyle: {
+										color: '#D2D4D9',
+										width: 1,
+										type: 'dashed'
+									}
+								}
+							}
+						],
+						tooltip: {
+							show: true,
+							trigger: 'axis',
+							axisPointer: { // 坐标轴指示器，坐标轴触发有效
+								type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+							},
+							backgroundColor: 'rgba(9,30,66,0.54)'
+						},
+						legend: {
+							icon: 'circle',
+							show: true,
+							x: 'center',
+							y: 'bottom',
+							orient: 'horizontal',
+							textStyle: {
+								fontSize: 14,
+								color: '#7A869A'
+							}
+						},
+						series: [{
+							type: 'bar',
+							name: '销售额',
+							yAxisIndex: 0,
+							barWidth: '12px',
+							itemStyle: {
+								barBorderRadius: [0, 0, 0, 0]
+							},
+							encode: {
+								y: 'sales'
+							}
+						}, {
+							type: 'bar',
+							name: '指标',
+							yAxisIndex: 0,
+							barWidth: '12px',
+							itemStyle: {
+								barBorderRadius: [0, 0, 0, 0]
+							},
+							encode: {
+								y: 'target'
+							}
+						}, {
+							type: 'line',
+							name: '指标达成率',
+							yAxisIndex: 1,
+							encode: {
+								y: 'targetRate'
+							},
+							itemStyle: {
+								normal: {
+									label: {
+										show: true,
+										position: 'top',
+										// 			formatter: function (params) {
+										// 				return `${params.value} ${rateUnit}`;
+										// 			}
+									}
+								}
+							},
+
+						}]
+					}
+				])
+			},
+			tmRepresentativeCircle0: {
+				id: 'representativeCircleContainer0',
+				height: 168,
+				panels: A([
+					{
+						name: 'tmcircleRepresentative0',
+						id: 'tmcirclerepresentative0',
+						color: ['#73ABFF', '#FFC400', '#57D9A3', '#79E2F2', '#FF8F73', '#998DD9'],
+						condition: {
+							"_source": [
+								"representative",
+								"sales",
+								"date",
+								"rate"
+							],
+							"sort": [
+								{ "count": "asc" }
+							]
+						},
+						tooltip: {
+							show: true,
+							trigger: 'item',
+						},
+						legend: {
+							show: false,
+						},
+						series: [{
+							name: '',
+							type: 'pie',
+							radius: ['44', '64'],
+							avoidLabelOverlap: false,
+							hoverOffset: 3,
+							labelLine: {
+								normal: {
+									show: true
+								}
+							},
+							label: {
+								color: '#7A869A',
+								formatter: '{b}  {d}%'
+							}
+						}]
+					}
+				])
+			},
+			tmRepresentativeCircle1: {
+				id: 'circleRepresentativeContainer1',
+				height: 168,
+				panels: A([
+					{
+						name: 'tmcirclerepresentative1',
+						id: 'tmcirclerepresentative1',
+						condition: {
+							"_source": [
+								"representative",
+								"sales",
+								"date",
+								"rate"
+							],
+							"sort": [
+								{ "count": "asc" }
+							]
+						},
+						color: ['#73ABFF', '#FFC400', '#57D9A3', '#79E2F2', '#FF8F73', '#998DD9'],
+						tooltip: {
+							show: true,
+							trigger: 'item',
+						},
+						legend: {
+							show: false,
+						},
+						series: [{
+							name: '',
+							type: 'pie',
+							radius: ['44', '64'],
+							avoidLabelOverlap: false,
+							hoverOffset: 3,
+							labelLine: {
+								normal: {
+									show: true
+								}
+							},
+							label: {
+								color: '#7A869A',
+								formatter: '{b}  {d}%'
+							}
+
+						}]
+					}
+				])
+			},
+			tmRepresentativeBarLine0: {
+				id: 'tmRepresentativeBarLineContainer',
+				height: 305,
+				panels: A([
+					{
+						id: 'bartmRepresentativeBarLine0',
+						condition: {
+							"_source": [
+								"date",
+								"sales",
+								"target",
+								"targetRate",
+								"product",
+								"representative"
+							],
+							"sort": [
+								{ "count": "asc" }
+							]
+						},
+						color: ['#579AFF ', '#C2DAFF', '#FFAB00'],
+						xAxis: {
+							show: true,
+							type: 'category',
+							name: '',
+							axisTick: {
+								show: true,
+								alignWithLabel: true
+							},
+							axisLine: {
+								show: true,
+								lineStyle: {
+									type: 'dotted',
+									color: '#DFE1E6'
+								}
+							},
+							axisLabel: {
+								show: true,
+								color: '#7A869A',
+								fontSize: 14,
+								lineHeight: 20
+							}
+						},
+						yAxis: [
+							{
+								type: 'value',
+								show: true,
+								min: 0,
+								axisLabel: {
+									color: '#7A869A',
+									// formatter: '¥ {value}'
+								},
+								axisTick: {
+									show: false,
+									alignWithLabel: true
+								},
+								axisLine: {
+									show: false,
+									lineStyle: {
+										type: 'solid',
+										color: '#EBECF0'
+									}
+								},
+								splitLine: {
+									show: true,
+									lineStyle: {
+										color: '#D2D4D9',
+										width: 1,
+										type: 'dashed'
+									}
+								}
+							},
+							{
+								type: 'value',
+								name: '',
+								axisTick: {
+									show: false,
+									alignWithLabel: true
+								},
+								axisLabel: {
+									color: '#7A869A',
+									// 		formatter: `{value}${rateUnit}`
+								},
+								axisLine: {
+									show: false,
+									type: 'solid',
+									lineStyle: {
+										type: 'solid',
+										color: '#EBECF0'
+									}
+								},
+								splitLine: {
+									show: false,
+									lineStyle: {
+										color: '#D2D4D9',
+										width: 1,
+										type: 'dashed'
+									}
+								}
+							}
+						],
+						tooltip: {
+							show: true,
+							trigger: 'axis',
+							axisPointer: { // 坐标轴指示器，坐标轴触发有效
+								type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+							},
+							backgroundColor: 'rgba(9,30,66,0.54)'
+						},
+						legend: {
+							icon: 'circle',
+							show: true,
+							x: 'center',
+							y: 'bottom',
+							orient: 'horizontal',
+							textStyle: {
+								fontSize: 14,
+								color: '#7A869A'
+							}
+						},
+						series: [{
+							type: 'bar',
+							name: '销售额',
+							yAxisIndex: 0,
+							barWidth: '12px',
+							itemStyle: {
+								barBorderRadius: [0, 0, 0, 0]
+							},
+							encode: {
+								y: 'sales'
+							}
+						}, {
+							type: 'bar',
+							name: '指标',
+							yAxisIndex: 0,
+							barWidth: '12px',
+							itemStyle: {
+								barBorderRadius: [0, 0, 0, 0]
+							},
+							encode: {
+								y: 'target'
+							}
+						}, {
+							type: 'line',
+							name: '指标达成率',
+							yAxisIndex: 1,
+							encode: {
+								y: 'targetRate'
+							},
+							itemStyle: {
+								normal: {
+									label: {
+										show: true,
+										position: 'top',
+										// 			formatter: function (params) {
+										// 				return `${params.value} ${rateUnit}`;
+										// 			}
+									}
+								}
+							},
+
+						}]
+					}
+				])
+			},
+			tmHospitalCircle0: {
+				id: 'hospitalCircleContainer0',
+				height: 168,
+				panels: A([
+					{
+						name: 'tmcircleHospital0',
+						id: 'tmcircleHospital0',
+						color: ['#73ABFF', '#FFC400', '#57D9A3', '#79E2F2', '#FF8F73', '#998DD9'],
+						condition: {
+							"_source": [
+								"hospitalLevel",
+								"sales",
+								"date",
+								"rate"
+							],
+							"sort": [
+								{ "count": "asc" }
+							]
+						},
+						tooltip: {
+							show: true,
+							trigger: 'item',
+						},
+						legend: {
+							show: false,
+						},
+						series: [{
+							name: '',
+							type: 'pie',
+							radius: ['44', '64'],
+							avoidLabelOverlap: false,
+							hoverOffset: 3,
+							labelLine: {
+								normal: {
+									show: true
+								}
+							},
+							label: {
+								color: '#7A869A',
+								formatter: '{b}  {d}%'
+							}
+						}]
+					}
+				])
+			},
+			tmHospitalCircle1: {
+				id: 'circleHospitalContainer1',
+				height: 168,
+				panels: A([
+					{
+						name: 'tmcirclehospital1',
+						id: 'tmcirclehospital1',
+						condition: {
+							"_source": [
+								"hospitalLevel",
+								"sales",
+								"date",
+								"rate"
+							],
+							"sort": [
+								{ "count": "asc" }
+							]
+						},
+						color: ['#73ABFF', '#FFC400', '#57D9A3', '#79E2F2'],
+						tooltip: {
+							show: true,
+							trigger: 'item',
+						},
+						legend: {
+							show: false,
+						},
+						series: [{
+							name: '',
+							type: 'pie',
+							radius: ['44', '64'],
+							avoidLabelOverlap: false,
+							hoverOffset: 3,
+							labelLine: {
+								normal: {
+									show: true
+								}
+							},
+							label: {
+								color: '#7A869A',
+								formatter: '{b}  {d}%'
+							}
+
+						}]
+					}
+				])
+			},
+			tmHospitalBarLine0: {
+				id: 'tmHospitalBarLineContainer',
+				height: 305,
+				panels: A([
+					{
+						id: 'bartmHospitalBarLine0',
+						condition: {
+							"_source": [
+								"date",
+								"sales",
+								"target",
+								"targetRate",
+								"product",
+								"hospital"
+							],
+							"sort": [
+								{ "count": "asc" }
+							]
+						},
+						color: ['#579AFF ', '#C2DAFF', '#FFAB00'],
+						xAxis: {
+							show: true,
+							type: 'category',
+							name: '',
+							axisTick: {
+								show: true,
+								alignWithLabel: true
+							},
+							axisLine: {
+								show: true,
+								lineStyle: {
+									type: 'dotted',
+									color: '#DFE1E6'
+								}
+							},
+							axisLabel: {
+								show: true,
+								color: '#7A869A',
+								fontSize: 14,
+								lineHeight: 20
+							}
+						},
+						yAxis: [
+							{
+								type: 'value',
+								show: true,
+								min: 0,
+								axisLabel: {
+									color: '#7A869A',
+									// formatter: '¥ {value}'
+								},
+								axisTick: {
+									show: false,
+									alignWithLabel: true
+								},
+								axisLine: {
+									show: false,
+									lineStyle: {
+										type: 'solid',
+										color: '#EBECF0'
+									}
+								},
+								splitLine: {
+									show: true,
+									lineStyle: {
+										color: '#D2D4D9',
+										width: 1,
+										type: 'dashed'
+									}
+								}
+							},
+							{
+								type: 'value',
+								name: '',
+								axisTick: {
+									show: false,
+									alignWithLabel: true
+								},
+								axisLabel: {
+									color: '#7A869A',
+									// 		formatter: `{value}${rateUnit}`
+								},
+								axisLine: {
+									show: false,
+									type: 'solid',
+									lineStyle: {
+										type: 'solid',
+										color: '#EBECF0'
+									}
+								},
+								splitLine: {
+									show: false,
+									lineStyle: {
+										color: '#D2D4D9',
+										width: 1,
+										type: 'dashed'
+									}
+								}
+							}
+						],
+						tooltip: {
+							show: true,
+							trigger: 'axis',
+							axisPointer: { // 坐标轴指示器，坐标轴触发有效
+								type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+							},
+							backgroundColor: 'rgba(9,30,66,0.54)'
+						},
+						legend: {
+							icon: 'circle',
+							show: true,
+							x: 'center',
+							y: 'bottom',
+							orient: 'horizontal',
+							textStyle: {
+								fontSize: 14,
+								color: '#7A869A'
+							}
+						},
+						series: [{
+							type: 'bar',
+							name: '销售额',
+							yAxisIndex: 0,
+							barWidth: '12px',
+							itemStyle: {
+								barBorderRadius: [0, 0, 0, 0]
+							},
+							encode: {
+								y: 'sales'
+							}
+						}, {
+							type: 'bar',
+							name: '指标',
+							yAxisIndex: 0,
+							barWidth: '12px',
+							itemStyle: {
+								barBorderRadius: [0, 0, 0, 0]
+							},
+							encode: {
+								y: 'target'
+							}
+						}, {
+							type: 'line',
+							name: '指标达成率',
+							yAxisIndex: 1,
+							encode: {
+								y: 'targetRate'
+							},
+							itemStyle: {
+								normal: {
+									label: {
+										show: true,
+										position: 'top',
+										// 			formatter: function (params) {
+										// 				return `${params.value} ${rateUnit}`;
+										// 			}
+									}
+								}
+							},
+
+						}]
+					}
+				])
+			},
 		});
 	}
 });

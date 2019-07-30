@@ -1,4 +1,4 @@
-<h2>this is dashboard example.</h2>
+{{!-- <h2>this is dashboard example.</h2>
 {{bp-dashboard dashboardModel=model.config }}
 <h2>this example is for right legend that the line chart.</h2>
 {{bp-dashboard dashboardModel=model.rightLegendConfig}}
@@ -23,4 +23,49 @@
 {{bp-row direction='col' rowModel=model.barLine}}
 <div class="dropdown-divider"></div>
 <h2>This chart for stack - bar</h2>
-{{bp-row direction='col' rowModel=model.barStack}}
+{{bp-row direction='col' rowModel=model.barStack}} --}}
+<h3>TMIST Charts</h3>
+<div class="dropdown-divider"></div>
+<h4>历史销售报告-产品销售报告</h4>
+{{#bp-layout}}
+	<div local-class='circle-left'>
+		{{bp-row direction='col' rowModel=model.tmProductCircle0 }}
+	</div>
+	<div local-class='circle-right'>
+		{{bp-row direction='col'  rowModel=model.tmProductCircle1}}
+	</div>
+{{/bp-layout}}
+{{bp-row direction='col' rowModel=model.tmProductBarLine0}}
+<div class="dropdown-divider"></div>
+<h4>历史销售报告-区域销售报告</h4>
+{{#bp-layout}}
+	<div local-class='circle-left'>
+		{{bp-row direction='col' rowModel=model.tmRegionCircle0}}
+	</div>
+	<div local-class='circle-right'>
+		{{bp-row direction='col'  rowModel=model.tmRegionCircle1}}
+	</div>
+{{/bp-layout}}
+{{bp-row direction='col' rowModel=model.tmRegionBarLine0}}
+<div class="dropdown-divider"></div>
+<h4>历史销售报告-代表销售报告</h4>
+{{#bp-layout}}
+	<div local-class='circle-left'>
+		{{bp-row direction='col' rowModel=model.tmRepresentativeCircle0}}
+	</div>
+	<div local-class='circle-right'>
+		{{bp-row direction='col'  rowModel=model.tmRepresentativeCircle1}}
+	</div>
+{{/bp-layout}}
+{{bp-row direction='col' rowModel=model.tmRepresentativeBarLine0}}
+<div class="dropdown-divider"></div>
+<h4>历史销售报告-医院销售报告</h4>
+{{#bp-layout}}
+	<div local-class='circle-left'>
+		{{bp-row direction='col' rowModel=model.tmHospitalCircle0}}
+	</div>
+	<div local-class='circle-right'>
+		{{bp-row direction='col'  rowModel=model.tmHospitalCircle1}}
+	</div>
+{{/bp-layout}}
+{{bp-row direction='col' rowModel=model.tmHospitalBarLine0}}
