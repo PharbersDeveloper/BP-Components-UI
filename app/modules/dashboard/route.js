@@ -1825,6 +1825,52 @@ export default Route.extend({
 					}
 				])
 			},
+			tmProductCircle0Condition: {
+				"_source": [
+					"product",
+					"sales",
+					"date",
+					"salesRate"
+				],
+				"query": {
+					"bool": {
+						"must": [
+							{
+								"match": {
+									"date": "2018Q1"
+								}
+							},
+							{
+								"match": {
+									"rep": "all"
+								}
+							},
+							{
+								"match": {
+									"region": "all"
+								}
+							},
+							{
+								"match": {
+									"hosp_level": "all"
+								}
+							},
+							{
+								"match": {
+									"hosp_name": "all"
+								}
+							}
+						],
+						"must_not": [
+							{
+								"match": {
+									"product": "all"
+								}
+							}
+						]
+					}
+				}
+			}
 		});
 	}
 });

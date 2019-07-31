@@ -29,10 +29,10 @@
 <h4>历史销售报告-产品销售报告</h4>
 {{#bp-layout}}
 	<div local-class='circle-left'>
-		{{bp-row direction='col' rowModel=model.tmProductCircle0 }}
+		{{bp-row direction='col' rowModel=model.tmProductCircle0 condition=model.tmProductCircle0Condition}}
 	</div>
 	<div local-class='circle-right'>
-		{{bp-row direction='col'  rowModel=model.tmProductCircle1}}
+		{{bp-row direction='col'  rowModel=model.tmProductCircle1 condition=model.tmProductCircle0Condition}}
 	</div>
 {{/bp-layout}}
 {{bp-row direction='col' rowModel=model.tmProductBarLine0}}
@@ -40,7 +40,7 @@
 <h4>历史销售报告-区域销售报告</h4>
 {{#bp-layout}}
 	<div local-class='circle-left'>
-		{{bp-row direction='col' rowModel=model.tmRegionCircle0}}
+		{{bp-row direction='col' rowModel=model.tmRegionCircle0 condition=model.tmProductCircle0Condition}}
 	</div>
 	<div local-class='circle-right'>
 		{{bp-row direction='col'  rowModel=model.tmRegionCircle1}}
