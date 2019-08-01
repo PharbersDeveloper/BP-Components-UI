@@ -897,6 +897,57 @@ export default Route.extend({
 					}
 				])
 			},
+			tmProductCircle0Condition: [{
+				dynamic: {
+					isDynamic: true,
+				},
+				data: {
+					"_source": [
+						"product",
+						"sales",
+						"date",
+						"salesRate"
+					],
+					"query": {
+						"bool": {
+							"must": [
+								{
+									"match": {
+										"date": "2018Q1"
+									}
+								},
+								{
+									"match": {
+										"rep": "all"
+									}
+								},
+								{
+									"match": {
+										"region": "all"
+									}
+								},
+								{
+									"match": {
+										"hosp_level": "all"
+									}
+								},
+								{
+									"match": {
+										"hosp_name": "all"
+									}
+								}
+							],
+							"must_not": [
+								{
+									"match": {
+										"product": "all"
+									}
+								}
+							]
+						}
+					}
+				}
+			}],
 			tmProductBarLine0: {
 				id: 'tmProductBarLineContainer',
 				height: 305,
@@ -1060,10 +1111,66 @@ export default Route.extend({
 					}
 				])
 			},
+			tmProductBarLineCondition: [{
+				dynamic: {
+					isDynamic: true,
+					interval: 3000
+				},
+				data: {
+					"_source": [
+						"date",
+						"sales",
+						"target",
+						"targetRate",
+						"product"
+					],
+					"query": {
+						"bool": {
+							"must": [
+								{
+									"match": {
+										"product": "all"
+									}
+								},
+								{
+									"match": {
+										"rep": "all"
+									}
+								},
+								{
+									"match": {
+										"region": "all"
+									}
+								},
+								{
+									"match": {
+										"hosp_level": "all"
+									}
+								},
+								{
+									"match": {
+										"hosp_name": "all"
+									}
+								}
+							],
+							"must_not": [
+								{
+									"match": {
+										"date": "all"
+									}
+								}
+							]
+						}
+					},
+					"sort": [
+						{ "date": "asc" }
+					]
+				}
+			}],
 			tmRegionCircle0: {
 				id: 'regionCircleContainer0',
 				height: 168,
-				panels: A([
+				panels: [
 					{
 						name: 'tmcircleregion0',
 						id: 'tmcircleregion0',
@@ -1103,12 +1210,12 @@ export default Route.extend({
 							}
 						}]
 					}
-				])
+				]
 			},
 			tmRegionCircle1: {
 				id: 'circleRegionContainer1',
 				height: 168,
-				panels: A([
+				panels: [
 					{
 						name: 'tmcircleregion1',
 						id: 'tmcircleregion1',
@@ -1149,27 +1256,14 @@ export default Route.extend({
 
 						}]
 					}
-				])
+				]
 			},
 			tmRegionBarLine0: {
 				id: 'tmRegionBarLineContainer',
 				height: 305,
-				panels: A([
+				panels: [
 					{
 						id: 'bartmRegionBarLine0',
-						condition: {
-							"_source": [
-								"date",
-								"sales",
-								"target",
-								"targetRate",
-								"product",
-								"region"
-							],
-							"sort": [
-								{ "count": "asc" }
-							]
-						},
 						color: ['#579AFF ', '#C2DAFF', '#FFAB00'],
 						xAxis: {
 							show: true,
@@ -1313,12 +1407,12 @@ export default Route.extend({
 
 						}]
 					}
-				])
+				]
 			},
 			tmRepresentativeCircle0: {
 				id: 'representativeCircleContainer0',
 				height: 168,
-				panels: A([
+				panels: [
 					{
 						name: 'tmcircleRepresentative0',
 						id: 'tmcirclerepresentative0',
@@ -1358,12 +1452,12 @@ export default Route.extend({
 							}
 						}]
 					}
-				])
+				]
 			},
 			tmRepresentativeCircle1: {
 				id: 'circleRepresentativeContainer1',
 				height: 168,
-				panels: A([
+				panels: [
 					{
 						name: 'tmcirclerepresentative1',
 						id: 'tmcirclerepresentative1',
@@ -1404,12 +1498,12 @@ export default Route.extend({
 
 						}]
 					}
-				])
+				]
 			},
 			tmRepresentativeBarLine0: {
 				id: 'tmRepresentativeBarLineContainer',
 				height: 305,
-				panels: A([
+				panels: [
 					{
 						id: 'bartmRepresentativeBarLine0',
 						condition: {
@@ -1568,12 +1662,12 @@ export default Route.extend({
 
 						}]
 					}
-				])
+				]
 			},
 			tmHospitalCircle0: {
 				id: 'hospitalCircleContainer0',
 				height: 168,
-				panels: A([
+				panels: [
 					{
 						name: 'tmcircleHospital0',
 						id: 'tmcircleHospital0',
@@ -1613,12 +1707,12 @@ export default Route.extend({
 							}
 						}]
 					}
-				])
+				]
 			},
 			tmHospitalCircle1: {
 				id: 'circleHospitalContainer1',
 				height: 168,
-				panels: A([
+				panels: [
 					{
 						name: 'tmcirclehospital1',
 						id: 'tmcirclehospital1',
@@ -1659,12 +1753,12 @@ export default Route.extend({
 
 						}]
 					}
-				])
+				]
 			},
 			tmHospitalBarLine0: {
 				id: 'tmHospitalBarLineContainer',
 				height: 305,
-				panels: A([
+				panels: [
 					{
 						id: 'bartmHospitalBarLine0',
 						condition: {
@@ -1823,54 +1917,9 @@ export default Route.extend({
 
 						}]
 					}
-				])
+				]
 			},
-			tmProductCircle0Condition: {
-				"_source": [
-					"product",
-					"sales",
-					"date",
-					"salesRate"
-				],
-				"query": {
-					"bool": {
-						"must": [
-							{
-								"match": {
-									"date": "2018Q1"
-								}
-							},
-							{
-								"match": {
-									"rep": "all"
-								}
-							},
-							{
-								"match": {
-									"region": "all"
-								}
-							},
-							{
-								"match": {
-									"hosp_level": "all"
-								}
-							},
-							{
-								"match": {
-									"hosp_name": "all"
-								}
-							}
-						],
-						"must_not": [
-							{
-								"match": {
-									"product": "all"
-								}
-							}
-						]
-					}
-				}
-			}
+
 		});
 	}
 });
