@@ -1,9 +1,15 @@
 <section local-class="layout-container">
-	<h3>Layout 的使用方法</h3>
+	<h2>bp-layout</h2>
+	<p>bp-layout 的实现依靠 flex 布局，在使用之前需要了解到关于 flex 布局的一些知识。
+		并且保证浏览器的兼容性。
+	</p>
+	<p>bp-layout 是布局器也是一个基本的组件，所以一个组件所能接受的参数对其也是适用的，
+		例如 classNames （为组件添加类名） 这样的参数。具体查看 emberjs 中
+		component 的一些文档。
+	</p>
 	<h4>
 		布局器有五个非必选属性,包括: direction / main / cross / wrap / multi;
 	</h4>
-	<p>classNames 属性为容器添加类名</p>
 	<ul>
 		<li>direction: 目前支持
 			{{#bp-button onClick=(action (mut direction) 'col')}}col{{/bp-button}}
@@ -52,4 +58,10 @@
 		<div>7</div>
 		<div>8</div>
 	{{/bp-layout}}
+	<h3>使用注意</h3>
+	<p>
+		bp-layout 本质上是为一个 div（未设置 tagName） 标签添加预设的一些 css 样式，再通过
+		传入一些参数，改变其添加的 css 样式（通过 classNameBindings）,从而达到使用简单几个
+		属性值就可以控制相关布局的要求。
+	</p>
 </section>
