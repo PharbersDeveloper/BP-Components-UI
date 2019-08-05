@@ -1,8 +1,32 @@
-.icon {
+.icon,
+.inside-colorful {
+    svg {
+        path {
+            fill: lightgreen;
+        }
+    }
+}
 
-	svg {
-		path {
-			fill: green;
-		}
-	}
+.colorful {
+    color: lightblue;
+}
+
+.icons-container {
+    width: 981px;
+    margin: 0 auto;
+    border-top: 1px solid #eee;
+    border-left: 1px solid #eee;
+
+    .icon-container {
+		cursor: pointer;
+        width: 140px;
+        height: 120px;
+        text-align: center;
+        border-right: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+
+        &:hover {
+            color: lightblue;
+        }
+    }
 }

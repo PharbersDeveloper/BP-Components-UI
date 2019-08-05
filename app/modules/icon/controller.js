@@ -1,14 +1,103 @@
 import Controller from '@ember/controller';
+import { A } from '@ember/array';
 
 export default Controller.extend({
-	abord: `{{bp-icon icon='abord'}}`,
-	add: `{{bp-icon icon='add'}}`,
-	up: `{{bp-icon icon='up'}}`,
-	left: `{{bp-icon icon='left'}}`,
-	management: `{{bp-icon icon='management'}}`,
-	more: `{{bp-icon icon='more'}}`,
-	raisedHand: `{{bp-icon icon='raised-hand'}}`,
-	right: `{{bp-icon icon='right'}}`,
-	trash: `{{bp-icon icon='trash'}}`
+	overview: `{{bp-icon icon='abord'}}
+			{{bp-icon icon='add'}}`,
+	overviewColorful: `<p class='colorful'>
+				{{bp-icon icon='abord'}}
+				{{bp-icon icon='add'}}
+			</p>
+			styles.scss
+			.colorful { color: lightblue;}`,
+	insideColorful: `<p class='inside-colorful'>
+				{{bp-icon icon='check-circle'}}
+			</p>
+			styles.scss
+			.inside-colorful { svg { path: { fill: lightgreen}}}`,
+	actions: {
+		copy(value) {
+			let icon = `{{bp-icon icon='${value}'}}`;
 
+			const input = document.createElement('input');
+
+			document.body.appendChild(input);
+			input.setAttribute('value', icon);
+			input.select();
+			if (document.execCommand('copy')) {
+				document.execCommand('copy');
+			}
+			document.body.removeChild(input);
+		}
+	},
+	icons: A([
+		'abord',
+		'add',
+		'calendar',
+		'check-circle',
+		'chevron-next-year',
+		'china-money',
+		'credit-card',
+		'cross',
+		'dashboard',
+		'data',
+		'down',
+		'download',
+		'edit',
+		'email',
+		'error',
+		'export',
+		'female',
+		'growth',
+		'history',
+		'hospital-building',
+		'hospital-sign',
+		'image',
+		'increase',
+		'info',
+		'left',
+		'male',
+		'management',
+		'marketplace',
+		'meeting-quota',
+		'mission-1',
+		'mission-2',
+		'mission-3',
+		'mission-4',
+		'more',
+		'nav-person',
+		'notification',
+		'office-building',
+		'pc',
+		'people',
+		'person',
+		'pie',
+		'pill',
+		'point',
+		'pre-year',
+		'preferences',
+		'priority-high',
+		'priority-low',
+		'product-info',
+		'product',
+		'qr',
+		'raised-hand',
+		'representative',
+		'right',
+		'search',
+		'sign-out',
+		'sort-asc',
+		'sort-default',
+		'sort-des',
+		'story',
+		'target',
+		'teaching-center',
+		'team',
+		'time-left',
+		'time',
+		'trash',
+		'up',
+		'upload',
+		'warning'
+	])
 });

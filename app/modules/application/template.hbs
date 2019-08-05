@@ -3,21 +3,22 @@
 	<aside>
 		<nav>
 			{{#bp-nav theme='light' as |n|}}
-				{{#n.link-to "default"}}{{bp-icon icon='management'}}Default{{/n.link-to}}
-				{{#n.link-to "theme-colors"}}{{bp-icon icon='management'}}Theme-Colors{{/n.link-to}}
+				{{#n.link-to "default"}}{{bp-icon icon='story'}}<span class="ml-2">Default</span>{{/n.link-to}}
+				{{#n.link-to "theme-colors"}}{{bp-icon icon='data'}}<span class="ml-2">Theme-Colors</span>{{/n.link-to}}
 				{{#n.link-to "layout"}}
-					{{bp-icon icon='management'}} Layout
+					{{bp-icon icon='dashboard'}}<span class="ml-2">Layout</span>
 				{{/n.link-to}}
-				{{#n.link-to "icon"}}{{bp-icon icon='management'}}Icon{{/n.link-to}}
-				{{#n.link-to "dashboard"}}{{bp-icon icon='dashboard'}}dashboard{{/n.link-to}}
-				{{#n.link-to "avatar"}}{{bp-icon icon='nav-person'}}Avatar{{/n.link-to}}
+				{{#n.link-to "icon"}}{{bp-icon icon='check-circle'}}<span class="ml-2">Icon</span>{{/n.link-to}}
+				{{#n.link-to "dashboard"}}{{bp-icon icon='dashboard'}}<span
+						class="ml-2">CustomChart</span>{{/n.link-to}}
+				{{#n.link-to "avatar"}}{{bp-icon icon='nav-person'}}<span class="ml-2">Avatar</span>{{/n.link-to}}
 				{{#n.dropdown title='Buttons' icon="management" as |dd|}}
 					{{#dd.link-to "button"}}
 						Button{{/dd.link-to}}
 					{{#dd.link-to "button-group"}}
 						ButtonGroup{{/dd.link-to}}
 				{{/n.dropdown}}
-				{{#n.link-to "dropdown"}}{{bp-icon icon='management'}}Dropdown{{/n.link-to}}
+				{{#n.link-to "dropdown"}}{{bp-icon icon='point'}}<span class="ml-2">Dropdown</span>{{/n.link-to}}
 				{{#n.link-to "choose"}}{{bp-icon icon='management'}}Radio&Checkbox{{/n.link-to}}
 				{{#n.dropdown title='Inputs' icon="management" as |dd|}}
 					{{#dd.link-to "input"}}
@@ -48,7 +49,7 @@
 				{{/n.dropdown}}
 				{{#n.link-to "page-header"}}{{bp-icon icon='management'}}Page-Header{{/n.link-to}}
 				{{#n.link-to "pagination" }}{{bp-icon icon='management'}}Pagination{{/n.link-to}}
-				{{#n.dropdown title='Charts' icon="management" as |dd|}}
+				{{#n.dropdown title='Charts' icon="growth" as |dd|}}
 					{{#dd.link-to "line"}}
 						Chart-Line{{/dd.link-to}}
 					{{#dd.link-to "bar"}}
