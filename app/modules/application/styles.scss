@@ -3,39 +3,50 @@
 html,
 body,
 body> :global(.ember-view) {
-	margin: 0;
-	height: 100%;
-	min-height: 100%;
+    margin: 0;
+    height: 100%;
+    min-height: 100%;
 }
 
 .title {
-	margin: 0;
-	padding: 10px 0;
-	height: 70px;
-	line-height: 50px;
+    width: 1140px;
+    margin: 0 auto;
+    // padding: 10px 0;
+    height: 64px;
+    // line-height: 50px;
+
+    img {
+        height: 50px;
+    }
+
+    .version {
+        @extend %p-secondary;
+        line-height: unset;
+    }
 }
 
 .container {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	height: -webkit-calc(100% - 70px);
-	height: calc(100% - 70px);
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: -webkit-calc(100% - 70px);
+    height: calc(100% - 70px);
+    width: 1140px;
+    margin: 0 auto;
 
-	aside {
-		nav {
-			height: 100%;
-		}
+    aside {
+        nav {
+            height: 100%;
+        }
 
-	}
+    }
 
-	.content {
-		-webkit-box-flex: 1;
-		-webkit-flex: 1;
-		-ms-flex: 1;
-		flex: 1;
-		padding: 0 20px;
-		overflow: auto;
-	}
+    .content {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        overflow: auto;
+    }
 }

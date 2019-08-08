@@ -1,9 +1,19 @@
-<div style='width: 100px;height: 100px'>
+<h2>bp-circle</h2>
+<div style='width: 300px;height: 300px'>
 	{{bp-circle
-		eid="circleone"}}
+		eid="circleone"
+		circleData=model.circleData
+		circleColor=model.circleColor
+		labelEmphasis=false}}
 </div>
 <div class="dropdown-divider"></div>
-{{!-- {{bp-circle opts=opts}} --}}
+<h2>bp-circle/tm</h2>
+<div style="height: 150px;">
+	{{bp-circle/tm eid="circletwo"
+		circleData=model.circleData
+		circleColor=model.circleColor
+		labelEmphasis=false}}
+</div>
 <div class="dropdown-divider"></div>
 <h2>bp-gauge</h2>
 {{bp-gauge}}

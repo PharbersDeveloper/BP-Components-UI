@@ -1,6 +1,6 @@
 <section class="default-container">
-	<h3>项目中默认的一些样式</h3>
-	<h4>字体家族</h4>
+	<h2>项目中的一些样式</h2>
+	<h3>font-family 字体家族</h3>
 	<p>为了维护在不同系统以及浏览器的显示下，字体始终保持良好的“易读性”和“可读性”，体现了友好、 稳定和专业的特性。采用以下 字体规范：
 	</p>
 	<p>
@@ -10,10 +10,28 @@
 		"Helvetica Neue", Helvetica, Arial, sans-serif;
 		</code>
 	</p>
-	<h4>字体设置</h4>
+	<div class="dropdown-divider"></div>
+	<h3>font-weight 字体字重</h3>
+	<table class="table">
+		<tr>
+			<td colspan="2">font-weight</td>
+		</tr>
+		<tr>
+			<td>light: 300</td>
+			<td>regular: 400</td>
+		</tr>
+		<tr>
+			<td>medium: 500</td>
+			<td>simibold: 600</td>
+		</tr>
+	</table>
+	<div class="dropdown-divider"></div>
+	<h3>font-style 字体设置</h3>
 	<table class="table" local-class="font-setting">
 		<thead class="thead-dark">
-			<th>position</th>
+			<th>
+				style name
+			</th>
 			<th>example</th>
 			<th>weight/LH</th>
 			<th>color</th>
@@ -22,8 +40,7 @@
 		<tbody>
 			<tr local-class="display-large">
 				<td>display-large</td>
-				<td>落霞与孤鹜齐飞<br> 秋水共长天一色
-				</td>
+				<td>落霞与孤鹜齐飞<br> 秋水共长天一色</td>
 				<td>M29/40L</td>
 				<td>N800</td>
 				<td>大标题,一个页面只出现一次</td>
@@ -92,9 +109,76 @@
 				<td>n100</td>
 				<td>最次级信息</td>
 			</tr>
+			<tr local-class="header-small-inverse">
+				<td>header-small-inverse</td>
+				<td class="bg-dark">落霞与孤鹜齐飞<br> 秋水共长天一色
+				</td>
+				<td>R14/L20</td>
+				<td>n000</td>
+				<td>小标题,通常用于表单页和信息页的信息标题等</td>
+			</tr>
+			<tr local-class="p-primary-inverse">
+				<td>p-primary-inverse</td>
+				<td class="bg-dark">落霞与孤鹜齐飞<br> 秋水共长天一色
+				</td>
+				<td>R14/20L</td>
+				<td>n000</td>
+				<td>正文,用于大多数普通层级信息及段落等</td>
+			</tr>
+			<tr local-class="p-secondary-inverse">
+				<td>p-secondary-inverse</td>
+				<td class="bg-dark">落霞与孤鹜齐飞<br> 秋水共长天一色
+				</td>
+				<td>R14/20L</td>
+				<td>n000</td>
+				<td>辅助文字,用于次级信息,如表单的帮助信息等</td>
+			</tr>
+			<tr local-class="p-small-inverse">
+				<td>p-small-inverse</td>
+				<td class="bg-dark">落霞与孤鹜齐飞<br> 秋水共长天一色
+				</td>
+				<td>R12/L17</td>
+				<td>n000</td>
+				<td>最次级信息</td>
+			</tr>
 		</tbody>
 	</table>
-	<h4>Font Size</h4>
+	<div class="dropdown-divider"></div>
+	<h3>depth 阴影</h3>
+	<p>用于区分浮层及弹窗的层级</p>
+	<table class="table" local-class='table-0'>
+		<thead>
+			<tr>
+				<th>类名</th>
+				<th>样式演示</th>
+				<th>说明</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>%depth-z100</td>
+				<td><span></span></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>%depth-z200</td>
+				<td><span></span></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>%depth-z300</td>
+				<td><span></span></td>
+				<td>用于Modal Dialog、Dropdown menu</td>
+			</tr>
+			<tr>
+				<td>%depth-z400</td>
+				<td><span></span></td>
+				<td>用于Notification、Message</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="dropdown-divider"></div>
+	{{!-- <h3>Font Size</h3>
 	<table local-class="table-1" class="table">
 		<thead class="thead-dark">
 			<th>字体大小</th>
@@ -116,8 +200,9 @@
 			<td>W400</td>
 			<td>用于正文内容，按钮</td>
 		</tr>
-	</table>
-	<h4>字阶与行高</h4>
+	</table> --}}
+	{{!-- <div class="dropdown-divider"></div> --}}
+	<h3>light-height 字阶与行高</h3>
 	<table class="table">
 		<tr>
 			<td>FontSize</td>
@@ -148,7 +233,32 @@
 			<td>...</td>
 		</tr>
 	</table>
-	<h4>Font Color</h4>
+	<div class="dropdown-divider"></div>
+	<h3>Radius 圆角</h3>
+	<p>使块状展示更有温度</p>
+	<table class="table" local-class='table-01'>
+		<thead>
+			<tr>
+				<th>类名</th>
+				<th>样式演示</th>
+				<th>说明</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>%defaultRadius</td>
+				<td><span></span></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>%radiusLarge</td>
+				<td><span></span></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="dropdown-divider"></div>
+	{{!-- <h3>Font Color</h3>
 	<table class="table" local-class="table-2">
 		<thead class="thead-dark">
 			<th></th>
@@ -185,5 +295,5 @@
 				<td>用于强调文字</td>
 			</tr>
 		</tbody>
-	</table>
+	</table> --}}
 </section>

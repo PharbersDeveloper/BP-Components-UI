@@ -40,6 +40,7 @@ Router.map(function() {
   this.route('charts');
   this.route('avatar');
   this.route('dashboard');
+  this.route('datepicker');
 });
 
 export default Router;
