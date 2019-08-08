@@ -2,11 +2,15 @@ import Controller from '@ember/controller';
 import { A } from '@ember/array';
 
 export default Controller.extend({
+	size: 'medium',
+	sizeList: A(['large', 'medium', 'small']),
 	overview: `{{bp-icon icon='abord'}}
-			{{bp-icon icon='add'}}`,
+			{{bp-icon icon='add'}}
+			{{bp-icon icon='check-circle'}}`,
 	overviewColorful: `<p class='colorful'>
 				{{bp-icon icon='abord'}}
 				{{bp-icon icon='add'}}
+				{{bp-icon icon='check-circle'}}
 			</p>
 			styles.scss
 			.colorful { color: lightblue;}`,
@@ -15,6 +19,9 @@ export default Controller.extend({
 			</p>
 			styles.scss
 			.inside-colorful { svg { path: { fill: lightgreen}}}`,
+	iconSize: `{{bp-icon icon='check-circle' size='large'}}
+			{{bp-icon icon='check-circle'}}
+			{{bp-icon icon='check-circle' size='small'}}`,
 	actions: {
 		copy(value) {
 			let icon = `{{bp-icon icon='${value}'}}`;

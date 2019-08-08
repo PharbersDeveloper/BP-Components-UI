@@ -1,5 +1,54 @@
 <section local-class="layout-container">
-	<h2>bp-layout</h2>
+	<h2>布局基础与bp-layout</h2>
+	<div class="dropdown-divider"></div>
+	<h3>布局基础</h3>
+	<div local-class='basic-layout'>
+		{{#bp-layout direction='col' local-class='basic-layout-container'}}
+			{{#bp-layout tagName='nav' local-class='nav' cross='center'}}
+				实际宽度： 1200px； 高度： 64px；
+			{{/bp-layout}}
+			{{#bp-layout tagName='section' local-class='container'}}
+				{{#bp-layout direction='col' tagName='aside' main='center' main='center' corss='center'}}
+					<p local-class='title'>导航区</p>
+					<p local-class='desc'>
+						width: 240px;
+					</p>
+				{{/bp-layout}}
+				{{#bp-layout main='between' local-class='content'}}
+					<div local-class='column'></div>
+					<div local-class='column'></div>
+					<div local-class='column'></div>
+					<div local-class='column'></div>
+					<div local-class='column'></div>
+					<div local-class='column'></div>
+					<div local-class='column'></div>
+					<div local-class='column'></div>
+					<div local-class='column'></div>
+					<div local-class='column'></div>
+					<div local-class='column'></div>
+					<div local-class='column' class="mr-0"></div>
+					{{#bp-layout local-class='column-other' main='between'}}
+						{{#bp-layout main='center' cross='center' local-class='column-4'}}
+							4 Column
+						{{/bp-layout}}
+						{{#bp-layout main='center' cross='center' local-class='column-8'}}
+							8 Column
+						{{/bp-layout}}
+					{{/bp-layout}}
+					{{#bp-layout direction='col' local-class='column-desc' main='between'}}
+						<p>total width: 912px</p>
+						<p>number of columns: 12</p>
+						<p>gutter width: 8px;</p>
+					{{/bp-layout}}
+				{{/bp-layout}}
+			{{/bp-layout}}
+		{{/bp-layout}}
+	</div>
+	<p>上述基本是目前项目中用到的布局，推荐使用 h5 标签，如 nav 、 aside 、 section 这些
+		进行布局设计。更多响应式设计正在推进中。。。
+	</p>
+	<div class="dropdown-divider"></div>
+	<h3>bp-layout</h3>
 	<p>bp-layout 的实现依靠 flex 布局，在使用之前需要了解到关于 flex 布局的一些知识。
 		并且保证浏览器的兼容性。
 	</p>
@@ -8,9 +57,117 @@
 		component 的一些文档。
 	</p>
 	<h4>
-		布局器有五个非必选属性,包括: direction / main / cross / wrap / multi;
+		使用方法及参数说明
 	</h4>
-	<ul>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>参数</th>
+				<th>说明</th>
+				<th>类型</th>
+				<th>默认值</th>
+				<th>选择</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>direction</td>
+				<td>控制子元素布局的方向。与 flex-direction 功能相同</td>
+				<td>Enum{ 'row', 'col' }</td>
+				<td>'row'</td>
+				<td>{{#bp-button-group
+					value=direction 
+					type="radio"
+					onChange=(action (mut direction)) as |bg|}}
+						{{#bg.button type="default" value='row'}}row{{/bg.button}}
+						{{#bg.button type="default" value='col'}}col {{/bg.button}}
+					{{/bp-button-group}}</td>
+			</tr>
+			<tr>
+				<td>main</td>
+				<td>主轴上的排序方式,与 justify-content 功能相同</td>
+				<td>Enum{ 'start', 'end', 'center', 'between', 'around' }</td>
+				<td>'start' </td>
+				<td>{{#bp-dropdown as |dd|}}
+						{{#dd.button }}
+							{{#if main}}
+								<p>{{main}}</p>
+							{{else}}
+								请选择
+							{{/if}}
+							{{bp-icon icon='down'}}
+						{{/dd.button}}
+						{{#dd.menu as |menu|}}
+							{{#each mainList as |item|}}
+								{{#menu.option value=item onClick=(action (mut main))}}
+									{{item}}
+								{{/menu.option}}
+							{{/each}}
+						{{/dd.menu}}
+					{{/bp-dropdown}}</td>
+			</tr>
+			<tr>
+				<td>cross</td>
+				<td>交叉轴上的排序方式，与 align-item 功能相同</td>
+				<td>Enum{ 'start', 'end', 'center', 'stretch', 'baseline' }</td>
+				<td>'stretch'</td>
+				<td>{{#bp-dropdown as |dd|}}
+						{{#dd.button }}
+							{{#if cross}}
+								<p>{{cross}}</p>
+							{{else}}
+								请选择
+							{{/if}}
+							{{bp-icon icon='down'}}
+						{{/dd.button}}
+						{{#dd.menu as |menu|}}
+							{{#each crossList as |item|}}
+								{{#menu.option value=item onClick=(action (mut cross))}}
+									{{item}}
+								{{/menu.option}}
+							{{/each}}
+						{{/dd.menu}}
+					{{/bp-dropdown}}</td>
+			</tr>
+			<tr>
+				<td>wrap</td>
+				<td>定义是否折行，与 flex-wrap 功能相同</td>
+				<td>Boolean</td>
+				<td>false</td>
+				<td>{{#bp-button-group
+					value=wrap 
+					type="radio"
+					onChange=(action (mut wrap)) as |bg|}}
+						{{#bg.button type="default" value=true}}true{{/bg.button}}
+						{{#bg.button type="default" value=false}}false {{/bg.button}}
+					{{/bp-button-group}}</td>
+			</tr>
+			<tr>
+				<td>multi</td>
+				<td>当 wrap 为 true 的时候，定义多行的排序方式。当 wrap 为 false 的时候，不起作用</td>
+				<td>Enum{ 'start', 'end', 'center', 'between', 'around', 'stretch' }</td>
+				<td>'stretch'</td>
+				<td>{{#bp-dropdown as |dd|}}
+						{{#dd.button }}
+							{{#if multi}}
+								<p>{{multi}}</p>
+							{{else}}
+								请选择
+							{{/if}}
+							{{bp-icon icon='down'}}
+						{{/dd.button}}
+						{{#dd.menu as |menu|}}
+							{{#each multiList as |item|}}
+								{{#menu.option value=item onClick=(action (mut multi))}}
+									{{item}}
+								{{/menu.option}}
+							{{/each}}
+						{{/dd.menu}}
+					{{/bp-dropdown}}</td>
+			</tr>
+		</tbody>
+	</table>
+	{{!-- <ul>
 		<li>direction: 目前支持
 			{{#bp-button onClick=(action (mut direction) 'col')}}col{{/bp-button}}
 			以及
@@ -47,17 +204,26 @@
 			{{#bp-button onClick=(action (mut multi) 'stretch')}}stretch{{/bp-button}}
 			;默认值:
 			'stretch'.</li>
-	</ul>
+	</ul> --}}
+	<p local-class='code'>
+		{{layoutCode}}
+		{{!-- {{#code-block src="template.hbs" language='handlebars'}}
+		{{layoutCode}}
+	{{/code-block}} --}}
+	</p>
 	{{#bp-layout direction main cross wrap multi classNames="demo-layout" local-class="layout-demo"}}
-		<div>1</div>
-		<div>2</div>
-		<div>3</div>
-		<div>4</div>
-		<div>5</div>
-		<div>6</div>
-		<div>7</div>
-		<div>8</div>
+		<div local-class={{if wrap 'wrap'}}>1</div>
+		<div local-class={{if wrap 'wrap'}}>2</div>
+		<div local-class={{if wrap 'wrap'}}>3</div>
+		<div local-class={{if wrap 'wrap'}}>4</div>
+		<div local-class={{if wrap 'wrap'}}>5</div>
+		<div local-class={{if wrap 'wrap'}}>6</div>
+		<div local-class={{if wrap 'wrap'}}>7</div>
+		<div local-class={{if wrap 'wrap'}}>8</div>
 	{{/bp-layout}}
+	<p>注意，这里为了演示，在 wrap 为 true 的时候，在样式中手动修改了 item 的宽度为 200px ，
+		非 wrap = true 带来的效果。
+	</p>
 	<h3>使用注意</h3>
 	<p>
 		bp-layout 本质上是为一个 div（未设置 tagName） 标签添加预设的一些 css 样式，再通过

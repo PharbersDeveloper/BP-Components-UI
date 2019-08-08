@@ -52,6 +52,102 @@
             @extend %p-small;
         }
     }
+
+    .header-small-inverse {
+        td:nth-child(2) {
+            @extend %header-small-inverse;
+        }
+    }
+
+    .p-primary-inverse {
+        td:nth-child(2) {
+            @extend %p-primary-inverse;
+        }
+    }
+
+    .p-secondary-inverse {
+        td:nth-child(2) {
+            @extend %p-secondary-inverse;
+        }
+    }
+
+    .p-small-inverse {
+        td:nth-child(2) {
+            @extend %p-small-inverse;
+        }
+    }
+}
+
+.table-0 {
+    thead tr th {
+        border: 0;
+    }
+
+    tbody {
+        span {
+            display: inline-block;
+            width: 100%;
+            height: 100px;
+        }
+
+        tr:first-child {
+            span {
+
+                @extend %depth-z100;
+            }
+        }
+
+        tr:nth-child(2) {
+            span {
+
+                @extend %depth-z200;
+            }
+        }
+
+        tr:nth-child(3) {
+            span {
+
+                @extend %depth-z300;
+            }
+        }
+
+        tr:last-child {
+            span {
+
+                @extend %depth-z400;
+            }
+        }
+
+    }
+
+}
+
+.table-01 {
+    thead tr th {
+        border: 0;
+    }
+
+    tbody {
+        span {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background-color: $n600;
+        }
+
+        tr:first-child {
+            span {
+                @extend %defaultRadius;
+            }
+        }
+
+        tr:last-child {
+            span {
+                @extend %radiusLarge;
+            }
+        }
+
+    }
 }
 
 .table-1 {

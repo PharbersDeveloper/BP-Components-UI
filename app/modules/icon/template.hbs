@@ -23,12 +23,40 @@
 			{{insideColorful}}
 		{{/code-block}}
 	</p>
+	<p>提供了三种大小的 icon，通过设置 size 参数为 ‘large’ ‘medium’ ‘small’</p>
+	<p>
+		{{bp-icon icon='check-circle' size='large'}}
+		{{bp-icon icon='check-circle' size='medium'}}
+		{{bp-icon icon='check-circle' size='small'}}
+	</p>
+	<p>
+		{{#code-block src="template.hbs" language='handlebars'}}
+			{{iconSize}}
+		{{/code-block}}
+	</p>
+	{{#bp-dropdown as |dd|}}
+		{{#dd.button }}
+			{{#if size}}
+				<p>{{size}}</p>
+			{{else}}
+				请选择
+			{{/if}}
+			{{bp-icon icon='down'}}
+		{{/dd.button}}
+		{{#dd.menu as |menu|}}
+			{{#each sizeList as |item|}}
+				{{#menu.option value=item onClick=(action (mut size))}}
+					{{item}}
+				{{/menu.option}}
+			{{/each}}
+		{{/dd.menu}}
+	{{/bp-dropdown}}
 	<h3>图表集合</h3>
 	<p>点击即可复制到 handlebars 文件中使用</p>
 	{{#bp-layout main='' wrap=true local-class='icons-container'}}
 		{{#each icons as |icon|}}
 			{{#bp-layout direction='col' main='around' local-class='icon-container' click=(action 'copy' icon)}}
-				<p>{{bp-icon icon=icon}}</p>
+				<p>{{bp-icon icon=icon size=size}}</p>
 				<p>{{icon}}</p>
 			{{/bp-layout}}
 		{{/each}}
