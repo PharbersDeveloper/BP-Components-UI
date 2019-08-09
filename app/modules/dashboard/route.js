@@ -806,6 +806,124 @@ export default Route.extend({
 					}]
 				}])
 			},
+			monitoring: {
+				id: 'monitoringContainer',
+				height: 305,
+				panels: [{
+					id: 'monitoringExampleForCPU',
+					animation: false,
+					xAxis: {
+						show: true,
+						type: 'category',
+						name: '',
+						axisTick: {
+							show: true,
+							alignWithLabel: true
+						},
+						axisLine: {
+							show: true,
+							lineStyle: {
+								type: 'dotted',
+								color: '#DFE1E6'
+							}
+						},
+						axisLabel: {
+							show: true,
+							color: '#7A869A',
+							fontSize: 14,
+							lineHeight: 20
+						}
+					},
+					yAxis: {
+						show: true,
+						type: 'value',
+						axisLine: {
+							show: false
+						},
+						axisTick: {
+							show: false
+						},
+						axisLabel: {
+							show: true,
+							color: '#7A869A',
+							// formatter: function (value) {
+							// 	return value * 100 + axisConfig.unit;
+							// }
+						},
+						splitLine: {
+							show: true,
+							lineStyle: {
+								type: 'dotted',
+								color: '#DFE1E6'
+							}
+						}
+					},
+					tooltip: {
+						show: true,
+						trigger: 'axis',
+						axisPointer: { // 坐标轴指示器，坐标轴触发有效
+							type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+						},
+						backgroundColor: 'rgba(9,30,66,0.54)'
+					},
+					legend: {
+						show: true,
+						x: 'center',
+						y: 'top',
+						orient: 'horizontal',
+						textStyle: {
+							fontSize: 14,
+							color: '#7A869A'
+						}
+					},
+					series: [{
+						type: 'line',
+						animationDuration: 1000,
+						symbol: 'none',  //这句就是去掉点的  
+						smooth: true
+					}, {
+						type: 'line',
+						animationDuration: 1000,
+						symbol: 'none',  //这句就是去掉点的  
+						smooth: true
+					}]
+				}]
+			},
+			monitoringCondition: [{
+				queryAddress: {
+					host: 'http://192.168.100.157',
+					port: 9001,
+					version: 'v1.0',
+					db: 'DL'
+				},
+				dynamic: {
+					isDynamic: true,
+					interval: 1000
+				},
+				data: {
+					"model": "es",
+					"query": {
+						"search": {
+							"size": 100,
+							"sort": ["-time.keyword"],
+							"and": [
+								["eq", "hostname.keyword", "pharbers"]
+							]
+						}
+					},
+					"format": [
+						{
+							"class": "pivot",
+							"args": {
+								"yAxis": "time",
+								"xAxis": "hostname",
+								"value": "cpu",
+								"reverse": true
+							}
+						}
+					]
+				}
+			}],
 			tmProductCircle0: {
 				id: 'circleproductcontainer0',
 				height: 168,
@@ -953,18 +1071,6 @@ export default Route.extend({
 				panels: A([
 					{
 						id: 'bartmProductBarLine0',
-						condition: {
-							"_source": [
-								"date",
-								"sales",
-								"target",
-								"targetRate",
-								"product"
-							],
-							"sort": [
-								{ "count": "asc" }
-							]
-						},
 						color: ['#579AFF ', '#C2DAFF', '#FFAB00'],
 						xAxis: {
 							show: true,
@@ -1074,7 +1180,7 @@ export default Route.extend({
 								barBorderRadius: [0, 0, 0, 0]
 							},
 							encode: {
-								y: 'sales'
+								y: [1]
 							}
 						}, {
 							type: 'bar',
@@ -1085,14 +1191,14 @@ export default Route.extend({
 								barBorderRadius: [0, 0, 0, 0]
 							},
 							encode: {
-								y: 'target'
+								y: [2]
 							}
 						}, {
 							type: 'line',
 							name: '指标达成率',
 							yAxisIndex: 1,
 							encode: {
-								y: 'targetRate'
+								y: [3]
 							},
 							itemStyle: {
 								normal: {
@@ -1112,7 +1218,7 @@ export default Route.extend({
 			},
 			tmProductBarLineCondition: [{
 				dynamic: {
-					isDynamic: true,
+					isDynamic: false,
 					interval: 3000
 				},
 				data: {
@@ -2337,57 +2443,38 @@ export default Route.extend({
 				queryAddress: {
 					host: 'http://192.168.100.157',
 					port: 9000,
-					sheet: 'tmchart',
-					rule: 'pivot'
+					version: 'v1.0',
+					db: 'DL'
 				},
 				data: {
-
-					"_source": [
-						"date",
-						"product",
-						"salesRate"
-					],
+					"model": "oldtm",
 					"query": {
-						"bool": {
-							"must": [
-								{
-									"match": {
-										"rep": "all"
+						"aggs": [
+							{
+								"groupBy": "date.keyword",
+								"aggs": [
+									{
+										"groupBy": "product.keyword",
+										"aggs": [
+											{
+												"agg": "sum",
+												"field": "sales"
+											}
+										]
 									}
-								},
-								{
-									"match": {
-										"region": "all"
-									}
-								},
-								{
-									"match": {
-										"hosp_level": "all"
-									}
-								},
-								{
-									"match": {
-										"hosp_name": "all"
-									}
-								}
-							],
-							"must_not": [
-								{
-									"match": {
-										"product": "all"
-									}
-								},
-								{
-									"match": {
-										"date": "all"
-									}
-								}
-							]
-						}
+								]
+							}
+						]
 					},
-					"sort": [
-						{ "date": "asc" },
-						{ "product": "asc" }
+					"format": [
+						{
+							"class": "pivot",
+							"args": {
+								"yAxis": "date.keyword",
+								"xAxis": "product.keyword",
+								"value": "sum(sales)"
+							}
+						}
 					]
 				}
 			}],
