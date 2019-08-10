@@ -806,6 +806,124 @@ export default Route.extend({
 					}]
 				}])
 			},
+			monitoring: {
+				id: 'monitoringContainer',
+				height: 305,
+				panels: [{
+					id: 'monitoringExampleForCPU',
+					animation: false,
+					xAxis: {
+						show: true,
+						type: 'category',
+						name: '',
+						axisTick: {
+							show: true,
+							alignWithLabel: true
+						},
+						axisLine: {
+							show: true,
+							lineStyle: {
+								type: 'dotted',
+								color: '#DFE1E6'
+							}
+						},
+						axisLabel: {
+							show: true,
+							color: '#7A869A',
+							fontSize: 14,
+							lineHeight: 20
+						}
+					},
+					yAxis: {
+						show: true,
+						type: 'value',
+						axisLine: {
+							show: false
+						},
+						axisTick: {
+							show: false
+						},
+						axisLabel: {
+							show: true,
+							color: '#7A869A',
+							// formatter: function (value) {
+							// 	return value * 100 + axisConfig.unit;
+							// }
+						},
+						splitLine: {
+							show: true,
+							lineStyle: {
+								type: 'dotted',
+								color: '#DFE1E6'
+							}
+						}
+					},
+					tooltip: {
+						show: true,
+						trigger: 'axis',
+						axisPointer: { // 坐标轴指示器，坐标轴触发有效
+							type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+						},
+						backgroundColor: 'rgba(9,30,66,0.54)'
+					},
+					legend: {
+						show: true,
+						x: 'center',
+						y: 'top',
+						orient: 'horizontal',
+						textStyle: {
+							fontSize: 14,
+							color: '#7A869A'
+						}
+					},
+					series: [{
+						type: 'line',
+						animationDuration: 1000,
+						symbol: 'none',  //这句就是去掉点的  
+						smooth: true
+					}, {
+						type: 'line',
+						animationDuration: 1000,
+						symbol: 'none',  //这句就是去掉点的  
+						smooth: true
+					}]
+				}]
+			},
+			monitoringCondition: [{
+				queryAddress: {
+					host: 'http://192.168.100.157',
+					port: 9001,
+					version: 'v1.0',
+					db: 'DL'
+				},
+				dynamic: {
+					isDynamic: true,
+					interval: 1000
+				},
+				data: {
+					"model": "es",
+					"query": {
+						"search": {
+							"size": 100,
+							"sort": ["-time.keyword"],
+							"and": [
+								["eq", "hostname.keyword", "pharbers"]
+							]
+						}
+					},
+					"format": [
+						{
+							"class": "pivot",
+							"args": {
+								"yAxis": "time",
+								"xAxis": "hostname",
+								"value": "cpu",
+								"reverse": true
+							}
+						}
+					]
+				}
+			}],
 			tmProductCircle0: {
 				id: 'circleproductcontainer0',
 				height: 168,
@@ -902,50 +1020,49 @@ export default Route.extend({
 					isDynamic: false,
 				},
 				data: {
-					"_source": [
-						"product",
-						"sales",
-						"date",
-						"salesRate"
-					],
+					"model": "oldtm",
 					"query": {
-						"bool": {
-							"must": [
-								{
-									"match": {
-										"date": "2018Q1"
+						"search": {
+							"and": [
+								[
+									"eq",
+									"date.keyword",
+									"2018Q1"
+								]
+							]
+						},
+						"aggs": [
+							{
+								"groupBy": "date.keyword",
+								"aggs": [
+									{
+										"groupBy": "product.keyword",
+										"aggs": [
+											{
+												"agg": "sum",
+												"field": "sales"
+											}
+										]
 									}
-								},
-								{
-									"match": {
-										"rep": "all"
-									}
-								},
-								{
-									"match": {
-										"region": "all"
-									}
-								},
-								{
-									"match": {
-										"hosp_level": "all"
-									}
-								},
-								{
-									"match": {
-										"hosp_name": "all"
-									}
-								}
-							],
-							"must_not": [
-								{
-									"match": {
-										"product": "all"
-									}
-								}
+								]
+							}
+						]
+					},
+					"format": [
+						{
+							"class": "calcRate",
+							"args": ["sum(sales)"]
+						},
+						{
+							"class": "cut2DArray",
+							"args": [
+								"product.keyword",
+								"sum(sales)",
+								"date.keyword",
+								"rate(sum(sales))"
 							]
 						}
-					}
+					]
 				}
 			}],
 			tmProductBarLine0: {
@@ -954,18 +1071,6 @@ export default Route.extend({
 				panels: A([
 					{
 						id: 'bartmProductBarLine0',
-						condition: {
-							"_source": [
-								"date",
-								"sales",
-								"target",
-								"targetRate",
-								"product"
-							],
-							"sort": [
-								{ "count": "asc" }
-							]
-						},
 						color: ['#579AFF ', '#C2DAFF', '#FFAB00'],
 						xAxis: {
 							show: true,
@@ -1075,7 +1180,7 @@ export default Route.extend({
 								barBorderRadius: [0, 0, 0, 0]
 							},
 							encode: {
-								y: 'sales'
+								y: [1]
 							}
 						}, {
 							type: 'bar',
@@ -1086,14 +1191,14 @@ export default Route.extend({
 								barBorderRadius: [0, 0, 0, 0]
 							},
 							encode: {
-								y: 'target'
+								y: [2]
 							}
 						}, {
 							type: 'line',
 							name: '指标达成率',
 							yAxisIndex: 1,
 							encode: {
-								y: 'targetRate'
+								y: [3]
 							},
 							itemStyle: {
 								normal: {
@@ -1113,57 +1218,59 @@ export default Route.extend({
 			},
 			tmProductBarLineCondition: [{
 				dynamic: {
-					isDynamic: true,
+					isDynamic: false,
 					interval: 3000
 				},
 				data: {
-					"_source": [
-						"date",
-						"sales",
-						"target",
-						"targetRate",
-						"product"
-					],
+					"model": "oldtm",
 					"query": {
-						"bool": {
-							"must": [
-								{
-									"match": {
-										"product": "all"
+						"search": {
+							"and": [
+								["eq", "product.keyword", "大扶康"]
+							]
+						},
+						"aggs": [
+							{
+								"groupBy": "date.keyword",
+								"aggs": [
+									{
+										"agg": "sum",
+										"field": "sales"
+									},
+									{
+										"agg": "sum",
+										"field": "p_quota"
 									}
-								},
+								]
+							}
+						]
+					},
+					"format": [
+						{
+							"class": "calcRate",
+							"args": [
+								"sum(p_quota)"
+							]
+						},
+						{
+							"class": "addCol",
+							"args": [
 								{
-									"match": {
-										"rep": "all"
-									}
-								},
-								{
-									"match": {
-										"region": "all"
-									}
-								},
-								{
-									"match": {
-										"hosp_level": "all"
-									}
-								},
-								{
-									"match": {
-										"hosp_name": "all"
-									}
-								}
-							],
-							"must_not": [
-								{
-									"match": {
-										"date": "all"
-									}
+									"name": "product",
+									"value": "大扶康"
 								}
 							]
+						},
+						{
+							"class": "cut2DArray",
+							"args": [
+								"date.keyword",
+								"sum(sales)",
+								"sum(p_quota)",
+								"rate(sum(p_quota))",
+								"product"
+							]
 						}
-					},
-					"sort": [
-						{ "date": "asc" }
 					]
 				}
 			}],
@@ -1258,6 +1365,55 @@ export default Route.extend({
 					}
 				]
 			},
+			tmRegionCircleCondition: [{
+				data: {
+					"model": "oldtm",
+					"query": {
+						"search": {
+							"and": [
+								["eq", "date.keyword", "2018Q1"]
+							]
+						},
+						"aggs": [
+							{
+								"groupBy": "hospital.keyword",
+								"aggs": [
+									{
+										"agg": "sum",
+										"field": "sales"
+									}
+								]
+							}
+						]
+					},
+					"format": [
+						{
+							"class": "calcRate",
+							"args": [
+								"sum(sales)"
+							]
+						},
+						{
+							"class": "addCol",
+							"args": [
+								{
+									"name": "date",
+									"value": "2018Q1"
+								}
+							]
+						},
+						{
+							"class": "cut2DArray",
+							"args": [
+								"hospital.keyword",
+								"sum(sales)",
+								"date",
+								"rate(sum(sales))"
+							]
+						}
+					]
+				}
+			}],
 			tmRegionBarLine0: {
 				id: 'tmRegionBarLineContainer',
 				height: 305,
@@ -1409,6 +1565,66 @@ export default Route.extend({
 					}
 				]
 			},
+			tmRegionBarLineCondition: [{
+				data: {
+					"model": "oldtm",
+					"query": {
+						"search": {
+							"and": [
+								["eq", "product.keyword", "大扶康"],
+								["eq", "hospital.keyword", "西河医院"]
+							]
+						},
+						"aggs": [
+							{
+								"groupBy": "date.keyword",
+								"aggs": [
+									{
+										"agg": "sum",
+										"field": "sales"
+									},
+									{
+										"agg": "sum",
+										"field": "p_quota"
+									}
+								]
+							}
+						]
+					},
+					"format": [
+						{
+							"class": "calcRate",
+							"args": [
+								"sum(p_quota)"
+							]
+						},
+						{
+							"class": "addCol",
+							"args": [
+								{
+									"name": "product",
+									"value": "大扶康"
+								},
+								{
+									"name": "hospital",
+									"value": "西河医院"
+								}
+							]
+						},
+						{
+							"class": "cut2DArray",
+							"args": [
+								"date.keyword",
+								"sum(sales)",
+								"sum(p_quota)",
+								"rate(sum(p_quota))",
+								"product",
+								"hospital"
+							]
+						}
+					]
+				}
+			}],
 			tmRepresentativeCircle0: {
 				id: 'representativeCircleContainer0',
 				height: 168,
@@ -1500,6 +1716,59 @@ export default Route.extend({
 					}
 				]
 			},
+			tmRepresentativeCircleCondition: [{
+				data: {
+					"model": "oldtm",
+					"query": {
+						"search": {
+							"and": [
+								["eq", "date.keyword", "2018Q1"]
+							]
+						},
+						"aggs": [
+							{
+								"groupBy": "representative.keyword",
+								"aggs": [
+									{
+										"agg": "sum",
+										"field": "sales"
+									},
+									{
+										"agg": "sum",
+										"field": "p_quota"
+									}
+								]
+							}
+						]
+					},
+					"format": [
+						{
+							"class": "calcRate",
+							"args": [
+								"sum(sales)"
+							]
+						},
+						{
+							"class": "addCol",
+							"args": [
+								{
+									"name": "date",
+									"value": "2018Q1"
+								}
+							]
+						},
+						{
+							"class": "cut2DArray",
+							"args": [
+								"representative.keyword",
+								"sum(sales)",
+								"date",
+								"rate(sum(sales))"
+							]
+						}
+					]
+				}
+			}],
 			tmRepresentativeBarLine0: {
 				id: 'tmRepresentativeBarLineContainer',
 				height: 305,
@@ -1664,6 +1933,65 @@ export default Route.extend({
 					}
 				]
 			},
+			tmRepresentativeBarLineCondition: [{
+				data: {
+					"model": "oldtm",
+					"query": {
+						"search": {
+							"and": [
+								["eq", "representative.keyword", "小兰"]
+							]
+						},
+						"aggs": [
+							{
+								"groupBy": "date.keyword",
+								"aggs": [
+									{
+										"agg": "sum",
+										"field": "sales"
+									},
+									{
+										"agg": "sum",
+										"field": "p_quota"
+									}
+								]
+							}
+						]
+					},
+					"format": [
+						{
+							"class": "calcRate",
+							"args": [
+								"sum(p_quota)"
+							]
+						},
+						{
+							"class": "addCol",
+							"args": [
+								{
+									"name": "product",
+									"value": "all"
+								},
+								{
+									"name": "representative",
+									"value": "小兰"
+								}
+							]
+						},
+						{
+							"class": "cut2DArray",
+							"args": [
+								"date.keyword",
+								"sum(sales)",
+								"sum(p_quota)",
+								"rate(sum(p_quota))",
+								"product",
+								"representative"
+							]
+						}
+					]
+				}
+			}],
 			tmHospitalCircle0: {
 				id: 'hospitalCircleContainer0',
 				height: 168,
@@ -1755,6 +2083,55 @@ export default Route.extend({
 					}
 				]
 			},
+			tmHospitalCircleCondition: [{
+				data: {
+					"model": "oldtm",
+					"query": {
+						"search": {
+							"and": [
+								["eq", "date.keyword", "2018Q1"]
+							]
+						},
+						"aggs": [
+							{
+								"groupBy": "hospital_level.keyword",
+								"aggs": [
+									{
+										"agg": "sum",
+										"field": "sales"
+									}
+								]
+							}
+						]
+					},
+					"format": [
+						{
+							"class": "calcRate",
+							"args": [
+								"sum(sales)"
+							]
+						},
+						{
+							"class": "addCol",
+							"args": [
+								{
+									"name": "date",
+									"value": "2018Q1"
+								}
+							]
+						},
+						{
+							"class": "cut2DArray",
+							"args": [
+								"hospital_level.keyword",
+								"sum(sales)",
+								"date",
+								"rate(sum(sales))"
+							]
+						}
+					]
+				}
+			}],
 			tmHospitalBarLine0: {
 				id: 'tmHospitalBarLineContainer',
 				height: 305,
@@ -1919,6 +2296,65 @@ export default Route.extend({
 					}
 				]
 			},
+			tmHospitalBarLineCondition: [{
+				data: {
+					"model": "oldtm",
+					"query": {
+						"search": {
+							"and": [
+								["eq", "hospital.keyword", "海港医院"]
+							]
+						},
+						"aggs": [
+							{
+								"groupBy": "date.keyword",
+								"aggs": [
+									{
+										"agg": "sum",
+										"field": "sales"
+									},
+									{
+										"agg": "sum",
+										"field": "p_quota"
+									}
+								]
+							}
+						]
+					},
+					"format": [
+						{
+							"class": "calcRate",
+							"args": [
+								"sum(p_quota)"
+							]
+						},
+						{
+							"class": "addCol",
+							"args": [
+								{
+									"name": "product",
+									"value": "all"
+								},
+								{
+									"name": "hospital",
+									"value": "海港医院"
+								}
+							]
+						},
+						{
+							"class": "cut2DArray",
+							"args": [
+								"date.keyword",
+								"sum(sales)",
+								"sum(p_quota)",
+								"rate(sum(p_quota))",
+								"product",
+								"hospital"
+							]
+						}
+					]
+				}
+			}],
 			tmProdsLines: {
 				id: 'tmProdsLinesContainer',
 				height: 305,
@@ -2007,57 +2443,38 @@ export default Route.extend({
 				queryAddress: {
 					host: 'http://192.168.100.157',
 					port: 9000,
-					sheet: 'tmchart',
-					rule: 'pivot'
+					version: 'v1.0',
+					db: 'DL'
 				},
 				data: {
-
-					"_source": [
-						"date",
-						"product",
-						"salesRate"
-					],
+					"model": "oldtm",
 					"query": {
-						"bool": {
-							"must": [
-								{
-									"match": {
-										"rep": "all"
+						"aggs": [
+							{
+								"groupBy": "date.keyword",
+								"aggs": [
+									{
+										"groupBy": "product.keyword",
+										"aggs": [
+											{
+												"agg": "sum",
+												"field": "sales"
+											}
+										]
 									}
-								},
-								{
-									"match": {
-										"region": "all"
-									}
-								},
-								{
-									"match": {
-										"hosp_level": "all"
-									}
-								},
-								{
-									"match": {
-										"hosp_name": "all"
-									}
-								}
-							],
-							"must_not": [
-								{
-									"match": {
-										"product": "all"
-									}
-								},
-								{
-									"match": {
-										"date": "all"
-									}
-								}
-							]
-						}
+								]
+							}
+						]
 					},
-					"sort": [
-						{ "date": "asc" },
-						{ "product": "asc" }
+					"format": [
+						{
+							"class": "pivot",
+							"args": {
+								"yAxis": "date.keyword",
+								"xAxis": "product.keyword",
+								"value": "sum(sales)"
+							}
+						}
 					]
 				}
 			}],
