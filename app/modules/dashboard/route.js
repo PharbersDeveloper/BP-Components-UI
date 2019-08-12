@@ -811,7 +811,7 @@ export default Route.extend({
 				height: 305,
 				panels: [{
 					id: 'monitoringExampleForCPU',
-					animation: false,
+					// animation: false,
 					xAxis: {
 						show: true,
 						type: 'category',
@@ -878,12 +878,10 @@ export default Route.extend({
 					},
 					series: [{
 						type: 'line',
-						animationDuration: 1000,
 						symbol: 'none',  //这句就是去掉点的  
 						smooth: true
 					}, {
 						type: 'line',
-						animationDuration: 1000,
 						symbol: 'none',  //这句就是去掉点的  
 						smooth: true
 					}]
@@ -891,7 +889,7 @@ export default Route.extend({
 			},
 			monitoringCondition: [{
 				queryAddress: {
-					host: 'http://192.168.100.157',
+					host: 'http://192.168.100.174',
 					port: 9001,
 					version: 'v1.0',
 					db: 'DL'
@@ -903,26 +901,22 @@ export default Route.extend({
 				data: {
 					"model": "es",
 					"query": {
-						"search": {
-							"size": 100,
-							"sort": ["-time.keyword"],
-							"and": [
-								["eq", "hostname.keyword", "pharbers"]
-							]
-						}
+					  "search":{
+					   "size": 70,
+					   "sort": ["-time.keyword"],
+					  }
 					},
 					"format": [
-						{
-							"class": "pivot",
-							"args": {
-								"yAxis": "time",
-								"xAxis": "hostname",
-								"value": "cpu",
-								"reverse": true
-							}
-						}
+					 {
+						"class": "pivot",
+						"args": {
+					"yAxis": "time",
+					"xAxis": "hostname",
+					"value": "cpu"	// cpu / receive / transmit / disk / memory
+					 }
+					 }
 					]
-				}
+				  }
 			}],
 			tmProductCircle0: {
 				id: 'circleproductcontainer0',
@@ -2441,8 +2435,8 @@ export default Route.extend({
 			},
 			tmProdsLinesCondition: [{
 				queryAddress: {
-					host: 'http://192.168.100.157',
-					port: 9000,
+					host: 'http://192.168.100.174',
+					port: 9001,
 					version: 'v1.0',
 					db: 'DL'
 				},
@@ -2505,11 +2499,11 @@ export default Route.extend({
 							}
 						},
 						indicator: [
-							{ text: '产品知识', max: 1 },
-							{ text: '工作积极性', max: 1 },
-							{ text: '行为有效性', max: 1 },
-							{ text: '区域管理能力', max: 1 },
-							{ text: '销售知识', max: 1 }
+							{ text: '产品知识', max: 10 },
+							{ text: '工作积极性', max: 10 },
+							{ text: '行为有效性', max: 10 },
+							{ text: '区域管理能力', max: 10 },
+							{ text: '销售知识', max: 10 }
 						],
 						splitNumber: 5, //default
 						axisLine: {
@@ -2545,56 +2539,69 @@ export default Route.extend({
 			},
 			tmRadarCondition: [{
 				data: {
-					"_source": [
-						"rep",
-						"product_knowledge",
-						"sales_skills",
-						"territory_management_ability",
-						"work_motivation",
-						"behavior_efficiency"
-					],
+					"model": "oldtm",
 					"query": {
-						"bool": {
-							"must": [
-								{
-									"match": {
-										"date": "2018Q1"
-									}
-								},
-								{
-									"match": {
-										"product": "all"
-									}
-								},
-								{
-									"match": {
-										"region": "all"
-									}
-								},
-								{
-									"match": {
-										"hosp_level": "all"
-									}
-								},
-								{
-									"match": {
-										"hosp_name": "all"
-									}
-								}
-							],
-							"must_not": [
-								{
-									"match": {
-										"rep": "all"
-									}
-								}
+						"search": {
+							"size": 2,
+							"and":[
+								["eq", "date.keyword", "2018Q1"]
 							]
+						},
+					  "aggs": [
+						{
+						  "groupBy": "representative.keyword",
+						  "aggs": [
+							{
+							  "agg": "max",
+							  "field": "p_product_knowledge"
+							},
+							{
+							  "agg": "max",
+							  "field": "p_work_motivation"
+							},
+							{
+							  "agg": "max",
+							  "field": "p_behavior_efficiency"
+							},
+							{
+							  "agg": "max",
+							  "field": "p_territory_management_ability"
+							},
+							{
+							  "agg": "max",
+							  "field": "p_sales_skills"
+							}
+						  ]
 						}
+					  ]
 					},
-					"sort": [
-						{ "rep": "asc" }
+					"format": [
+						{
+						"class": "addAvgRow",
+						"args": ["representative.keyword"]
+					  },
+					  {
+						"class": "filter",
+						"args": [
+							["or", [
+								["eq", "representative.keyword", "小兰"],
+								["eq", "representative.keyword", "平均值"]
+							]]
+						]
+					  },
+					  {
+						"class": "cut2DArray",
+						"args": [
+						  "representative.keyword",
+						  "max(p_product_knowledge)",
+						  "max(p_work_motivation)",
+						  "max(p_behavior_efficiency)",
+						  "max(p_territory_management_ability)",
+						  "max(p_sales_skills)"
+						]
+						}
 					]
-				}
+				  }
 			}
 			]
 		});
