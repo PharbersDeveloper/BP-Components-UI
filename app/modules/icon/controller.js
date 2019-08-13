@@ -40,6 +40,7 @@ export default Controller.extend({
 	icons: A([
 		'abord',
 		'add',
+		'app-switcher',
 		'calendar',
 		'case',
 		'check-circle',
@@ -90,6 +91,7 @@ export default Controller.extend({
 		'product-info',
 		'product',
 		'qr',
+		'question-circle',
 		'raised-hand',
 		'representative',
 		'right',

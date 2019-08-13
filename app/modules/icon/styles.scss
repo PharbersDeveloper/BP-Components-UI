@@ -27,6 +27,11 @@
 
         &:hover {
             color: lightblue;
+            svg {
+                path {
+                    fill: lightblue;
+                }
+            }
         }
     }
 }
