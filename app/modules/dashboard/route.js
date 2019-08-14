@@ -901,22 +901,22 @@ export default Route.extend({
 				data: {
 					"model": "es",
 					"query": {
-					  "search":{
-					   "size": 70,
-					   "sort": ["-time.keyword"],
-					  }
+						"search": {
+							"size": 70,
+							"sort": ["-time.keyword"],
+						}
 					},
 					"format": [
-					 {
-						"class": "pivot",
-						"args": {
-					"yAxis": "time",
-					"xAxis": "hostname",
-					"value": "cpu"	// cpu / receive / transmit / disk / memory
-					 }
-					 }
+						{
+							"class": "pivot",
+							"args": {
+								"yAxis": "time",
+								"xAxis": "hostname",
+								"value": "cpu"	// cpu / receive / transmit / disk / memory
+							}
+						}
 					]
-				  }
+				}
 			}],
 			tmProductCircle0: {
 				id: 'circleproductcontainer0',
@@ -2543,65 +2543,65 @@ export default Route.extend({
 					"query": {
 						"search": {
 							"size": 2,
-							"and":[
+							"and": [
 								["eq", "date.keyword", "2018Q1"]
 							]
 						},
-					  "aggs": [
-						{
-						  "groupBy": "representative.keyword",
-						  "aggs": [
+						"aggs": [
 							{
-							  "agg": "max",
-							  "field": "p_product_knowledge"
-							},
-							{
-							  "agg": "max",
-							  "field": "p_work_motivation"
-							},
-							{
-							  "agg": "max",
-							  "field": "p_behavior_efficiency"
-							},
-							{
-							  "agg": "max",
-							  "field": "p_territory_management_ability"
-							},
-							{
-							  "agg": "max",
-							  "field": "p_sales_skills"
+								"groupBy": "representative.keyword",
+								"aggs": [
+									{
+										"agg": "max",
+										"field": "p_product_knowledge"
+									},
+									{
+										"agg": "max",
+										"field": "p_work_motivation"
+									},
+									{
+										"agg": "max",
+										"field": "p_behavior_efficiency"
+									},
+									{
+										"agg": "max",
+										"field": "p_territory_management_ability"
+									},
+									{
+										"agg": "max",
+										"field": "p_sales_skills"
+									}
+								]
 							}
-						  ]
-						}
-					  ]
+						]
 					},
 					"format": [
 						{
-						"class": "addAvgRow",
-						"args": ["representative.keyword"]
-					  },
-					  {
-						"class": "filter",
-						"args": [
-							["or", [
-								["eq", "representative.keyword", "小兰"],
-								["eq", "representative.keyword", "平均值"]
-							]]
-						]
-					  },
-					  {
-						"class": "cut2DArray",
-						"args": [
-						  "representative.keyword",
-						  "max(p_product_knowledge)",
-						  "max(p_work_motivation)",
-						  "max(p_behavior_efficiency)",
-						  "max(p_territory_management_ability)",
-						  "max(p_sales_skills)"
-						]
+							"class": "addAvgRow",
+							"args": ["representative.keyword"]
+						},
+						{
+							"class": "filter",
+							"args": [
+								["or", [
+									["eq", "representative.keyword", "小兰"],
+									["eq", "representative.keyword", "平均值"]
+								]]
+							]
+						},
+						{
+							"class": "cut2DArray",
+							"args": [
+								"representative.keyword",
+								"max(p_product_knowledge)",
+								"max(p_work_motivation)",
+								"max(p_behavior_efficiency)",
+								"max(p_territory_management_ability)",
+								"max(p_sales_skills)"
+							]
 						}
 					]
-				  }
+				}
 			}
 			]
 		});
