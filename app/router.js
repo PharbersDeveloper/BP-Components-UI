@@ -41,6 +41,7 @@ Router.map(function() {
   this.route('avatar');
   this.route('dashboard');
   this.route('datepicker');
+  this.route('table');
 });
 
 export default Router;
