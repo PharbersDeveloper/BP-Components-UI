@@ -970,17 +970,6 @@ export default Route.extend({
 					{
 						name: 'tmcircleproduct1',
 						id: 'tmcircleproduct1',
-						condition: {
-							"_source": [
-								"product",
-								"sales",
-								"date",
-								"rate"
-							],
-							"sort": [
-								{ "count": "asc" }
-							]
-						},
 						color: ['#73ABFF', '#FFC400', '#57D9A3'],
 						tooltip: {
 							show: true,
@@ -2603,7 +2592,17 @@ export default Route.extend({
 					]
 				}
 			}
-			]
+			],
+			tmTable: {
+				id: 'tmProductTable1',
+				height: 0,
+				panels: A([
+					{
+						type: 'table',
+						
+					}
+				])
+			},
 		});
 	}
 });
