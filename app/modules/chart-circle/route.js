@@ -16,7 +16,8 @@ export default Route.extend({
 			]),
 			circleColor: A([
 				'red', 'green', 'orange', 'blue'
-			])
+			]),
+			circleSize: A(['40%','55%'])
 		}
 	}
 });

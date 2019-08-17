@@ -1,3 +1,14 @@
 <h2>Date Picker</h2>
 {{bp-datepicker}}
 <div class="dropdown-divider"></div>
+<h2>example for phase format</h2>
+<p>base is : {{base}}</p>
+<p>step is : {{step}}</p>
+{{#bp-button onClick=(action 'increasePhase')}}add phase, phase is : {{phase}}{{/bp-button}}
+{{#bp-button onClick=(action 'decreasePhase')}}minus  phase, phase is : {{phase}}{{/bp-button}}
+<p>{{format-date (format-phase-date base step phase)}}</p>
+<h2>example for phase format</h2>
+<p>base is : {{base}}</p>
+<p>step is : {{stepY}}</p>
+{{#bp-button onClick=(action 'increasePhaseY')}}phase is : {{phaseY}}{{/bp-button}}
+<p>{{format-date (format-phase-date base stepY phaseY)}}</p>
