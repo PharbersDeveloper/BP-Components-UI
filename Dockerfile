@@ -31,7 +31,6 @@ RUN git checkout -b frank origin/frank && \
 WORKDIR /app/BP-Components-UI
 
 RUN rm -rf node_modules && \
-	rm package-lock.json && \
 	npm cache clear --force && \
 	npm install && \
 	npm link bp-components
