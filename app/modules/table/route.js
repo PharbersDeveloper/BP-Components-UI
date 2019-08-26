@@ -7,86 +7,106 @@ export default Route.extend({
             columns: [{
                 label: '姓名',
                 valuePath: 'name',
+                align: 'left',
                 // sortable: false,
-                // width: '190px'
+                width: '80'
             },
             {
                 label: htmlSafe('指标贡献率<br />2019Q1'),
                 valuePath: 'rate',
-                cellComponent: 'table/decimal-to-percentage'
+                cellComponent: 'table/decimal-to-percentage',
+                align: 'center',
+                width: '100'
+
                 // sortable: false
             }, {
                 label: htmlSafe('YTD销售额<br />2019Q1'),
                 valuePath: 'ytd',
-                cellComponent: 'table/format-number'
+                cellComponent: 'table/format-number',
+                align: 'right',
+                width: '120'
                 // sortable: false
             }, {
                 label: '地址c',
-                valuePath: 'cc'
+                valuePath: 'cc',
+                width: '120 '
                 // sortable: false
             },
             {
                 label: '地址d',
-                valuePath: 'dd'
+                valuePath: 'dd',
+                width: '120'
                 // sortable: false
             }, {
                 label: '地址e',
-                valuePath: 'ee'
+                valuePath: 'ee',
+                width: '120'
                 // sortable: false
             },
             {
                 label: '地址这行f<br />第二行',
-                valuePath: 'ff'
+                valuePath: 'ff',
+                width: '120 '
                 // sortable: false
             },
             {
                 label: '地址这行f<br />第二行',
-                valuePath: 'gg'
+                valuePath: 'gg',
+                width: '120'
                 // sortable: false
             },
             {
                 label: '地址',
-                valuePath: 'hh'
+                valuePath: 'hh',
+                width: '120 '
                 // sortable: false
             },
             {
                 label: '地址',
-                valuePath: 'ii'
+                valuePath: 'ii',
+                width: '120 '
                 // sortable: false
             },
             {
                 label: '地址',
-                valuePath: 'jj'
+                valuePath: 'jj',
+                width: '120 '
                 // sortable: false
             },
             {
                 label: '地址',
-                valuePath: 'kk'
+                valuePath: 'kk',
+                width: '120 '
                 // sortable: false
             },
             {
                 label: '地址',
-                valuePath: 'll'
+                valuePath: 'll',
+                width: '120 '
                 // sortable: false
             },
             {
                 label: '地址',
-                valuePath: 'mm'
+                valuePath: 'mm',
+                width: '120 '
                 // sortable: false
             },
             {
                 label: '地址',
-                valuePath: 'nn'
+                valuePath: 'nn',
+                width: '120 '
                 // sortable: false
             },
             {
                 label: '地址',
-                valuePath: 'oo'
+                valuePath: 'oo',
+                width: '120 '
                 // sortable: false
             },
             {
                 label: '地址',
-                valuePath: 'pp'
+                valuePath: 'pp',
+                width: '120 '
                 // sortable: false
             }],
             tableData: [{
