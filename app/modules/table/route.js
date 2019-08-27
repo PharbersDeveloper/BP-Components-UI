@@ -192,22 +192,22 @@ export default Route.extend({
             {
                 label: '姓名',
                 valuePath: 'name',
-                width: '120 '
+                width: 120
                 // sortable: false
             }, {
                 label: '年纪',
                 valuePath: 'age',
-                width: '120 '
-                // sortable: false
+                width: 120,
+                sortable: true
             }, {
                 label: '学校',
                 valuePath: 'school',
-                width: '120 '
+                width: 120
                 // sortable: false
             },{
                 label: '地址',
-                valuePath: 'address'
-                // sortable: false
+                valuePath: 'address',
+                sortable: true
             },
         ],
         peopleData: [
