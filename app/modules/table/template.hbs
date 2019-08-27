@@ -1,8 +1,13 @@
+<h2>bp-table 的使用</h2>
+<h3>基础的使用</h3>
 {{bp-table columns=model.columns data=model.tableData}}
-<div class="dropdown-dividier"></div>
-<h3>add border</h3>
-{{bp-table columns=model.columns data=model.tableData rowBorder=true}}
 
+<h3>add border</h3>
+
+{{bp-table columns=model.columns data=model.tableData rowBorder=true}}
 <h3>remove hover</h3>
 {{bp-table columns=model.columns data=model.tableData  rowHover=false}}
-
+<h3>fixedColumn</h3>
+{{bp-table columns=model.columns data=model.tableData fixedColumn=true}}
+<h3>other</h3>
+{{bp-table columns=model.columnsPeople data=model.peopleData}}
