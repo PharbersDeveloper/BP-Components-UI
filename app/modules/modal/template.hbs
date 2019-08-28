@@ -2,11 +2,13 @@
 <div class="bs-example">
 	<!-- BEGIN-SNIPPET modal-custom -->
 	{{#bp-modal
+		classNames='test-model'
+		localclassNames='test-model'
 		open=modal3 
 		position='center'
 		onSubmit=(action "submit") 
 		onHidden=(action (mut modal3) false) as |modal|}}
-		{{#modal.header}}
+		{{#modal.header closeButton=false}}
 			<h4 class="modal-title">
 				Custom Dialog
 				<div class="badge">2</div>

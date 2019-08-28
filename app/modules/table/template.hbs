@@ -1,23 +1,46 @@
 <h2>
   bp-table 的使用
 </h2>
+<p>表格主要用于大量数据的展示，在前端页面中有着广泛的运用，好看好用的表格可以减少阅读难度，为使用者带来更良好的体验。</p>
+<p>此表格目前支持基础的样式调整以及排序。</p>
 <h3>
   基础的使用
 </h3>
-{{bp-table columns=model.columns data=model.tableData}}
+<p>基础的表格展示用法</p>
+{{bp-table columns=model.tableColumns0 data=model.tableData0}}
+<p>
+  {{#code-block src="template.hbs" language="handlebars"}}
+    {{basicUse}}
+  {{/code-block}}
+</p>
+<h3>带边框的表格</h3>
+{{bp-table columns=model.tableColumns0 data=model.tableData0 rowBorder=true}}
+<p>
+  {{#code-block src="template.hbs" language="handlebars"}}
+    {{withBoard}}
+  {{/code-block}}
+</p>
+<h3>取消 hover 状态</h3>
+<p>表格默认有 hover 样式，但是也可以取消</p>
+{{bp-table columns=model.tableColumns0 data=model.tableData0 rowHover=false}}
+<p>
+  {{#code-block src="template.hbs" language="handlebars"}}
+    {{cancelHover}}
+  {{/code-block}}
+</p>
 <h3>
-  add border
+  固定列
 </h3>
-{{bp-table columns=model.columns data=model.tableData rowBorder=true}}
-<h3>
-  remove hover
-</h3>
-{{bp-table columns=model.columns data=model.tableData rowHover=false}}
-<h3>
-  fixedColumn
-</h3>
-{{bp-table columns=model.columns data=model.tableData fixedColumn=true}}
-<h3>
-  other
-</h3>
-{{bp-table columns=model.columnsPeople data=model.peopleData}}
+<p>当横向内容过多时候，可以选择固定列进行更方便的查看。</p>
+{{bp-table columns=model.tableColumns1 data=model.tableData1 fixedColumn=true}}
+<p>
+  {{#code-block src="template.hbs" language="handlebars"}}
+    {{fixedColumn}}
+  {{/code-block}}
+</p>
+<h3>固定行</h3>
+<p>如果给定表格的高度小于表格需要展示的内容的时候，会出现竖直方向的滚动条。</p>
+{{bp-table columns=model.tableColumns1 data=model.tableData1 fixedColumn=true height='200px'}}
+<h3>排序</h3>
+<p>为某一列添加排序功能只需要在此列的 column 对象中将 sortable 属性设置为 true 即可：  </p>
+{{bp-table columns=model.tableColumns2 data=model.tableData2 fixedColumn=true}}
