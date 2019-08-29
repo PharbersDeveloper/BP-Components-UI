@@ -13,6 +13,8 @@
     {{basicUse}}
   {{/code-block}}
 </p>
+<h3>空数据的表格</h3>
+{{bp-table columns=model.tableColumns0}}
 <h3>带边框的表格</h3>
 {{bp-table columns=model.tableColumns0 data=model.tableData0 rowBorder=true}}
 <p>
@@ -41,6 +43,26 @@
 <h3>固定行</h3>
 <p>如果给定表格的高度小于表格需要展示的内容的时候，会出现竖直方向的滚动条。</p>
 {{bp-table columns=model.tableColumns1 data=model.tableData1 fixedColumn=true height='200px'}}
+<p>
+  {{#code-block src="template.hbs" language="handlebars"}}
+    {{fixedRow}}
+  {{/code-block}}
+</p>
+<h4>基础表格固定行</h4>
+{{bp-table columns=model.tableColumns0 data=model.tableData0 height='200px'}}
+
+<p>
+  {{#code-block src="template.hbs" language="handlebars"}}
+    {{basicFixedRow}}
+  {{/code-block}}
+</p>
 <h3>排序</h3>
 <p>为某一列添加排序功能只需要在此列的 column 对象中将 sortable 属性设置为 true 即可：  </p>
 {{bp-table columns=model.tableColumns2 data=model.tableData2 fixedColumn=true}}
+<p>
+  {{#code-block src="template.hbs" language="handlebars"}}
+    {{tableSort}}
+  {{/code-block}}
+</p>
+<p>我们想要格式化某一列的数据时，可以在 column 中添加 cellComponent 为指定的 component 名称（string），像此例中的 指标达成 以及 销售额，均使用了此属性。</p>
+<p>如果想对某一列的数据展示进行文字对其样式的改变，可以在 column 中添加 align 属性为 ‘center’ 或者 ‘right’ 或者默认的 ‘left’。</p>

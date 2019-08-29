@@ -2,6 +2,40 @@ import Route from '@ember/routing/route';
 import EmberObject from '@ember/object';
 import { A } from '@ember/array';
 import { hash } from 'rsvp';
+import ENV from "bp-components-ui/config/environment";
+
+// monitor 
+let queryAddress = EmberObject.create({
+    host: ENV.Host,
+    port: ENV.Port,
+    version: ENV.Version,
+    db: ENV.DB
+}),
+dynamic = EmberObject.create({
+    isDynamic: true,
+    interval: 1000
+}),
+conditionData = function(size,type) {
+    return {
+        "model": "es",
+        "query": {
+            "search": {
+                "size": size,
+                "sort": ["-time.keyword"],
+            }
+        },
+        "format": [
+            {
+                "class": "pivot",
+                "args": {
+                    "yAxis": "%2Btime",
+                    "xAxis": "hostname",
+                    "value": type	// cpu / receive / transmit / disk / memory
+                }
+            }
+        ]
+    }
+};
 
 export default Route.extend({
 	model() {
@@ -807,11 +841,17 @@ export default Route.extend({
 				}])
 			},
 			monitoring: {
-				id: 'monitoringContainer',
+				id: 'rowId',
 				height: 305,
-				panels: [{
-					id: 'monitoringExampleForCPU',
+				panels: A([{
+					id: 'chartId',
 					// animation: false,
+					grid: {
+						left: 36,
+						right: 36,
+						top: 32,
+						bottom:24
+					},
 					xAxis: {
 						show: true,
 						type: 'category',
@@ -837,6 +877,8 @@ export default Route.extend({
 					yAxis: {
 						show: true,
 						type: 'value',
+						min: 0,
+						max: 100,
 						axisLine: {
 							show: false
 						},
@@ -885,7 +927,7 @@ export default Route.extend({
 						symbol: 'none',  //这句就是去掉点的  
 						smooth: true
 					}]
-				}]
+				}])
 			},
 			monitoringCondition: [{
 				queryAddress: {
@@ -918,6 +960,11 @@ export default Route.extend({
 					]
 				}
 			}],
+			monitoringConditionCPU: A([{
+				queryAddress,
+				dynamic,
+				data: conditionData(1000,'cpu')
+			}]),
 			tmProductCircle0: {
 				id: 'circleproductcontainer0',
 				height: 168,

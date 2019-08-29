@@ -21,10 +21,21 @@ module.exports = function (environment) {
 		APP: {
 			// Here you can pass flags/options to your application instance
 			// when it is created
+		},
+		QueryAddress: {
+			host: "http://59.110.31.50",
+			port: 9202,
+			version: "v1.0",
+			db: "DL"
 		}
 	};
 
 	if (environment === 'development') {
+		ENV.Host = "http://59.110.31.50";
+		// ENV.Host = "http://192.168.100.157";
+		ENV.Port = 9201;
+		ENV.Version= 'v1.0';
+		ENV.DB = 'DL';
 		// ENV.APP.LOG_RESOLVER = true;
 		// ENV.APP.LOG_ACTIVE_GENERATION = true;
 		// ENV.APP.LOG_TRANSITIONS = true;

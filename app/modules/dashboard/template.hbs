@@ -24,27 +24,29 @@
 <div class="dropdown-divider"></div>
 <h2>This chart for stack - bar</h2>
 {{bp-row direction='col' rowModel=model.barStack}} --}}
+
+
 <h3>Monitoring example</h3>
 <h4>CPU</h4>
-{{bp-row direction='col' rowModel=model.monitoring conditions=model.monitoringCondition}}
+{{bp-row direction='col' rowModel=model.monitoring conditions=model.monitoringConditionCPU}}
 <h3>TMIST Charts</h3>
-<h4>参考信息-团队成员信息</h4>
-{{bp-row direction='col' rowModel=model.tmRadar conditions=model.tmRadarCondition}}
+{{!-- <h4>参考信息-团队成员信息</h4>
+{{bp-row direction='col' rowModel=model.tmRadar conditions=model.tmRadarCondition}} --}}
 <h4>产品竞品信息-药品份额竞争趋势</h4>
-{{bp-row direction='col' rowModel=model.tmProdsLines conditions=model.tmProdsLinesCondition}}
+{{bp-row direction='col' rowModel=tmProdsLines conditions=tmProdsLinesCondition}}
 <div class="dropdown-divider"></div>
 <h4>历史销售报告-产品销售报告</h4>
 {{#bp-layout}}
 	<div local-class='circle-left'>
-		{{bp-row direction='col' rowModel=model.tmProductCircle0 conditions=model.tmProductCircle0Condition}}
+		{{bp-row direction='col' rowModel=tmProductCircle0 conditions=tmProductCircleCondition}}
 	</div>
 	<div local-class='circle-right'>
-		{{bp-row direction='col'  rowModel=model.tmProductCircle1 conditions=model.tmProductCircle0Condition}}
+		{{bp-row direction='col'  rowModel=tmProductCircle1 conditions=tmProductCircle0Condition}}
 	</div>
 {{/bp-layout}}
-{{bp-row direction='col' rowModel=model.tmProductBarLine0 conditions=model.tmProductBarLineCondition}}
+{{bp-row direction='col' rowModel=tmProductBarLine0 conditions=tmProductBarLineCondition}}
 <div class="dropdown-divider"></div>
-<h4>历史销售报告-区域销售报告</h4>
+{{!-- <h4>历史销售报告-区域销售报告</h4>
 {{#bp-layout}}
 	<div local-class='circle-left'>
 		{{bp-row direction='col' rowModel=model.tmRegionCircle0 conditions=model.tmRegionCircleCondition}}
@@ -75,4 +77,4 @@
 		{{bp-row direction='col'  rowModel=model.tmHospitalCircle1 conditions=model.tmHospitalCircleCondition}}
 	</div>
 {{/bp-layout}}
-{{bp-row direction='col' rowModel=model.tmHospitalBarLine0 conditions=model.tmHospitalBarLineCondition}}
+{{bp-row direction='col' rowModel=model.tmHospitalBarLine0 conditions=model.tmHospitalBarLineCondition}} --}}
