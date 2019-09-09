@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
-import {htmlSafe} from '@ember/template';
+// import {htmlSafe} from '@ember/template';
 import { later }  from '@ember/runloop';
 
 export default Route.extend({
