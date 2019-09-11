@@ -61,6 +61,7 @@ export default Controller.extend({
 		'history',
 		'hospital-building',
 		'hospital-checked',
+		'hospital-checked-disabled',
 		'hospital-sign',
 		'hospital-unchecked',
 		'image',
