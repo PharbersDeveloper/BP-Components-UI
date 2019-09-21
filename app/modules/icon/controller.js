@@ -89,6 +89,7 @@ export default Controller.extend({
 		'point',
 		'pre-year',
 		'preferences',
+		'priority-flat',
 		'priority-high',
 		'priority-low',
 		'product-info',
