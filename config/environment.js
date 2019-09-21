@@ -63,6 +63,7 @@ module.exports = function (environment) {
 		ENV.DB = 'DL';
 		ENV.baseURL = '/bp-components-ui';
 		ENV.locationType = 'hash';
+		ENV.rootURL = 'https://pharbersdeveloper.github.io/BP-Components-UI/';
 		// here you can enable a production-specific feature
 	}
 
