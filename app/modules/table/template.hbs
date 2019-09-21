@@ -58,7 +58,7 @@
 </p>
 <h3>排序</h3>
 <p>为某一列添加排序功能只需要在此列的 column 对象中将 sortable 属性设置为 true 即可：  </p>
-{{bp-table columns=model.tableColumns2 data=model.tableData2 fixedColumn=true}}
+{{bp-table columns=model.tableColumns2 data=model.tableData2 fixedColumn=true defaultSort="age"}}
 <p>
   {{#code-block src="template.hbs" language="handlebars"}}
     {{tableSort}}
