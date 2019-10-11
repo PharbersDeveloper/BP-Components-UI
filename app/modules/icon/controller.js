@@ -59,6 +59,7 @@ export default Controller.extend({
 		'female',
 		'growth',
 		'history',
+		'home-filled',
 		'hospital-building',
 		'hospital-checked',
 		'hospital-checked-disabled',
