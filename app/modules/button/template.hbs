@@ -1,7 +1,7 @@
 <section class="btn-container">
 	<h3>Button 的使用方法</h3>
 	<h4>基础用法</h4>
-	{{#bp-button}}default{{/bp-button}}
+	{{#bp-button onClick=(action "btnClick")}}default{{/bp-button}}
 	{{#code-block src="template.hbs" language='handlebars' }}
 		{{btnDefault}}
 	{{/code-block}}

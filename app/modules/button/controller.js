@@ -46,6 +46,9 @@ export default Controller.extend({
 		Add
 	{{/bp-button}}`,
 	actions: {
+		btnClick() {
+            alert("btn click")
+        },
 		submit() {
 			this.incrementProperty('times');
 			this.set('someoneClickBtn', `Someone clicked button ${this.get('times')}`);
